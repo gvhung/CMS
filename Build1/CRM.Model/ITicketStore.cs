@@ -9,7 +9,6 @@ namespace CRM.Model
     public interface ITicketStore<TTicket>
     {
         void CreateTicket(TTicket ticket);
-        void SaveChanges();
     }
 
 
