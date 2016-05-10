@@ -1,0 +1,15 @@
+D:\CRM\trunk\Build1\CRMStoreTest\obj\Debug\CRMStoreTest.csprojResolveAssemblyReference.cache
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRMStoreTest.dll.config
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRMStoreTest.dll
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRMStoreTest.pdb
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRM.Model.dll
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRM.Store.dll
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\EntityFramework.dll
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\EntityFramework.SqlServer.dll
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRM.Model.pdb
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\CRM.Store.pdb
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\EntityFramework.xml
+D:\CRM\trunk\Build1\CRMStoreTest\bin\Debug\EntityFramework.SqlServer.xml
+D:\CRM\trunk\Build1\CRMStoreTest\obj\Debug\CRMStoreTest.dll
+D:\CRM\trunk\Build1\CRMStoreTest\obj\Debug\CRMStoreTest.pdb
