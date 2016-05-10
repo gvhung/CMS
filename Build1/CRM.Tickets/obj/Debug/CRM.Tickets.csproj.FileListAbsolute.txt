@@ -3,3 +3,14 @@ D:\CRM\CRM.Tickets\CRM.Tickets\bin\Debug\CRM.Tickets.dll
 D:\CRM\CRM.Tickets\CRM.Tickets\bin\Debug\CRM.Tickets.pdb
 D:\CRM\CRM.Tickets\CRM.Tickets\obj\Debug\CRM.Tickets.dll
 D:\CRM\CRM.Tickets\CRM.Tickets\obj\Debug\CRM.Tickets.pdb
+D:\CRM\Build1\CRM.Tickets\bin\Debug\CRM.Tickets.dll
+D:\CRM\Build1\CRM.Tickets\bin\Debug\CRM.Tickets.pdb
+D:\CRM\Build1\CRM.Tickets\bin\Debug\mscorlib.dll
+D:\CRM\Build1\CRM.Tickets\bin\Debug\normidna.nlp
+D:\CRM\Build1\CRM.Tickets\bin\Debug\normnfc.nlp
+D:\CRM\Build1\CRM.Tickets\bin\Debug\normnfd.nlp
+D:\CRM\Build1\CRM.Tickets\bin\Debug\normnfkc.nlp
+D:\CRM\Build1\CRM.Tickets\bin\Debug\normnfkd.nlp
+D:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.csprojResolveAssemblyReference.cache
+D:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.dll
+D:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.pdb
