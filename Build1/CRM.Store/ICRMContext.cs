@@ -6,5 +6,6 @@ namespace CRM.Store
     public interface ICRMContext
     {
         DbSet<TicketEntity> Tickets { get; set; }
+        void SaveChanges();
     }
 }

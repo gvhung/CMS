@@ -20,5 +20,10 @@ namespace CRM.Store
             Entities.TicketEntity ticketEntity = new Entities.TicketEntity() { TicketNo = (long)ticket.TicketNo, Id = ticket.Id };
             _context.Tickets.Add(ticketEntity);
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }
