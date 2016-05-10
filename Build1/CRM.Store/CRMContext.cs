@@ -15,5 +15,10 @@ namespace CRM.Store
         }
 
         public DbSet<TicketEntity> Tickets { get; set; }
+
+        void ICRMContext.SaveChanges()
+        {
+            base.SaveChanges();
+        }
     }
 }
