@@ -12,6 +12,7 @@ namespace CRM.Store
         public CRMContext(string constr):base(constr)
         {
 
+
         }
 
         public DbSet<TicketEntity> Tickets { get; set; }
