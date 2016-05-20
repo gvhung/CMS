@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRMContext.cs" />
-    <Compile Include="Entities\CRMUser.cs" />
+    
     <Compile Include="ICRMContext.cs" />
     <Compile Include="ITicketStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
