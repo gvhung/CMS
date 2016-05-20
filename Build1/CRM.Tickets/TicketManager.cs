@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRM.Model;
+using CRM.Tickets.Interfaces;
 namespace CRM.Tickets
 {
     public class TicketManager<TTicket, TKey>  where TTicket: ITicket<TKey>
 
     {
-        ITicketStore<TTicket> _ticketStore;
-        public TicketManager(ITicketStore<TTicket> ticketStore)
+        ITicketStore<TTicket,TKey> _ticketStore;
+        public TicketManager(ITicketStore<TTicket,TKey> ticketStore)
         {
             _ticketStore = ticketStore;
         }
