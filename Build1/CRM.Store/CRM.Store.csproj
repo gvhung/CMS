@@ -58,6 +58,7 @@
     <Compile Include="CRMContext.cs" />
     <Compile Include="Entities\CRMUser.cs" />
     <Compile Include="ICRMContext.cs" />
+    <Compile Include="ITicketStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="TicketStore.cs" />
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\CRM.Model\CRM.Model.csproj">
       <Project>{c9f2373a-1ba2-4d57-908f-233301f5487d}</Project>
       <Name>CRM.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRM.Tickets\CRM.Tickets.csproj">
+      <Project>{b59bc2ce-44cd-40cc-8e6e-628eeee926fa}</Project>
+      <Name>CRM.Tickets</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
