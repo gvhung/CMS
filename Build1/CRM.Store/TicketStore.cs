@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using CRM.Model;
-using System.Configuration;
+using CRM.Store.Entities;
+using CRM.Tickets.Interfaces;
+using AutoMapper.Mappers;
 namespace CRM.Store
 {
-   public class TicketStore : ITicketStore<Ticket>
+    public class TicketStore<TTicket,Tkey> : ITicketStore<TTicket,Tkey> where TTicket:ITicket<Tkey>
     {
         ICRMContext _context;
         public TicketStore(ICRMContext context)
         {
             _context = context;
         }
-
-        public void CreateTicket(Ticket ticket)
+        public void CreateTicket(TTicket ticket)
         {
-            Entities.TicketEntity ticketEntity = new Entities.TicketEntity() { TicketNo = (long)ticket.TicketNo, Id = ticket.Id };
+            
+            TicketEntity ticketEntity=(TicketEntity) AutoMapper.Mapper.Map(ticket, ticket.GetType(), typeof(TicketEntity));
+
             _context.Tickets.Add(ticketEntity);
-        }
-
-        public void SaveChanges()
-        {
             _context.SaveChanges();
         }
+        
     }
 }
