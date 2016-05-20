@@ -61,7 +61,7 @@ namespace CRM.Controllers
         {
             List<TicketListModel> lst = new List<TicketListModel>();
             TicketListModel obj = new TicketListModel();
-            /*obj.Id = 02;
+            obj.Id = 02;
             obj.IssueType = "Error";
             obj.ModuleId = "001";
             obj.ProductId = "002";
@@ -69,8 +69,8 @@ namespace CRM.Controllers
             obj.Title = "TicketIssue";
             obj.Version = "xyz";
             obj.Description = "jkhdasjdkssd";
-            obj.DueDate = "05/17/2016";*/
-          //  ViewBag.data = obj;
+            obj.DueDate = "05/17/2016";
+             ViewBag.data = obj;
             lst.Add(obj);
             return View(lst.AsEnumerable());
         }

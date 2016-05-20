@@ -12,3 +12,15 @@ D:\CRM\trunk\Build1\CRM.Store\obj\Debug\CRM.Store.dll
 D:\CRM\trunk\Build1\CRM.Store\obj\Debug\CRM.Store.pdb
 D:\CRM\trunk\Build1\CRM.Store\bin\Debug\AutoMapper.dll
 D:\CRM\trunk\Build1\CRM.Store\bin\Debug\AutoMapper.xml
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\CRM.Store.dll.config
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\CRM.Store.dll
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\CRM.Store.pdb
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\CRM.Model.dll
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\CRM.Model.pdb
+D:\CRM\Build1\Build1\CRM.Store\obj\Debug\CRM.Store.csprojResolveAssemblyReference.cache
+D:\CRM\Build1\Build1\CRM.Store\obj\Debug\CRM.Store.dll
+D:\CRM\Build1\Build1\CRM.Store\obj\Debug\CRM.Store.pdb
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.dll
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.SqlServer.dll
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.xml
+D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.SqlServer.xml

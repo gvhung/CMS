@@ -14,3 +14,10 @@ D:\CRM\Build1\CRM.Tickets\bin\Debug\normnfkd.nlp
 D:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.csprojResolveAssemblyReference.cache
 D:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.dll
 D:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.pdb
+D:\CRM\Build1\Build1\CRM.Tickets\bin\Debug\CRM.Tickets.dll
+D:\CRM\Build1\Build1\CRM.Tickets\bin\Debug\CRM.Tickets.pdb
+D:\CRM\Build1\Build1\CRM.Tickets\bin\Debug\CRM.Model.dll
+D:\CRM\Build1\Build1\CRM.Tickets\bin\Debug\CRM.Model.pdb
+D:\CRM\Build1\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.csprojResolveAssemblyReference.cache
+D:\CRM\Build1\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.dll
+D:\CRM\Build1\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.pdb

@@ -30,7 +30,7 @@
             @Html.ValidationMessageFor(model => model.SecurityCode)
         </div>
         <div>
-              @{ BotDetect.Web.Mvc.MvcCaptcha Captcha = new BotDetect.Web.Mvc.MvcCaptcha("Venkanna"); }
+        @{ BotDetect.Web.Mvc.MvcCaptcha Captcha = new BotDetect.Web.Mvc.MvcCaptcha("Venkanna"); }
         @Html.Captcha(Captcha)
         
         </div>
