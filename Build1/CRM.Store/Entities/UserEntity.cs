@@ -17,4 +17,11 @@ namespace CRM.Store.Entities
         public int Status { get; set; }
 
     }
+
+    public class LoginsEntity
+    {
+        public long UID { get; set; }
+        public string Username { get; set; }
+        
+    }
 }
