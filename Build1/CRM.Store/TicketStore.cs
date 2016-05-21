@@ -10,7 +10,7 @@ using AutoMapper.Mappers;
 using AutoMapper.QueryableExtensions;
 namespace CRM.Store
 {
-    public class TicketStore<TTicket,Tkey> : ITicketStore<TTicket,Tkey> where TTicket:ITicket<Tkey>
+    public class TicketStore<TTicket> : ITicketStore<TTicket> where TTicket:ITicket
     {
         ICRMContext _context;
         public TicketStore(ICRMContext context)
@@ -34,7 +34,7 @@ namespace CRM.Store
             throw new NotImplementedException();
         }
 
-        public void DeleteTicket(Tkey Id)
+        public void DeleteTicket(long Id)
         {
             throw new NotImplementedException();
         }
