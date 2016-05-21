@@ -7,11 +7,11 @@ using CRM.Model;
 using CRM.Tickets.Interfaces;
 namespace CRM.Tickets
 {
-    public class TicketManager<TTicket, TKey>  where TTicket: ITicket<TKey>
+    public class TicketManager<TTicket>  where TTicket: ITicket
 
     {
-        ITicketStore<TTicket,TKey> _ticketStore;
-        public TicketManager(ITicketStore<TTicket,TKey> ticketStore)
+        ITicketStore<TTicket> _ticketStore;
+        public TicketManager(ITicketStore<TTicket> ticketStore)
         {
             _ticketStore = ticketStore;
         }

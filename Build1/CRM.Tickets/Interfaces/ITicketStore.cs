@@ -2,12 +2,12 @@
 using System.Linq;
 namespace CRM.Tickets.Interfaces
 {
-    public interface ITicketStore<TTicket,Tkey>
-     where TTicket : CRM.Model.ITicket<Tkey>
+    public interface ITicketStore<TTicket>
+     where TTicket : CRM.Model.ITicket
     {
         void CreateTicket(TTicket ticket);
         void UpdateTicket(TTicket ticket);
-        void DeleteTicket(Tkey Id);
+        void DeleteTicket(long Id);
         IQueryable<TTicket> GetTickets();
     }
 }
