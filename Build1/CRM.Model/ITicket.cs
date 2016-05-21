@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CRM.Model
 {
-    public interface ITicket<TKey>
+    public interface ITicket
     {
-        TKey Id { get; set; }
+        long Id { get; set; }
         long? TicketNo { get; set; }
         int Priority { get; set; }
         string Reason { get; set; }
