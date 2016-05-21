@@ -7,6 +7,7 @@ using CRM.Model;
 using CRM.Store.Entities;
 using CRM.Tickets.Interfaces;
 using AutoMapper.Mappers;
+using AutoMapper.QueryableExtensions;
 namespace CRM.Store
 {
     public class TicketStore<TTicket,Tkey> : ITicketStore<TTicket,Tkey> where TTicket:ITicket<Tkey>
@@ -19,11 +20,28 @@ namespace CRM.Store
         public void CreateTicket(TTicket ticket)
         {
             
-            TicketEntity ticketEntity=(TicketEntity) AutoMapper.Mapper.Map(ticket, ticket.GetType(), typeof(TicketEntity));
+            TicketEntity ticketEntity=(TicketEntity) AutoMapper.Mapper.Map<TicketEntity>(ticket);
+                
 
             _context.Tickets.Add(ticketEntity);
             _context.SaveChanges();
         }
-        
+
+
+
+        public void UpdateTicket(TTicket ticket)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTicket(Tkey Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<TTicket> GetTickets()
+        {
+            return _context.Tickets.ProjectTo<TTicket>();
+        }
     }
 }
