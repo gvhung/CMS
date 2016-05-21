@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CRM.Store;
-
+using CRM.Model;
 namespace CRMStoreTest
 {
     [TestClass]
@@ -11,10 +11,10 @@ namespace CRMStoreTest
         [TestMethod]
         public void CreateTicketSuccess()
         {
-            TicketStore ticketStore = new TicketStore(new CRMContext("CRMContext"));
+            TicketStore<Ticket,Guid> ticketStore = new TicketStore<Ticket, Guid>(new CRMContext("CRMContext"));
 
             ticketStore.CreateTicket(new CRM.Model.Ticket() { Id = new Guid(), TicketNo = 1234 });
-            ticketStore.SaveChanges();
+            
         }
     }
 }
