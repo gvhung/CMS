@@ -12,10 +12,25 @@ namespace CRM.Store.Entities
     {
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public long TicketId { get; set; }
             
         public long TicketNo { get; set; }
         public int BranchId { get; set; }
         public BranchEntity Branch { get; set; }
+    }
+
+    public class TicketComment
+    {
+        public long TicketId { get; set; }
+        public string Message { get; set; }
+    }
+
+    public class TicketAttachment
+    {
+        public long TicketId { get; set; }
+        public string Name { get; set; }
+
+        public Stream Content { get; set; }
+
     }
 }
