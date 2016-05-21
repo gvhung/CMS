@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Model
 {
-   public class Ticket : ITicket<Guid>
+   public class Ticket : ITicket
     {
         public string Assignee { get; set; }
 
@@ -20,7 +20,7 @@ namespace CRM.Model
 
         public DateTime DateModified { get; set; }
         
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         
         public int ModuleId { get; set; }
         
