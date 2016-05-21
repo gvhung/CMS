@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -44,6 +47,7 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
@@ -60,7 +64,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TicketStoreUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +75,10 @@
     <ProjectReference Include="..\CRM.Store\CRM.Store.csproj">
       <Project>{637cd8bd-0443-4cc2-bc9f-0d49c07fe76d}</Project>
       <Name>CRM.Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRM.Tickets\CRM.Tickets.csproj">
+      <Project>{b59bc2ce-44cd-40cc-8e6e-628eeee926fa}</Project>
+      <Name>CRM.Tickets</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
