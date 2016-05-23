@@ -15,6 +15,7 @@ namespace CRM.Store.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
+
         public int Status { get; set; }
 
         public int ClientId { get; set; }
@@ -25,6 +26,9 @@ namespace CRM.Store.Entities
     {
         [Key]
         public long UID { get; set; }
+        /// <summary>
+        /// Username is email address
+        /// </summary>
         public string Username { get; set; }
         
     }

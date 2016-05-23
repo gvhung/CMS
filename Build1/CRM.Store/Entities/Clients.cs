@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 namespace CRM.Store.Entities
 {
+
     [Table("Clients")]
     public class ClientEntity
     {
@@ -27,7 +28,7 @@ namespace CRM.Store.Entities
         
         public string BracnhName { get; set; }
         public string BranchCode { get; set; }
-
+        public long TicketStartNumber { get; set; }
         public int ClientId {get; set;}
         public ClientEntity Client { get; set; }
     }
