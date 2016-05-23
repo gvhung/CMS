@@ -21,6 +21,8 @@ namespace CRM.Tickets
             if (ticket.Validate())
             {
                 _ticketStore.CreateTicket(ticket);
+                //send email to client
+
             }
         }
 
