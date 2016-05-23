@@ -55,13 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientStore.cs" />
     <Compile Include="CRMContext.cs" />
     <Compile Include="Entities\Clients.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="ICRMContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="TicketStore.cs" />
+    <Compile Include="UserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
