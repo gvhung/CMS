@@ -9,5 +9,7 @@ namespace CRM.Tickets.Interfaces
         void UpdateTicket(TTicket ticket);
         void DeleteTicket(long Id);
         IQueryable<TTicket> GetTickets();
+
+        
     }
 }
