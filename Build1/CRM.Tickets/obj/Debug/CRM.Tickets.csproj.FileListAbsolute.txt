@@ -21,3 +21,10 @@ D:\CRM\Build1\Build1\CRM.Tickets\bin\Debug\CRM.Model.pdb
 D:\CRM\Build1\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.csprojResolveAssemblyReference.cache
 D:\CRM\Build1\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.dll
 D:\CRM\Build1\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.pdb
+E:\CRM\Build1\CRM.Tickets\bin\Debug\CRM.Tickets.dll
+E:\CRM\Build1\CRM.Tickets\bin\Debug\CRM.Tickets.pdb
+E:\CRM\Build1\CRM.Tickets\bin\Debug\CRM.Model.dll
+E:\CRM\Build1\CRM.Tickets\bin\Debug\CRM.Model.pdb
+E:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.csprojResolveAssemblyReference.cache
+E:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.dll
+E:\CRM\Build1\CRM.Tickets\obj\Debug\CRM.Tickets.pdb

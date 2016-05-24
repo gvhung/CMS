@@ -19,13 +19,18 @@ namespace CRM.Store
         {
             throw new NotImplementedException();
         }
-
+       
         public TUser GetUser(string emailId)
 
 
+
         {
-            LoginEntity loginEntity = _context.Logins.First(l => l.Username == emailId);
-            UserProfileEntity userProfile= _context.Users.First(u => u.UID == loginEntity.UID);
+
+            
+            LoginEntity loginEntity = _context.Logins.FirstOrDefault(l=>l.Username.ToUpper()==emailId.ToUpper());
+            if (loginEntity == null) return default(TUser);
+
+            UserProfileEntity userProfile= _context.Users.FirstOrDefault(u => u.UID == loginEntity.UID);
 
             return AutoMapper.Mapper.Map<TUser>(userProfile);
             

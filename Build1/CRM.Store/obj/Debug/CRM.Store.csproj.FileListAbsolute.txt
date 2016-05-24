@@ -24,9 +24,6 @@ D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.dll
 D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.SqlServer.dll
 D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.xml
 D:\CRM\Build1\Build1\CRM.Store\bin\Debug\EntityFramework.SqlServer.xml
-E:\CRM\Build1\CRM.Store\obj\Debug\CRM.Store.csprojResolveAssemblyReference.cache
-E:\CRM\Build1\CRM.Store\obj\Debug\CRM.Store.dll
-E:\CRM\Build1\CRM.Store\obj\Debug\CRM.Store.pdb
 E:\CRM\Build1\CRM.Store\bin\Debug\CRM.Store.dll.config
 E:\CRM\Build1\CRM.Store\bin\Debug\CRM.Store.dll
 E:\CRM\Build1\CRM.Store\bin\Debug\CRM.Store.pdb
@@ -40,3 +37,6 @@ E:\CRM\Build1\CRM.Store\bin\Debug\CRM.Tickets.pdb
 E:\CRM\Build1\CRM.Store\bin\Debug\AutoMapper.xml
 E:\CRM\Build1\CRM.Store\bin\Debug\EntityFramework.xml
 E:\CRM\Build1\CRM.Store\bin\Debug\EntityFramework.SqlServer.xml
+E:\CRM\Build1\CRM.Store\obj\Debug\CRM.Store.csprojResolveAssemblyReference.cache
+E:\CRM\Build1\CRM.Store\obj\Debug\CRM.Store.dll
+E:\CRM\Build1\CRM.Store\obj\Debug\CRM.Store.pdb

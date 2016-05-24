@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace CRM.Model
 {
-    public class IUser
+    public interface IUser
     {
 
 
          string Username { get; set; }
+        string FirstName { get; set; }
+        string LastName { get; set; }
+
     }
 }
