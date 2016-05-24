@@ -32,4 +32,6 @@ namespace CRM.Store.Entities
         public string Username { get; set; }
         
     }
+
+
 }
