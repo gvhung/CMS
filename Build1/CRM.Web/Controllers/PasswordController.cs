@@ -20,6 +20,12 @@ namespace CRM.Web.Controllers
         {
             return View();
         }
+        //public ActionResult SuccessMessage()
+        //{
+        //    //ViewBag.Success = "Dear " + user.FirstName + user.LastName + ", please click on reset link sent to your email id.";
+
+        //    return View();
+        //}
 
         [HttpPost]
         [AllowAnonymous]
@@ -28,14 +34,23 @@ namespace CRM.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                try {
+                try
+                {
                     UserManager<CRMUser> userManger = new UserManager<CRMUser>(new UserStore<CRMUser>(new CRMContext("CRMContext")));
                     CRMUser user = userManger.GetUser(m.EmailAddress);
                     if (user == null)
+                    {
                         ModelState.AddModelError("UD", "Email Address does not exist in our database");
+                        ViewBag.Success = "Email Address does not exist in our database";
+                    }
                     else
-                        ModelState.AddModelError("UD", "Dear "+ user.FirstName + user.LastName +", please click on rest link sent to your email id.");               }
-                catch(Exception ex)
+                    {
+                        ModelState.AddModelError("UD", "Dear " + user.FirstName + user.LastName + ", please click on reset link sent to your email id.");
+                        ViewBag.Success = "Dear " + user.FirstName + user.LastName + ", please click on reset link sent to your email id.";
+                        return View("SuccessMessage");
+                    }
+                }
+                catch (Exception ex)
                 {
                     ModelState.AddModelError("UD", ex.Message);
                 }
@@ -44,5 +59,8 @@ namespace CRM.Web.Controllers
 
             return View(m);
         }
+
+        
+
     }
 }

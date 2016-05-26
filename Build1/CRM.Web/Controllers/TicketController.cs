@@ -37,10 +37,7 @@ namespace CRM.Web.Controllers
             model.Severities.Add(new Severity() { Code = 2, Name = "Medium" });
             model.Severities.Add(new Severity() { Code = 3, Name = "Low" });
             model.Severities.Add(new Severity() { Code = 1, Name = "Critical" });
-            model.Severities.Add(new Severity() { Code = 1, Name = "Blocker" });
-
-
-            
+            model.Severities.Add(new Severity() { Code = 1, Name = "Blocker" });           
             
             return View(model);
         }
@@ -48,17 +45,17 @@ namespace CRM.Web.Controllers
         public ActionResult Create(TicketCreateModel m)
         {
             CRM.Model.Ticket ticket = new Model.Ticket();
-            ticket.Reason = m.Title;
+            ticket.Title = m.Title;
+            ticket.BranchId = 1;
            
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
             ticketManager.CreateTicket(ticket);
 
            return  RedirectToAction("List");
-            
-        }
+                                }
 
         public ActionResult List()
-        {
+        { 
             List<TicketListModel> lst = new List<TicketListModel>();
             TicketListModel obj = new TicketListModel();
             obj.Id = 02;

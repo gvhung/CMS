@@ -289,6 +289,7 @@
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Ticket\Detail.cshtml" />
     <Content Include="Views\Ticket\List.cshtml" />
+    <Content Include="Views\Password\SuccessMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

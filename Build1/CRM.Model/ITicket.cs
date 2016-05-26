@@ -10,8 +10,9 @@ namespace CRM.Model
     {
         long Id { get; set; }
         long? TicketNo { get; set; }
+        int BranchId { get; set; }
         int Priority { get; set; }
-        string Reason { get; set; }
+        string Title { get; set; }
         int ProductId { get; set; }
         int ModuleId { get; set; }
         int ComponentId { get; set; }
@@ -21,7 +22,7 @@ namespace CRM.Model
         int CreatedBy { get; set; }
         int TicketType  { get; set; }
         int TenantId { get; set; }
-        DateTime DateClosed { get; set; }
+        DateTime? DateClosed { get; set; }
         DateTime DateCreated { get; set; }
         DateTime DateModified { get; set; }
         bool Validate();

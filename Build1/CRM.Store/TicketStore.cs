@@ -19,10 +19,11 @@ namespace CRM.Store
         }
         public void CreateTicket(TTicket ticket)
         {
-            
+          
             TicketEntity ticketEntity=(TicketEntity) AutoMapper.Mapper.Map<TicketEntity>(ticket);
-                
+            
 
+            
             _context.Tickets.Add(ticketEntity);
             _context.SaveChanges();
         }

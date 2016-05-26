@@ -18,8 +18,11 @@ namespace CRM.Tickets
 
         public void CreateTicket(TTicket  ticket)
         {
+            ticket.DateCreated = DateTime.Now;
+            ticket.DateModified = DateTime.Now;
+            ticket.DateClosed = null;
             if (ticket.Validate())
-            {
+           {
                 _ticketStore.CreateTicket(ticket);
                 //send email to client
 

@@ -8,7 +8,7 @@ using CRM.Model;
 using CRM.Store.Entities;
 namespace CRM.Store
 {
-    public class UserStore<TUser>:IUserStore<TUser> where TUser:IUser
+    public class UserStore<TUser> : IUserStore<TUser> where TUser : IUser
     {
         ICRMContext _context;
         public UserStore(ICRMContext context)
@@ -19,21 +19,17 @@ namespace CRM.Store
         {
             throw new NotImplementedException();
         }
-       
+
         public TUser GetUser(string emailId)
-
-
-
         {
 
-            
-            LoginEntity loginEntity = _context.Logins.FirstOrDefault(l=>l.Username.ToUpper()==emailId.ToUpper());
+            LoginEntity loginEntity = _context.Logins.FirstOrDefault(l => l.Username.ToUpper() == emailId.ToUpper());
             if (loginEntity == null) return default(TUser);
 
-            UserProfileEntity userProfile= _context.Users.FirstOrDefault(u => u.UID == loginEntity.UID);
+            UserProfileEntity userProfile = _context.Users.FirstOrDefault(u => u.UID == loginEntity.UID);
 
             return AutoMapper.Mapper.Map<TUser>(userProfile);
-            
+
         }
 
 

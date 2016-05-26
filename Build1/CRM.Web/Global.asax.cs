@@ -18,7 +18,14 @@ namespace CRM.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Mapper.Initialize(cnfg => cnfg.CreateMap<UserProfileEntity, CRMUser>());
+            Mapper.Initialize(cnfg =>
+            {
+                cnfg.CreateMap<UserProfileEntity, CRMUser>();
+                cnfg.CreateMap<Ticket, TicketEntity>();
+            }
+            );
         }
-    }
+
+
+    }      
 }
