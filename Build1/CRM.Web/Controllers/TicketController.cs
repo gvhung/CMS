@@ -14,16 +14,16 @@ namespace CRM.Web.Controllers
     {
         //
         // GET: /CreatTicket/
-  
 
-       
-       
+
+
+
         public ActionResult Create()
         {
 
             TicketCreateModel model = new TicketCreateModel();
             model.Modules = new List<Module>();
-            model.Modules.Add(new Module() { Id = 1,Name= "Tickets" });
+            model.Modules.Add(new Module() { Id = 1, Name = "Tickets" });
             model.Modules.Add(new Module() { Id = 2, Name = "Contacts" });
             model.Modules.Add(new Module() { Id = 3, Name = "Invoices" });
 
@@ -37,8 +37,8 @@ namespace CRM.Web.Controllers
             model.Severities.Add(new Severity() { Code = 2, Name = "Medium" });
             model.Severities.Add(new Severity() { Code = 3, Name = "Low" });
             model.Severities.Add(new Severity() { Code = 1, Name = "Critical" });
-            model.Severities.Add(new Severity() { Code = 1, Name = "Blocker" });           
-            
+            model.Severities.Add(new Severity() { Code = 1, Name = "Blocker" });
+
             return View(model);
         }
         [HttpPost]
@@ -47,15 +47,15 @@ namespace CRM.Web.Controllers
             CRM.Model.Ticket ticket = new Model.Ticket();
             ticket.Title = m.Title;
             ticket.BranchId = 1;
-           
+
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
             ticketManager.CreateTicket(ticket);
 
-           return  RedirectToAction("List");
-                                }
+            return RedirectToAction("List");
+        }
 
         public ActionResult List()
-        { 
+        {
             List<TicketListModel> lst = new List<TicketListModel>();
             TicketListModel obj = new TicketListModel();
             obj.Id = 02;
@@ -67,7 +67,7 @@ namespace CRM.Web.Controllers
             obj.Version = "xyz";
             obj.Description = "jkhdasjdkssd";
             obj.DueDate = "05/17/2016";
-             ViewBag.data = obj;
+            ViewBag.data = obj;
             lst.Add(obj);
             return View(lst.AsEnumerable());
         }
@@ -85,7 +85,7 @@ namespace CRM.Web.Controllers
             obj.Description = "jkhdasjdkssd";
             obj.DueDate = "05/17/2016";
             //  ViewBag.data = obj;
-           
+
             return View(obj);
         }
 
