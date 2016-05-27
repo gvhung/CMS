@@ -41,7 +41,7 @@ namespace CRM.Tickets
 
         public List<TTicket> GetTickets()
         {
-            throw new NotImplementedException();
+            return _ticketStore.GetTickets().ToList<TTicket>();
         }
 
         public List<TTicket> GetTickets(SearchCriteria criteria)

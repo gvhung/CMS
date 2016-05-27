@@ -22,6 +22,9 @@ namespace CRM.Web
             {
                 cnfg.CreateMap<UserProfileEntity, CRMUser>();
                 cnfg.CreateMap<Ticket, TicketEntity>();
+                cnfg.CreateMap<TicketEntity, Ticket>();
+
+                
             }
             );
         }

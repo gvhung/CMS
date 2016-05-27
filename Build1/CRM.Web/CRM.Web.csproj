@@ -286,10 +286,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Password\Reset.cshtml" />
-    <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Ticket\Detail.cshtml" />
-    <Content Include="Views\Ticket\List.cshtml" />
     <Content Include="Views\Password\SuccessMessage.cshtml" />
+    <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Ticket\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

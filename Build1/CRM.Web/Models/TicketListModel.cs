@@ -8,18 +8,11 @@ namespace CRM.Web.Models
 {
     public class TicketListModel
     {
-        public int Id { get; set; }
+        public int TicketId { get; set; }
+        public long TicketNo { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
-        public string FileUpload { get; set; }
-
-        public string DueDate { get; set; }
-        public string SeverityCode { get; set; }
-
-        public string Version { get; set; }
-        public string ProductId { get; set; }
-        [Display(Name = "Module")]
-        public string ModuleId { get; set; }
-        public string IssueType { get; set; }
+        public string ClientName { get; set; }
+        public string Priority { get; set; }
+        public string TicketType { get; set; }        
     }
 }
