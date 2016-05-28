@@ -182,3 +182,7 @@ E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.csprojResolveAssemblyReference.cache
 E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.dll
 E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.pdb
+E:\CRM\Build1\CRM.Web\bin\PagedList.dll
+E:\CRM\Build1\CRM.Web\bin\PagedList.Mvc.dll
+E:\CRM\Build1\CRM.Web\bin\PagedList.xml
+E:\CRM\Build1\CRM.Web\bin\PagedList.Mvc.xml

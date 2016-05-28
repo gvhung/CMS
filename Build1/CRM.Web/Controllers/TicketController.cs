@@ -7,7 +7,9 @@ using System.Web.Mvc;
 using CRM.Store;
 using CRM.Tickets;
 using CRM.Model;
+using PagedList;
 
+using AutoMapper.QueryableExtensions;
 namespace CRM.Web.Controllers
 {
     public class TicketController : Controller
@@ -54,13 +56,15 @@ namespace CRM.Web.Controllers
         }
 
         public ActionResult List()
-        {
+        { 
+        
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
-            List<TicketListModel> lst = new List<TicketListModel>();
-            ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
-
-
-            return View(lst);
+            //List<TicketListModel> lst = new List<TicketListModel>();
+            //ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
+           IQueryable<Ticket> lstTickets= ticketManager.GetTickets();
+            IQueryable<TicketListModel> lstTicketListModel = lstTickets.ProjectTo<TicketListModel>().OrderBy(t=>t.TicketNo);
+       
+            return View(lstTicketListModel.ToPagedList(1,2));
         }
 
         public ActionResult Detail()

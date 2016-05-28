@@ -9,7 +9,7 @@ namespace CRM.Web.Models
     public class TicketListModel
     {
         public int TicketId { get; set; }
-        public long TicketNo { get; set; }
+        public long? TicketNo { get; set; }
         public string Title { get; set; }
         public string ClientName { get; set; }
         public string Priority { get; set; }

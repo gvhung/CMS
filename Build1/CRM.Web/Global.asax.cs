@@ -8,6 +8,7 @@ using System.Web.Routing;
 using AutoMapper;
 using CRM.Store.Entities;
 using CRM.Model;
+using CRM.Web.Models;
 namespace CRM.Web
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -23,7 +24,7 @@ namespace CRM.Web
                 cnfg.CreateMap<UserProfileEntity, CRMUser>();
                 cnfg.CreateMap<Ticket, TicketEntity>();
                 cnfg.CreateMap<TicketEntity, Ticket>();
-
+                cnfg.CreateMap<Ticket, TicketListModel>();
                 
             }
             );

@@ -39,9 +39,11 @@ namespace CRM.Tickets
 
         }
 
-        public List<TTicket> GetTickets()
+        public IQueryable<TTicket> GetTickets()
         {
-            return _ticketStore.GetTickets().ToList<TTicket>();
+
+           
+            return _ticketStore.GetTickets();
         }
 
         public List<TTicket> GetTickets(SearchCriteria criteria)
