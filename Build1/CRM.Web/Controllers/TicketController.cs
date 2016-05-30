@@ -55,7 +55,7 @@ namespace CRM.Web.Controllers
             return RedirectToAction("List");
         }
 
-        public ActionResult List()
+        public ActionResult List(int page=1)
         { 
         
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
@@ -63,8 +63,9 @@ namespace CRM.Web.Controllers
             //ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
            IQueryable<Ticket> lstTickets= ticketManager.GetTickets();
             IQueryable<TicketListModel> lstTicketListModel = lstTickets.ProjectTo<TicketListModel>().OrderBy(t=>t.TicketNo);
-       
-            return View(lstTicketListModel.ToPagedList(1,2));
+            IPagedList<TicketListModel> pagedList = lstTicketListModel.ToPagedList(page, 2);
+
+            return View(pagedList);
         }
 
         public ActionResult Detail()
