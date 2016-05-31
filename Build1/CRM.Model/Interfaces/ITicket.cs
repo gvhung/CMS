@@ -17,10 +17,9 @@ namespace CRM.Model
         int ModuleId { get; set; }
         int ComponentId { get; set; }
         string Version { get; set; }
-
         string Assignee { get; set; }
         int CreatedBy { get; set; }
-        int TicketType  { get; set; }
+        int TicketType { get; set; }
         int TenantId { get; set; }
         DateTime? DateClosed { get; set; }
         DateTime DateCreated { get; set; }
