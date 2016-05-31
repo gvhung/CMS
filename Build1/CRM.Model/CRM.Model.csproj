@@ -47,6 +47,7 @@
     <Compile Include="Interfaces\ITicket.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCriteria.cs" />
     <Compile Include="Ticket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

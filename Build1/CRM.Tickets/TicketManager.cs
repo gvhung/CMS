@@ -46,9 +46,9 @@ namespace CRM.Tickets
             return _ticketStore.GetTickets();
         }
 
-        public List<TTicket> GetTickets(SearchCriteria criteria)
+        public IQueryable<TTicket> GetTickets(SearchCriteria criteria)
         {
-            throw new NotImplementedException();
+            return _ticketStore.GetTickets(criteria);
         }
     }
 }

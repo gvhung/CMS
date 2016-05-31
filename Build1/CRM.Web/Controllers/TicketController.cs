@@ -50,18 +50,22 @@ namespace CRM.Web.Controllers
             ticket.ProductId = m.ProductId;
             ticket.Version = m.Version;
 
-            TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
+            TicketManager<Ticket> ticketManager = new TicketManager<Ticket>
+                (new TicketStore<Ticket>(new CRMContext("CRMContext")));
             ticketManager.CreateTicket(ticket);
             return RedirectToAction("List");
         }
 
-        public ActionResult List(int page=1)
-        { 
-        
+        public ActionResult List(string Search,int page=1)
+        {
+
+
+            SearchCriteria criteria = new SearchCriteria();
+            criteria.Title = Search;
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
             //List<TicketListModel> lst = new List<TicketListModel>();
             //ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
-           IQueryable<Ticket> lstTickets= ticketManager.GetTickets();
+           IQueryable<Ticket> lstTickets= ticketManager.GetTickets(criteria);
             IQueryable<TicketListModel> lstTicketListModel = lstTickets.ProjectTo<TicketListModel>().OrderBy(t=>t.TicketNo);
             IPagedList<TicketListModel> pagedList = lstTicketListModel.ToPagedList(page, 2);
 

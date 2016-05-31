@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRM.Tickets
+namespace CRM.Model
 {
     public class SearchCriteria
     {
+
+       public string Title { get; set; }
     }
 }

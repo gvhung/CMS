@@ -43,6 +43,28 @@ namespace CRM.Store
         public IQueryable<TTicket> GetTickets()
         {
             return _context.Tickets.ProjectTo<TTicket>();
+            //var q = (from T in _context.Tickets
+                     
+            //         select new
+            //         {
+            //             T.TickeId,
+            //             T.TicketNo,
+            //             T.TicketType,
+            //             T.Priority,
+            //             T.Title,
+            //        }) as IQueryable<TTicket>;
+            //return q;
+
+        }
+
+      
+
+        public IQueryable<TTicket>  GetTickets(SearchCriteria criteria)
+        {
+            var res = from t in _context.Tickets
+                      where t.Title ==criteria.Title ||   String.IsNullOrEmpty(criteria.Title)
+                      select t;
+            return res.ProjectTo<TTicket>();
         }
     }
 }
