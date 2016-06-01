@@ -7,7 +7,7 @@ using CRM.Tickets.Interfaces;
 using CRM.Model;
 namespace CRM.Store
 {
-    public class UnitOfWork:IDisposable
+    public class UnitOfWork:IDisposable, IUnitOfWork
     {
         CRMContext _context;
 
@@ -32,7 +32,7 @@ namespace CRM.Store
             
         }
        private bool disposed = false;
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
        {
             if (!disposed)
             {
