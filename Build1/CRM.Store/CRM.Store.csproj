@@ -64,6 +64,7 @@
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="TestContext.cs" />
     <Compile Include="TicketStore.cs" />
+    <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserStore.cs" />
   </ItemGroup>
   <ItemGroup>
