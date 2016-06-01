@@ -7,7 +7,7 @@ using System.Data.Entity;
 using CRM.Store.Entities;
 namespace CRM.Store
 {
-    public class CRMContext : DbContext, ICRMContext
+    public class CRMContext : DbContext
     {
         public CRMContext(string constr):base(constr)
         {
@@ -22,9 +22,6 @@ namespace CRM.Store
 
         public DbSet<BranchEntity> Branches { get; set; }
 
-        void ICRMContext.SaveChanges()
-        {
-            base.SaveChanges();
-        }
+        
     }
 }

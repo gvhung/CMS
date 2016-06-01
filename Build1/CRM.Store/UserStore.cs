@@ -10,10 +10,14 @@ namespace CRM.Store
 {
     public class UserStore<TUser> : IUserStore<TUser> where TUser : IUser
     {
-        ICRMContext _context;
-        public UserStore(ICRMContext context)
+        CRMContext _context;
+            
+        public UserStore():this ("CRMContext")
         {
-            _context = context;
+        }
+        public UserStore(string constr)
+        {
+            _context = new CRMContext(constr);
         }
         public void CreateUser(TUser user)
         {
