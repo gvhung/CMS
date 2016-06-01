@@ -12,10 +12,15 @@ namespace CRM.Store
 {
     public class ClientStore<TClient> : IClientStore<TClient> where TClient:IClient
     {
-        ICRMContext _context;
-        public ClientStore(ICRMContext context)
+        CRMContext _context;
+
+        public ClientStore():this("CRMContext")
         {
-            _context = context;
+
+        }
+        public ClientStore(string constr)
+        {
+            _context = new CRMContext(constr);
         }
         public void CreateClient(TClient client)
         {
