@@ -23,6 +23,11 @@ namespace CRM.Store
         {
             _context = new CRMContext(constr);
         }
+
+        public TicketStore(CRMContext context)
+        {
+            _context = context;
+        }
         public void CreateTicket(TTicket ticket)
         {
           
