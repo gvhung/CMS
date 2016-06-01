@@ -1,0 +1,78 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<CRM.Web.Models.TicketListModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<div style="font-family:Arial">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <p>
+        @using (Html.BeginForm("List","Ticket",FormMethod.Get))
+        {
+        @Html.TextBox("Search")
+
+        <input type="submit" value="search" /><br /><br />
+        }
+    </p>
+        <table class="table" border="1">
+        <tr>
+            <th>
+                Ticket ID
+            </th>
+            <th>
+                Ticket No
+            </th>
+            <th>
+                Subject
+            </th>
+            <th>
+                Client
+            </th>
+            <th>
+                Priority
+            </th>
+            <th>
+                Ticket Type
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Priority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketType)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+
+        }
+    </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+</div>
