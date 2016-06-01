@@ -19,7 +19,7 @@ namespace CRMStoreTest
         [TestInitialize]
         public void Init()
         {
-            clientStore = new ClientStore<Client>(new CRMContext("CRMContext"));
+            clientStore = new ClientStore<Client>();
             Mapper.Initialize(cnfg => cnfg.CreateMap<Client, ClientEntity>());
         }
 

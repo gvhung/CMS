@@ -36,7 +36,7 @@ namespace CRM.Web.Controllers
             {
                 try
                 {
-                    UserManager<CRMUser> userManger = new UserManager<CRMUser>(new UserStore<CRMUser>(new CRMContext("CRMContext")));
+                    UserManager<CRMUser> userManger = new UserManager<CRMUser>(new UserStore<CRMUser>());
                     CRMUser user = userManger.GetUser(m.EmailAddress);
                     if (user == null)
                     {

@@ -23,7 +23,7 @@ namespace CRMStoreTest
             }
           );
 
-             ticketStore= new TicketStore<Ticket>(new CRMContext("CRMContext"));
+             ticketStore= new TicketStore<Ticket>();
 
         }
         [TestMethod]

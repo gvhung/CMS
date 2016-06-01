@@ -51,7 +51,7 @@ namespace CRM.Web.Controllers
             ticket.Version = m.Version;
 
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>
-                (new TicketStore<Ticket>(new CRMContext("CRMContext")));
+                (new TicketStore<Ticket>());
             ticketManager.CreateTicket(ticket);
             return RedirectToAction("List");
         }
@@ -62,7 +62,7 @@ namespace CRM.Web.Controllers
 
             SearchCriteria criteria = new SearchCriteria();
             criteria.Title = Search;
-            TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>(new CRMContext("CRMContext")));
+            TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>());
             //List<TicketListModel> lst = new List<TicketListModel>();
             //ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
            IQueryable<Ticket> lstTickets= ticketManager.GetTickets(criteria);
