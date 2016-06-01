@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRM.Model
 {
-    public class Client:IClient
+    public class Client : IClient
     {
         public long Id
         {
@@ -18,6 +18,12 @@ namespace CRM.Model
         {
             get;
             set;
+        }
+
+        public string TicketStartNumber { get; set; }
+        public bool Validate()
+        {
+            return true;
         }
     }
 }

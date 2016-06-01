@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using CRM.Model;
 using CRM.Store.Entities;
 using CRM.Tickets.Interfaces;
-using AutoMapper;
+using AutoMapper.Mappers;
+using AutoMapper.QueryableExtensions;
 namespace CRM.Store
 {
     public class ClientStore<TClient> : IClientStore<TClient> where TClient:IClient
@@ -18,13 +19,16 @@ namespace CRM.Store
         }
         public void CreateClient(TClient client)
         {
-            ClientEntity clientEntity= Mapper.Map<ClientEntity>(client);
+            ClientEntity clientEntity=(ClientEntity) AutoMapper.Mapper.Map<ClientEntity>(client);
             _context.Clients.Add(clientEntity);
             _context.SaveChanges();
         }
-        
 
-     
+        public IQueryable<TClient> GetClient()
+        {
+            return _context.Clients.ProjectTo<TClient>();
+        }
+
 
     }
 }

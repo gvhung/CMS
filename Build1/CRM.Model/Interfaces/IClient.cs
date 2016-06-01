@@ -10,5 +10,7 @@ namespace CRM.Model
     {
         long Id { get; set; }
         string Name { get; set; }
+        bool Validate();
+
     }
 }

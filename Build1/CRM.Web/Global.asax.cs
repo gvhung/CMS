@@ -25,7 +25,10 @@ namespace CRM.Web
                 cnfg.CreateMap<Ticket, TicketEntity>();
                 cnfg.CreateMap<TicketEntity, Ticket>();
                 cnfg.CreateMap<Ticket, TicketListModel>();
-                
+                cnfg.CreateMap<ClientEntity, Client>();
+                cnfg.CreateMap<Client, ClientEntity>();
+                cnfg.CreateMap<Client, ClientListModel>();
+
             }
             );
         }
