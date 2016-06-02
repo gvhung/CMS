@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientManager.cs" />
     <Compile Include="Interfaces\IClientStore.cs" />
     <Compile Include="Interfaces\ITicketStore.cs" />
     <Compile Include="Interfaces\IUserStore.cs" />
