@@ -22,13 +22,14 @@ namespace CRM.Web.Controllers
 
         [HttpPost]
         public ActionResult Create(ClientCreateModel m)
+
         {
-            Client client = new Client();
-            client.Name = m.Name;
-            client.TicketStartNumber = m.TicketStartNumber;
+             Client client = new Client();
+             client.Name = m.Name;
+             client.TicketStartNumber = m.TicketStartNumber;
 
 
-            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+            ClientManager<Client> clientManager =new ClientManager<Client> (new ClientStore<Client>());
             clientManager.CreateClient(client);
 
             return RedirectToAction("List");
@@ -47,9 +48,6 @@ namespace CRM.Web.Controllers
             IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page,6);
             return View(pagedList);
         }
-
-
-
 
     }
 }

@@ -29,6 +29,11 @@ namespace CRM.Web
                 cnfg.CreateMap<Client, ClientEntity>();
                 cnfg.CreateMap<Client, ClientListModel>();
 
+                cnfg.CreateMap<ProductEntity, Product>();
+                cnfg.CreateMap<Product, ProductListModel>();
+                cnfg.CreateMap<Product, ProductEntity>();
+
+
             }
             );
         }

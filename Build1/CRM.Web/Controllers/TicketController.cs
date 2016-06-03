@@ -6,10 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using CRM.Store;
 using CRM.Tickets;
-using CRM.Model;
 using PagedList;
 
 using AutoMapper.QueryableExtensions;
+using CRM.Model;
+
 namespace CRM.Web.Controllers
 {
     public class TicketController : Controller
