@@ -8,7 +8,7 @@ namespace CRM.Model
 {
     public interface IClient
     {
-        long Id { get; set; }
+        int ClientId { get; set; }
         string Name { get; set; }
         bool Validate();
 
