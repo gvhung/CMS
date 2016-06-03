@@ -90,6 +90,7 @@ E:\CRM\Build1\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\CRM\Build1\WebApplication1\bin\AutoMapper.xml
 E:\CRM\Build1\WebApplication1\obj\Debug\CRM.Web.dll
 E:\CRM\Build1\WebApplication1\obj\Debug\CRM.Web.pdb
+E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.csprojResolveAssemblyReference.cache
 E:\CRM\Build1\CRM.Web\bin\ApplicationInsights.config
 E:\CRM\Build1\CRM.Web\bin\roslyn\csc.exe
 E:\CRM\Build1\CRM.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -138,6 +139,8 @@ E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.Twitter.dll
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Web.Infrastructure.dll
 E:\CRM\Build1\CRM.Web\bin\Newtonsoft.Json.dll
 E:\CRM\Build1\CRM.Web\bin\Owin.dll
+E:\CRM\Build1\CRM.Web\bin\PagedList.dll
+E:\CRM\Build1\CRM.Web\bin\PagedList.Mvc.dll
 E:\CRM\Build1\CRM.Web\bin\System.Web.Helpers.dll
 E:\CRM\Build1\CRM.Web\bin\System.Web.Mvc.dll
 E:\CRM\Build1\CRM.Web\bin\System.Web.Optimization.dll
@@ -156,6 +159,8 @@ E:\CRM\Build1\CRM.Web\bin\Microsoft.AI.Web.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.AI.WindowsServer.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.ApplicationInsights.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\CRM\Build1\CRM.Web\bin\PagedList.xml
+E:\CRM\Build1\CRM.Web\bin\PagedList.Mvc.xml
 E:\CRM\Build1\CRM.Web\bin\System.Web.Helpers.xml
 E:\CRM\Build1\CRM.Web\bin\System.Web.Mvc.xml
 E:\CRM\Build1\CRM.Web\bin\System.Web.Optimization.xml
@@ -179,10 +184,5 @@ E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.OAuth.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.Google.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.Twitter.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.csprojResolveAssemblyReference.cache
 E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.dll
 E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.pdb
-E:\CRM\Build1\CRM.Web\bin\PagedList.dll
-E:\CRM\Build1\CRM.Web\bin\PagedList.Mvc.dll
-E:\CRM\Build1\CRM.Web\bin\PagedList.xml
-E:\CRM\Build1\CRM.Web\bin\PagedList.Mvc.xml

@@ -67,7 +67,7 @@ namespace CRM.Web.Controllers
             //ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
            IQueryable<Ticket> lstTickets= ticketManager.GetTickets(criteria);
             IQueryable<TicketListModel> lstTicketListModel = lstTickets.ProjectTo<TicketListModel>().OrderBy(t=>t.TicketNo);
-            IPagedList<TicketListModel> pagedList = lstTicketListModel.ToPagedList(page, 2);
+            IPagedList<TicketListModel> pagedList = lstTicketListModel.ToPagedList(page, 5);
 
             return View(pagedList);
         }

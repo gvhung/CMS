@@ -36,18 +36,16 @@ namespace CRM.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult List()
+        public ActionResult List(string Search, int page=1)
         {
-           // SearchCriteria criteria = new SearchCriteria();
-           // criteria.Title = Search;
-            ClientManager<Client> clientManager = new ClientManager<Client>
-                (new ClientStore<Client>());
-            //List<TicketListModel> lst = new List<TicketListModel>();
-            //ticketManager.GetTickets().ForEach(t => lst.Add(new TicketListModel() { TicketNo = t.TicketNo == null ? 0:Convert.ToUInt32(t.TicketNo), TicketType = Convert.ToString(t.TicketType), Priority = Convert.ToString(t.Priority),Title=t.Title }));
-            IQueryable<Client> lstClients = clientManager.GetClient();
-            IQueryable<ClientListModel> lstClientListModel = lstClients.ProjectTo<ClientListModel>();
-           // IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page, 2);
-            return View(lstClientListModel);
+           SearchCriteria criteria = new SearchCriteria();
+            criteria.Title = Search;
+            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+           
+            IQueryable<Client> lstClients = clientManager.GetClient(criteria);
+            IQueryable<ClientListModel> lstClientListModel = lstClients.ProjectTo<ClientListModel>().OrderBy(c => c.Name); 
+            IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page,6);
+            return View(pagedList);
         }
 
 
