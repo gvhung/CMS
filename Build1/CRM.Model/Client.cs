@@ -8,7 +8,7 @@ namespace CRM.Model
 {
     public class Client : IClient
     {
-        public long Id
+        public int ClientId
         {
             get;
             set;
