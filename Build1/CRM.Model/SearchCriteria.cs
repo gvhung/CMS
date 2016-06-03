@@ -8,7 +8,10 @@ namespace CRM.Model
 {
     public class SearchCriteria
     {
+        public string Title { get; set; }
+        public string Client { get; set; }
+        public string Name { get; set; }
 
-       public string Title { get; set; }
+
     }
 }
