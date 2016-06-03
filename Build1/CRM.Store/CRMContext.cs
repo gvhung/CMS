@@ -22,6 +22,8 @@ namespace CRM.Store
 
         public DbSet<BranchEntity> Branches { get; set; }
 
+        public DbSet<ProductEntity> Products { get; set; }
+
         
     }
 }
