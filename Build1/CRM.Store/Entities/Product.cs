@@ -12,7 +12,7 @@ namespace CRM.Store.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ProductId { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Version { get; set; }
         public long ClientId { get; set; }
