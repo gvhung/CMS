@@ -28,9 +28,9 @@ namespace CRM.Tickets
             }
         }
 
-        public IQueryable<TClient> GetClient()
+        public IQueryable<TClient> GetClient(SearchCriteria criteria)
         {
-            return _clientStore.GetClient();
+            return _clientStore.GetClient(criteria);
         }
 
 
