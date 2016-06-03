@@ -29,9 +29,13 @@ namespace CRM.Store
             _context.SaveChanges();
         }
 
-        public IQueryable<TClient> GetClient()
+        public IQueryable<TClient> GetClient(SearchCriteria criteria)
         {
-            return _context.Clients.ProjectTo<TClient>();
+
+            var res = from c in _context.Clients
+                      where c.Name==criteria.Title || criteria.Title==""
+                      select c;
+            return res.ProjectTo<TClient>();
         }
 
 
