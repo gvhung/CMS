@@ -8,6 +8,7 @@ using CRM.Tickets;
 using CRM.Store;
 using CRM.Model;
 using AutoMapper.QueryableExtensions;
+using CRM.Business;
 namespace CRM.Web.Controllers
 {
     public class ProductController : Controller
@@ -22,6 +23,21 @@ namespace CRM.Web.Controllers
 
           
             return View(lstProductListModel);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(ProductCreateModel m)
+        {
+            Product p = AutoMapper.Mapper.Map<Product>(m);
+
+            ProductBiz productBiz = new ProductBiz();
+            productBiz.AddProduct(p);
+            return View(m);
         }
     }
 }
