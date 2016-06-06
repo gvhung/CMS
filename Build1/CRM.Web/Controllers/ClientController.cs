@@ -9,6 +9,7 @@ using CRM.Tickets;
 using CRM.Store;
 using AutoMapper.QueryableExtensions;
 using PagedList;
+using CRM.Web.ViewModels;
 
 namespace CRM.Web.Controllers
 {
@@ -48,6 +49,21 @@ namespace CRM.Web.Controllers
             IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page,6);
             return View(pagedList);
         }
+
+
+
+        public ActionResult Edit(int id)
+        {
+            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+
+            Client c = clientManager.GetClientByID(id);
+            ClientEditModel ClientModel = (ClientEditModel)AutoMapper.Mapper.Map<ClientEditModel>(c);
+
+            return View("EditClient", ClientModel);
+        }
+
+
+
 
     }
 }

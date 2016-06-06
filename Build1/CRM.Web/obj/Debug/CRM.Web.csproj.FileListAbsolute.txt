@@ -91,6 +91,8 @@ E:\CRM\Build1\WebApplication1\bin\AutoMapper.xml
 E:\CRM\Build1\WebApplication1\obj\Debug\CRM.Web.dll
 E:\CRM\Build1\WebApplication1\obj\Debug\CRM.Web.pdb
 E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.csprojResolveAssemblyReference.cache
+E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.dll
+E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.pdb
 E:\CRM\Build1\CRM.Web\bin\ApplicationInsights.config
 E:\CRM\Build1\CRM.Web\bin\roslyn\csc.exe
 E:\CRM\Build1\CRM.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -184,5 +186,3 @@ E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.OAuth.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.Google.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.Twitter.xml
 E:\CRM\Build1\CRM.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.dll
-E:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.pdb

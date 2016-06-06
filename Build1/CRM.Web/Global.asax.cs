@@ -9,6 +9,8 @@ using AutoMapper;
 using CRM.Store.Entities;
 using CRM.Model;
 using CRM.Web.Models;
+using CRM.Web.ViewModels;
+
 namespace CRM.Web
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -25,9 +27,12 @@ namespace CRM.Web
                 cnfg.CreateMap<Ticket, TicketEntity>();
                 cnfg.CreateMap<TicketEntity, Ticket>();
                 cnfg.CreateMap<Ticket, TicketListModel>();
+
                 cnfg.CreateMap<ClientEntity, Client>();
                 cnfg.CreateMap<Client, ClientEntity>();
                 cnfg.CreateMap<Client, ClientListModel>();
+                cnfg.CreateMap<ClientEditModel, Client>();
+                cnfg.CreateMap<Client, ClientEditModel>();
 
                 cnfg.CreateMap<ProductEntity, Product>();
                 cnfg.CreateMap<Product, ProductListModel>();

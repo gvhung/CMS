@@ -51,6 +51,8 @@ namespace CRM.Web.Controllers
             ticket.ProductId = m.ProductId;
             ticket.Version = m.Version;
 
+
+
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>
                 (new TicketStore<Ticket>());
             ticketManager.CreateTicket(ticket);
