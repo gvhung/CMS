@@ -1,5 +1,4 @@
 E:\CRM\Build1\CRM.Model\bin\Debug\CRM.Model.dll
 E:\CRM\Build1\CRM.Model\bin\Debug\CRM.Model.pdb
-E:\CRM\Build1\CRM.Model\obj\Debug\CRM.Model.csprojResolveAssemblyReference.cache
 E:\CRM\Build1\CRM.Model\obj\Debug\CRM.Model.dll
 E:\CRM\Build1\CRM.Model\obj\Debug\CRM.Model.pdb
