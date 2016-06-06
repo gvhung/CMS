@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CRM.Web.ViewModels
+namespace CRM.Web.ViewModel
 {
     public class ClientEditModel
     {

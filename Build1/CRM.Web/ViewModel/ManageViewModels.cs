@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace CRM.Web.Models
+namespace CRM.Web.ViewModel
 {
     public class IndexViewModel
     {

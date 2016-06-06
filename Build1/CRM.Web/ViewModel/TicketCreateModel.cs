@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CRM.Model;
-namespace CRM.Web.Models
+namespace CRM.Web.ViewModel
 {
     public class TicketCreateModel
     {
