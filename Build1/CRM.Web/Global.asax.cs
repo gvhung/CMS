@@ -9,8 +9,6 @@ using AutoMapper;
 using CRM.Store.Entities;
 using CRM.Model;
 using CRM.Web.ViewModel;
-using CRM.Web.ViewModels;
-
 namespace CRM.Web
 {
     public class MvcApplication : System.Web.HttpApplication
