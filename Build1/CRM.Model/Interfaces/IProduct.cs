@@ -11,5 +11,7 @@ namespace CRM.Model.Interfaces
         
         string Name { get; set; }
         long Id { get; set; }
+
+        bool Validate();
     }
 }
