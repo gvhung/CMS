@@ -1,0 +1,9 @@
+E:\CRM\Build1\CRM.Business\bin\Debug\CRM.Business.dll
+E:\CRM\Build1\CRM.Business\bin\Debug\CRM.Business.pdb
+E:\CRM\Build1\CRM.Business\bin\Debug\CRM.Dal.dll
+E:\CRM\Build1\CRM.Business\bin\Debug\CRM.Model.dll
+E:\CRM\Build1\CRM.Business\bin\Debug\CRM.Dal.pdb
+E:\CRM\Build1\CRM.Business\bin\Debug\CRM.Model.pdb
+E:\CRM\Build1\CRM.Business\obj\Debug\CRM.Business.csprojResolveAssemblyReference.cache
+E:\CRM\Build1\CRM.Business\obj\Debug\CRM.Business.dll
+E:\CRM\Build1\CRM.Business\obj\Debug\CRM.Business.pdb
