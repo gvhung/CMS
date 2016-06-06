@@ -9,7 +9,7 @@ using CRM.Tickets;
 using CRM.Store;
 using AutoMapper.QueryableExtensions;
 using PagedList;
-using CRM.Web.ViewModels;
+
 
 namespace CRM.Web.Controllers
 {
