@@ -33,6 +33,9 @@ namespace CRM.Tickets
             return _clientStore.GetClient(criteria);
         }
 
-
+        public Client GetClientByID(int id)
+        {
+            return _clientStore.GetClientByID(id);
+        }
     }
 }

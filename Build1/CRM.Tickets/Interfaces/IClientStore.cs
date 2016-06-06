@@ -8,5 +8,6 @@ namespace CRM.Tickets.Interfaces
     {
         void CreateClient(TClient client);
         IQueryable<TClient> GetClient(SearchCriteria criteria);
+        Client GetClientByID(int id);
     }
 }
