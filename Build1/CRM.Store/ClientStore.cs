@@ -33,11 +33,16 @@ namespace CRM.Store
         {
 
             var res = from c in _context.Clients
-                      where c.Name==criteria.Title || criteria.Title==""
+                      where c.Name==criteria.Title || String.IsNullOrEmpty(criteria.Title) /*criteria.Title==""*/
                       select c;
             return res.ProjectTo<TClient>();
         }
 
-
+        public Client GetClientByID(int id)
+        {
+            ClientEntity Clientvalues = _context.Clients.Find(id);
+            var Client = (Client)AutoMapper.Mapper.Map<Client>(Clientvalues);
+            return Client;
+        }
     }
 }
