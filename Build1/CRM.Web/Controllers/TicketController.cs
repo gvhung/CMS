@@ -1,4 +1,4 @@
-﻿using CRM.Web.Models;
+﻿using CRM.Web.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +91,6 @@ namespace CRM.Web.Controllers
 
             return View(obj);
         }
-
+        
     }
 }

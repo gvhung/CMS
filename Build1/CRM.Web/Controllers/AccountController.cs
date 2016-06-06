@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using CRM.Web.Models;
+using CRM.Web.ViewModel;
 
 namespace CRM.Web.Controllers
 {

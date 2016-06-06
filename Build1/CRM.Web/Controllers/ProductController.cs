@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CRM.Web.Models;
+using CRM.Web.ViewModel;
 using CRM.Tickets;
 using CRM.Store;
 using CRM.Model;

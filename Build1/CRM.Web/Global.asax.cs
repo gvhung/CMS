@@ -8,7 +8,7 @@ using System.Web.Routing;
 using AutoMapper;
 using CRM.Store.Entities;
 using CRM.Model;
-using CRM.Web.Models;
+using CRM.Web.ViewModel;
 using CRM.Web.ViewModels;
 
 namespace CRM.Web

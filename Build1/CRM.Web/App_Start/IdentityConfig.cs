@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using CRM.Web.Models;
+using CRM.Web.ViewModel;
 
 namespace CRM.Web
 {
