@@ -234,6 +234,7 @@
     <Compile Include="ViewModel\ForgotPasswordModel.cs" />
     <Compile Include="ViewModel\IdentityModels.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
+    <Compile Include="ViewModel\ProductCreateModel.cs" />
     <Compile Include="ViewModel\ProductListModel.cs" />
     <Compile Include="ViewModel\TicketCreateModel.cs" />
     <Compile Include="ViewModel\TicketDetailModel.cs" />
@@ -310,6 +311,7 @@
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Client\EditClient.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +325,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CRM.Business\CRM.Business.csproj">
+      <Project>{b7e7707d-e78a-4612-8052-71b3094014da}</Project>
+      <Name>CRM.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CRM.Model\CRM.Model.csproj">
       <Project>{c9f2373a-1ba2-4d57-908f-233301f5487d}</Project>
       <Name>CRM.Model</Name>
