@@ -12,5 +12,11 @@ namespace CRM.Model
         
         public string Name { get; set; }
         public long Id { get; set; }
+
+        public bool Validate()
+        {
+            if (String.IsNullOrEmpty(Name.Trim())) throw new Exception("Product name is empty");
+            return true;
+        }
     }
 }
