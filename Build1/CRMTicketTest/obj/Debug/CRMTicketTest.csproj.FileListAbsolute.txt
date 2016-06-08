@@ -1,0 +1,9 @@
+E:\CRM\Build1\CRMTicketTest\bin\Debug\CRMTicketTest.dll
+E:\CRM\Build1\CRMTicketTest\bin\Debug\CRMTicketTest.pdb
+E:\CRM\Build1\CRMTicketTest\bin\Debug\CRM.Model.dll
+E:\CRM\Build1\CRMTicketTest\bin\Debug\CRM.Tickets.dll
+E:\CRM\Build1\CRMTicketTest\bin\Debug\CRM.Model.pdb
+E:\CRM\Build1\CRMTicketTest\bin\Debug\CRM.Tickets.pdb
+E:\CRM\Build1\CRMTicketTest\obj\Debug\CRMTicketTest.csprojResolveAssemblyReference.cache
+E:\CRM\Build1\CRMTicketTest\obj\Debug\CRMTicketTest.dll
+E:\CRM\Build1\CRMTicketTest\obj\Debug\CRMTicketTest.pdb
