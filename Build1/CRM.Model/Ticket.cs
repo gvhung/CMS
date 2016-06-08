@@ -28,6 +28,7 @@ namespace CRM.Model
         public bool Validate()
         {
             if (Title == null || Title.Trim() == "") throw new Exception("Title is empty");
+           if (ProductId == 0 ) throw new Exception("Inavlid product id");
             //if (CreatedBy == 0) throw new Exception("Invalid Ticket: Unauthenticated user");
             return true;
         }
