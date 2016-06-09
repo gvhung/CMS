@@ -14,7 +14,7 @@ namespace CRM.Store.Entities
         [Key]
         public int ClientId { get; set; }
         public string Name { get; set; }
-        public string TicketStartNumber { get; set; }
+        public long TicketStartNumber { get; set; }
 
         public IEnumerable<BranchEntity> Branches { get; set; }
     }

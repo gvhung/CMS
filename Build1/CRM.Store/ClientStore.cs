@@ -44,5 +44,17 @@ namespace CRM.Store
             var Client = (Client)AutoMapper.Mapper.Map<Client>(Clientvalues);
             return Client;
         }
+
+        public void UpdateClient(TClient c)
+
+        {
+            ClientEntity clientEntity = AutoMapper.Mapper.Map<ClientEntity>(c);
+
+            _context.Entry(clientEntity).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+
+        
     }
 }

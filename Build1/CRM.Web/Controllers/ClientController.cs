@@ -27,7 +27,7 @@ namespace CRM.Web.Controllers
         {
              Client client = new Client();
              client.Name = m.Name;
-             client.TicketStartNumber = m.TicketStartNumber;
+             client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
 
 
             ClientManager<Client> clientManager =new ClientManager<Client> (new ClientStore<Client>());
@@ -59,10 +59,23 @@ namespace CRM.Web.Controllers
             Client c = clientManager.GetClientByID(id);
             ClientEditModel ClientModel = (ClientEditModel)AutoMapper.Mapper.Map<ClientEditModel>(c);
 
-            return View("EditClient", ClientModel);
+            return View("Edit", ClientModel);
         }
 
+        [HttpPost]
+        public ActionResult Edit(ClientEditModel m)
+        {
 
+            
+            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+
+           
+            Client c =AutoMapper.Mapper.Map<Client>(m);
+            clientManager.UpdateClient(c);
+
+
+            return View(m);
+        }
 
 
     }

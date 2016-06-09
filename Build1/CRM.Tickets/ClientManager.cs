@@ -37,5 +37,16 @@ namespace CRM.Tickets
         {
             return _clientStore.GetClientByID(id);
         }
+
+        public void UpdateClient(TClient c)
+        {
+            //validate c
+            if (c.Validate())
+            {
+                _clientStore.UpdateClient(c);
+            }
+        }
+
+
     }
 }

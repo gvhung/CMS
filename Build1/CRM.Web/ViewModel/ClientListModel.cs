@@ -9,6 +9,6 @@ namespace CRM.Web.ViewModel
     {
         public int ClientId { get; set; }
         public string Name { get; set; }
-        public string TicketStartNumber { get; set; }
+        public long TicketStartNumber { get; set; }
     }
 }
