@@ -235,6 +235,7 @@
     <Compile Include="ViewModel\IdentityModels.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="ViewModel\ProductCreateModel.cs" />
+    <Compile Include="ViewModel\ProductEditModel.cs" />
     <Compile Include="ViewModel\ProductListModel.cs" />
     <Compile Include="ViewModel\TicketCreateModel.cs" />
     <Compile Include="ViewModel\TicketDetailModel.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
