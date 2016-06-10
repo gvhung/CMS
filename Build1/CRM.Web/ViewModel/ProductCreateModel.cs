@@ -10,5 +10,7 @@ namespace CRM.Web.ViewModel
         [Required]
         [Display(Name="Product Name")]
         public string Name { get; set; }
+
+        public string Description { get; set;}
     }
 }
