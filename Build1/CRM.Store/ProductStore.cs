@@ -23,11 +23,33 @@ namespace CRM.Store
         {
             _context = new CRMContext(constr);
         }
-
-
-        public IQueryable<TProduct> GetProducts()
+        public void CreateProduct(TProduct product)
         {
-            return _context.Products.ProjectTo<TProduct>();
+            ProductEntity productEntity = (ProductEntity)AutoMapper.Mapper.Map<ProductEntity>(product);
+            _context.Products.Add(productEntity);
+            _context.SaveChanges();
         }
+
+       
+
+        public IQueryable<TProduct> GetProducts(SearchCriteria criteria)
+        {
+
+            var res = from c in _context.Products
+                      where c.Name == criteria.Title || String.IsNullOrEmpty(criteria.Title) /*criteria.Title==""*/
+                      select c;
+            return res.ProjectTo<TProduct>();
+        }
+
+        public Product GetProductByID(int id)
+        {
+            ProductEntity Productvalues = _context.Products.Find(id);
+            var Product = (Product)AutoMapper.Mapper.Map<Product>(Productvalues);
+            return Product;
+        }
+
+
+
+
     }
 }
