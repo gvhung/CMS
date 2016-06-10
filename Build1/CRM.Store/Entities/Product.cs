@@ -16,6 +16,8 @@ namespace CRM.Store.Entities
         public string Name { get; set; }
         public string Version { get; set; }
         public long ClientId { get; set; }
+
+        public string Description { get; set; }
         public ClientEntity Client { get; set; }
 
         public IEnumerable<Module> Modules { get; set; }
