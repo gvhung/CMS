@@ -10,6 +10,8 @@ namespace CRM.Tickets.Interfaces
 {
     public interface IProductStore<TProduct> where TProduct :IProduct
     {
-        IQueryable<TProduct> GetProducts();
+        void CreateProduct(TProduct product);
+        IQueryable<TProduct> GetProducts(SearchCriteria criteria);
+        Product GetProductByID(int id);
     }
 }
