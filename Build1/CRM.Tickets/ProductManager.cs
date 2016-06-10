@@ -6,20 +6,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CRM.Model;
+
 namespace CRM.Tickets
 {
-   public class ProductManager<TProduct> where TProduct:IProduct
+
+    public class ProductManager<TProduct> where TProduct:IProduct
     {
         IProductStore<TProduct> _productStore;
         public ProductManager(IProductStore<TProduct> productStore)
         {
             _productStore = productStore;
         }
-        public IQueryable<TProduct> GetProducts()
+        public void CreateProduct(TProduct product)
+        {
+
+            if (product.Validate())
+            {
+                _productStore.CreateProduct(product);
+                //send email to client
+
+            }
+        }
+        public IQueryable<TProduct> GetProducts(SearchCriteria criteria)
         {
 
 
-            return _productStore.GetProducts();
+            return _productStore.GetProducts(criteria);
+        }
+        public Product GetProductByID(int id)
+        {
+            return _productStore.GetProductByID(id);
         }
     }
 }
