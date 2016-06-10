@@ -1,4 +1,6 @@
-﻿@model IEnumerable<CRM.Web.Models.ProductListModel>
+﻿
+@using PagedList.Mvc
+@model PagedList.IPagedList<CRM.Web.ViewModel.ProductListModel>
 
 @{
     ViewBag.Title = "List";
@@ -9,16 +11,27 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+ <p>
+        @using (Html.BeginForm("List","Product",FormMethod.Get))
+        {
+        @Html.TextBox("Search")
+
+        <input type="submit" value="search" /><br /><br />
+        }
+    </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Id)
+            Id
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+           Name
         </th>
+
        
-        <th></th>
+        <th>
+            Description
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -31,7 +44,7 @@
         </td>
        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Id}) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
@@ -39,3 +52,4 @@
 }
 
 </table>
+@Html.PagedListPager(Model, page => Url.Action("List", new { page }))
