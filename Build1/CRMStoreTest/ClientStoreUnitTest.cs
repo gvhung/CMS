@@ -22,13 +22,29 @@ namespace CRMStoreTest
             clientStore = new ClientStore<Client>("CRMContext");
 
             clientStore = new ClientStore<Client>();
-            Mapper.Initialize(cnfg => cnfg.CreateMap<Client, ClientEntity>());
+            Mapper.Initialize(cnfg =>
+            {
+                cnfg.CreateMap<Client, ClientEntity>();
+                cnfg.CreateMap<ClientEntity, Client>();
+                cnfg.CreateMap<CRMUser, UserProfileEntity>();
+                cnfg.CreateMap<UserProfileEntity,CRMUser>();
+            });
+
         }
 
         [TestMethod]
         public void CreateClientSuccess()
         {
-            clientStore.CreateClient(new Client() { Name = "IBM" });
+            Client c = new Client();
+            c.Name = "IBM";
+            
+            clientStore.CreateClient(c, new CRMUser() { Username = "satees", LastName = "kumar", DateCreated=DateTime.Now});
+        }
+        [TestMethod]
+        public void GetClientsSuccess()
+        {
+            IQueryable<Client> lst = clientStore.GetClients();
+            Assert.AreNotEqual(0, lst.Count());
         }
     }
 }
