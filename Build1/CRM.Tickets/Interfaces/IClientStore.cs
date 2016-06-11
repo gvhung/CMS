@@ -6,8 +6,8 @@ namespace CRM.Tickets.Interfaces
     public interface IClientStore<TClient>
      where TClient : CRM.Model.IClient
     {
-        void CreateClient(TClient client);
-        IQueryable<TClient> GetClient(SearchCriteria criteria);
+        void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser ;
+        IQueryable<TClient> GetClients(SearchCriteria criteria);
         Client GetClientByID(int id);
         void UpdateClient(TClient c);
     }

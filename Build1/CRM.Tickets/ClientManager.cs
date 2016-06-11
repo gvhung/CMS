@@ -17,20 +17,23 @@ namespace CRM.Tickets
             _clientStore = clientStore;
         }
 
-        public void CreateClient(TClient client)
+        public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
+            if (client == null) throw new Exception("Client information is missing");
+            if (user == null) throw new Exception("User information is missing");
 
-            if (client.Validate())
+
+            if (client.Validate() && user.Validate())
             {
-                _clientStore.CreateClient(client);
-                //send email to client
+                _clientStore.CreateClient<TUser>(client, user);
+               //send email to client
 
             }
         }
 
         public IQueryable<TClient> GetClient(SearchCriteria criteria)
         {
-            return _clientStore.GetClient(criteria);
+            return _clientStore.GetClients(criteria);
         }
 
         public Client GetClientByID(int id)

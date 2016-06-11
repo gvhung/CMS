@@ -29,9 +29,9 @@ namespace CRM.Web.Controllers
              client.Name = m.Name;
              client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
 
-
+            CRMUser user = null;
             ClientManager<Client> clientManager =new ClientManager<Client> (new ClientStore<Client>());
-            clientManager.CreateClient(client);
+            clientManager.CreateClient<CRMUser>(client, user);
 
             return RedirectToAction("List");
 

@@ -65,7 +65,7 @@ namespace CRMTicketTest
         {
             ClientManager<Client> clientManager = new ClientManager<Client>(new DummyClientStore());
             Client c = new Client() { Name = "not able to login",TicketStartNumber = 001};
-            clientManager.CreateClient(c);
+            //clientManager.CreateClient(c);
 
         }
 
@@ -75,7 +75,7 @@ namespace CRMTicketTest
         {
             ClientManager<Client> clientManager = new ClientManager<Client>(new DummyClientStore());
             Client c = new Client() {TicketStartNumber = 001 };
-            clientManager.CreateClient(c);
+            //clientManager.CreateClient(c);
         }
     }
 }

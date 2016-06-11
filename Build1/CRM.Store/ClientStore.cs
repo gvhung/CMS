@@ -37,7 +37,7 @@ namespace CRM.Store
             _context.SaveChanges();
         }
 
-        public IQueryable<TClient> GetClient(SearchCriteria criteria)
+        public IQueryable<TClient> GetClients(SearchCriteria criteria)
         {
 
             var res = from c in _context.Clients

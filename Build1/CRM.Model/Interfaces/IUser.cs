@@ -10,9 +10,11 @@ namespace CRM.Model
     {
 
 
-         string Username { get; set; }
+        string Username { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
+        DateTime DateCreated { get; set; }
+        bool Validate();
 
     }
 }

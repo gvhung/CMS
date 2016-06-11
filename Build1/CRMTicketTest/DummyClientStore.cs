@@ -16,12 +16,12 @@ namespace CRMTicketTest
             List<Client> _mycontext = new List<Client>();
         }
 
-        public void CreateClient(Client client)
+        public void CreateClient<TUser>(Client client, TUser user) where TUser : IUser
         {
-            _mycontext.Add(client);
+            
         }
 
-        public IQueryable<Client> GetClient(SearchCriteria criteria)
+        public IQueryable<Client> GetClients(SearchCriteria criteria)
         {
             throw new NotImplementedException();
         }

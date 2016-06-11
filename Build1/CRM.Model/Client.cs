@@ -24,8 +24,10 @@ namespace CRM.Model
         public bool Validate()
         {
             if (Name == null) throw new Exception("Name is Emty");
-            if (TicketStartNumber == null) throw new Exception("Ticket Start Number is Empty");
+            //if (TicketStartNumber == null) throw new Exception("Ticket Start Number is Empty");
             return true;
         }
+
+        
     }
 }
