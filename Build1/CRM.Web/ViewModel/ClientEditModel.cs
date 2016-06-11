@@ -9,9 +9,10 @@ namespace CRM.Web.ViewModel
     {
         [Display(Name="Client ID")]
         public int ClientId { get; set; }
+        [Display(Name = "Client Name")]
         public string Name { get; set; }
-
-        [Display(Name= "Ticket Start Number")]
-        public long TicketStartNumber { get; set; }
+        public string EmailId { get; set; }
+        public string Password { get; set; }
+        public string ConformPassword { get; set; }
     }
 }
