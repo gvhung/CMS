@@ -9,14 +9,16 @@ namespace CRM.Store.Entities
 {
 
     [Table("Clients")]
-    public class ClientEntity
+    public class ClientEntity:BaseEntity
     {
         [Key]
         public int ClientId { get; set; }
         public string Name { get; set; }
+        
         public long TicketStartNumber { get; set; }
 
-        public IEnumerable<BranchEntity> Branches { get; set; }
+        public ICollection<BranchEntity> Branches { get; set; }
+        public ICollection<UserProfileEntity> Users { get; set; }
     }
 
     [Table("Branches")]

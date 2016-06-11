@@ -8,14 +8,15 @@ using System.ComponentModel.DataAnnotations;
 namespace CRM.Store.Entities
 {
      [Table("UserProfiles")]
-    public class UserProfileEntity
+    public class UserProfileEntity:BaseEntity
     {
-       [System.ComponentModel.DataAnnotations.Key]
+        [Key]
         public long UID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
-
+        public int Usertype { get; set; }
         public int Status { get; set; }
 
         public int ClientId { get; set; }

@@ -59,6 +59,7 @@
     <Compile Include="CRMContext.cs" />
     <Compile Include="CRMContextInitilizer.cs" />
     <Compile Include="Entities\Clients.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="ProductStore.cs" />

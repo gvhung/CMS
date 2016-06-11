@@ -22,9 +22,17 @@ namespace CRM.Store
         {
             _context = new CRMContext(constr);
         }
-        public void CreateClient(TClient client)
+        public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
-            ClientEntity clientEntity=(ClientEntity) AutoMapper.Mapper.Map<ClientEntity>(client);
+            ClientEntity clientEntity=AutoMapper.Mapper.Map<ClientEntity>(client);
+            clientEntity.DateCreated = DateTime.Now;
+
+            clientEntity.Users = new List<UserProfileEntity>();
+            clientEntity.Users.Add(AutoMapper.Mapper.Map<UserProfileEntity>(user));
+
+
+            
+
             _context.Clients.Add(clientEntity);
             _context.SaveChanges();
         }
@@ -54,7 +62,10 @@ namespace CRM.Store
             _context.SaveChanges();
         }
 
-
+        public IQueryable<TClient> GetClients()
+        {
+            return _context.Clients.ProjectTo<TClient>();
+        }
         
     }
 }
