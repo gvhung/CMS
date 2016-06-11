@@ -286,3 +286,7 @@ I:\CRM\Build1\CRM.Web\bin\CRM.Dal.pdb
 I:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.csprojResolveAssemblyReference.cache
 I:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.dll
 I:\CRM\Build1\CRM.Web\obj\Debug\CRM.Web.pdb
+E:\CRM\Build1\CRM.Web\bin\CRM.Business.dll
+E:\CRM\Build1\CRM.Web\bin\CRM.Dal.dll
+E:\CRM\Build1\CRM.Web\bin\CRM.Business.pdb
+E:\CRM\Build1\CRM.Web\bin\CRM.Dal.pdb
