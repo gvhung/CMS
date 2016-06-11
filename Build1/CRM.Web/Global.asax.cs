@@ -22,6 +22,8 @@ namespace CRM.Web
             Mapper.Initialize(cnfg =>
             {
                 cnfg.CreateMap<UserProfileEntity, CRMUser>();
+                cnfg.CreateMap<CRMUser, UserProfileEntity>();
+
                 cnfg.CreateMap<Ticket, TicketEntity>();
                 cnfg.CreateMap<TicketEntity, Ticket>();
                 cnfg.CreateMap<Ticket, TicketListModel>();
