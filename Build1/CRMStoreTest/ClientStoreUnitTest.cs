@@ -38,8 +38,20 @@ namespace CRMStoreTest
             Client c = new Client();
             c.Name = "IBM";
             
-            clientStore.CreateClient(c, new CRMUser() { Username = "satees", LastName = "kumar", DateCreated=DateTime.Now});
+            
+            clientStore.CreateClient(c, new CRMUser() { Username = "satees", Password="password"});
         }
+        [TestMethod]
+        [ExpectedException(typeof(System.Data.Entity.Infrastructure.DbUpdateException))]
+        public void CreateClientDuplicateFail()
+        {
+            Client c = new Client();
+            c.Name = "IBM";
+
+
+            clientStore.CreateClient(c, new CRMUser() { Username = "satees", Password = "password" });
+        }
+
         [TestMethod]
         public void GetClientsSuccess()
         {
