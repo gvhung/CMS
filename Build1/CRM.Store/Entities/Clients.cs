@@ -14,6 +14,8 @@ namespace CRM.Store.Entities
         [Key]
         public int ClientId { get; set; }
         [Required]
+        [Index(IsUnique =true)]
+        [MaxLength(100)]
         public string Name { get; set; }
         
         public long TicketStartNumber { get; set; }

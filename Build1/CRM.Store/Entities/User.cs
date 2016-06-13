@@ -20,7 +20,7 @@ namespace CRM.Store.Entities
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
-        public int Usertype { get; set; }
+        public int UserType { get; set; }
         public int Status { get; set; }
        
         public int ClientId { get; set; }
