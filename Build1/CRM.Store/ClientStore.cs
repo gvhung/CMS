@@ -25,10 +25,18 @@ namespace CRM.Store
         public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
 
+
             ///converting client to cliententity
+
             ClientEntity clientEntity=AutoMapper.Mapper.Map<ClientEntity>(client);
+
+            //set DateCreated to System current date so that even wrong date is coming from TClient, it will not insert wrong date
             clientEntity.DateCreated = DateTime.Now;
-          
+
+            user.Status = 0;
+            user.UserType = 1;  //Admin of client
+            user.DateCreated = DateTime.Now;
+
 
             clientEntity.Users = new List<UserProfileEntity>();
             clientEntity.Users.Add(AutoMapper.Mapper.Map<UserProfileEntity>(user));
