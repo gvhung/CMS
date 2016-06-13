@@ -12,6 +12,7 @@ namespace CRM.Model
 
         public string Name{get;set;}
 
+        public DateTime DateCreated { get; set; }
         public long TicketStartNumber { get; set; }
         public bool Validate()
         {
