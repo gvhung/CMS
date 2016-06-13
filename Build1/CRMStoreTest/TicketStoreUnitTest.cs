@@ -30,7 +30,8 @@ namespace CRMStoreTest
         public void CreateTicketSuccess()
         {
           
-            ticketStore.CreateTicket(new CRM.Model.Ticket() {  TicketNo = 1234 });
+            ticketStore.CreateTicket(new CRM.Model.Ticket() {  TicketNo = 1234, Title="not ablr to login", DateCreated=DateTime.Now});
+           
             
         }
 
