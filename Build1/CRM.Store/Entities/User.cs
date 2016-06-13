@@ -14,11 +14,15 @@ namespace CRM.Store.Entities
         public long UID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [Required]
+       [Index(IsClustered =false, IsUnique =true)]
+       [MaxLength(50)]
         public string Username { get; set; }
+        [Required]
         public string Password { get; set; }
         public int Usertype { get; set; }
         public int Status { get; set; }
-
+       
         public int ClientId { get; set; }
         public ClientEntity Client { get; set; }
     }
@@ -27,7 +31,7 @@ namespace CRM.Store.Entities
     {
         [Key]
         public long UID { get; set; }
-        /// <summary>
+        /// <summary>index
         /// Username is email address
         /// </summary>
         public string Username { get; set; }
