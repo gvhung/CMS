@@ -18,16 +18,19 @@ namespace CRM.Web.Controllers
         // GET: /CreatTicket/
         public ActionResult Create()
         {
+            ProductStore<Product> productStore = new ProductStore<Product>();
+
             TicketCreateModel model = new TicketCreateModel();
             model.Modules = new List<Module>();
             model.Modules.Add(new Module() { Id = 1, Name = "Tickets" });
             model.Modules.Add(new Module() { Id = 2, Name = "Contacts" });
             model.Modules.Add(new Module() { Id = 3, Name = "Invoices" });
 
-            model.Products = new List<Product>();
-            model.Products.Add(new Product() { Id = 1, Name = "CRM" });
-            model.Products.Add(new Product() { Id = 2, Name = "ASMS" });
-            model.Products.Add(new Product() { Id = 3, Name = "MFIS" });
+            ProductManager<Product> productManager = new ProductManager<Product>(productStore);
+
+            model.Products = productManager.GetAllProducts();
+            model.Products.Insert(0, new Product() { Id = 0, Name = "Select Product" });
+          
 
             //TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>());
             //model.Products = new List<Product>();

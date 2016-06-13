@@ -25,9 +25,15 @@ namespace CRM.Web.Controllers
         public ActionResult Create(ClientCreateModel m)
 
         {
-            Client client = new Client();
-            client.Name = m.Name;
-            CRMUser user = null;
+
+             Client client = new Client();
+             client.Name = m.Name;
+            // client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
+
+            
+
+            CRMUser user = new CRMUser() { Username = m.EmailId, Password = m.Password };
+
             ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
             clientManager.CreateClient<CRMUser>(client, user);
 
