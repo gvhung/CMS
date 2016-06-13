@@ -33,6 +33,7 @@ namespace CRM.Store
           
             TicketEntity ticketEntity=(TicketEntity) AutoMapper.Mapper.Map<TicketEntity>(ticket);
             _context.Tickets.Add(ticketEntity);
+            _context.SaveChanges();
             
         }
 
