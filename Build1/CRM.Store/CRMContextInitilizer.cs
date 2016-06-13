@@ -8,6 +8,6 @@ namespace CRM.Store
 {
    public class CRMContextInitilizer: DropCreateDatabaseIfModelChanges<CRMContext>
     {
-        
+      
     }
 }
