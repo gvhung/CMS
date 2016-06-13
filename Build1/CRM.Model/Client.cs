@@ -8,17 +8,9 @@ namespace CRM.Model
 {
     public class Client : IClient
     {
-        public int ClientId
-        {
-            get;
-            set;
-        }
+        public int ClientId{get;set;}
 
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name{get;set;}
 
         public long TicketStartNumber { get; set; }
         public bool Validate()
