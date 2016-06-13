@@ -24,13 +24,16 @@ namespace CRM.Store
         }
         public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
+
+            ///converting client to cliententity
             ClientEntity clientEntity=AutoMapper.Mapper.Map<ClientEntity>(client);
             clientEntity.DateCreated = DateTime.Now;
+          
 
             clientEntity.Users = new List<UserProfileEntity>();
             clientEntity.Users.Add(AutoMapper.Mapper.Map<UserProfileEntity>(user));
 
-
+    
             
 
             _context.Clients.Add(clientEntity);
