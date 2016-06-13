@@ -13,6 +13,7 @@ namespace CRM.Store.Entities
     {
         [Key]
         public int ClientId { get; set; }
+        [Required]
         public string Name { get; set; }
         
         public long TicketStartNumber { get; set; }
