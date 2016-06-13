@@ -45,8 +45,8 @@ namespace CRM.Web.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("UD", "Dear " + user.Firstname + user.Lastname + ", please click on reset link sent to your email id.");
-                        ViewBag.Success = "Dear " + user.Firstname + user.Lastname + ", please click on reset link sent to your email id.";
+                        ModelState.AddModelError("UD", "Dear " + user.FirstName + user.LastName + ", please click on reset link sent to your email id.");
+                        ViewBag.Success = "Dear " + user.FirstName + user.LastName + ", please click on reset link sent to your email id.";
                         return View("SuccessMessage");
                     }
                 }

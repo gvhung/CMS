@@ -25,12 +25,10 @@ namespace CRM.Web.Controllers
         public ActionResult Create(ClientCreateModel m)
 
         {
-             Client client = new Client();
-             client.Name = m.Name;
-             client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
-
+            Client client = new Client();
+            client.Name = m.Name;
             CRMUser user = null;
-            ClientManager<Client> clientManager =new ClientManager<Client> (new ClientStore<Client>());
+            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
             clientManager.CreateClient<CRMUser>(client, user);
 
             return RedirectToAction("List");
@@ -38,15 +36,15 @@ namespace CRM.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult List(string Search, int page=1)
+        public ActionResult List(string Search, int page = 1)
         {
-           SearchCriteria criteria = new SearchCriteria();
+            SearchCriteria criteria = new SearchCriteria();
             criteria.Title = Search;
             ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
-           
+
             IQueryable<Client> lstClients = clientManager.GetClient(criteria);
-            IQueryable<ClientListModel> lstClientListModel = lstClients.ProjectTo<ClientListModel>().OrderBy(c => c.Name); 
-            IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page,6);
+            IQueryable<ClientListModel> lstClientListModel = lstClients.ProjectTo<ClientListModel>().OrderBy(c => c.Name);
+            IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page, 6);
             return View(pagedList);
         }
 
@@ -66,11 +64,11 @@ namespace CRM.Web.Controllers
         public ActionResult Edit(ClientEditModel m)
         {
 
-            
+
             ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
 
-           
-            Client c =AutoMapper.Mapper.Map<Client>(m);
+
+            Client c = AutoMapper.Mapper.Map<Client>(m);
             clientManager.UpdateClient(c);
 
 
