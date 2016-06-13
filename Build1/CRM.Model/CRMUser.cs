@@ -24,7 +24,8 @@ namespace CRM.Model
         {
             get; set;
         }
-
+        public int UserType { get; set; }
+        public int Status { get; set; }
         public string Password { get; set; }
         public bool Validate()
         {
