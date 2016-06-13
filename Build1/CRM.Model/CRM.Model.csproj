@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Branch.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="CRMUser.cs" />
+    <Compile Include="Interfaces\IBranch.cs" />
     <Compile Include="Interfaces\IClient.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Interfaces\ITicket.cs" />
