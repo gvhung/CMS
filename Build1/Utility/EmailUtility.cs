@@ -15,6 +15,23 @@ namespace Utility
         static EmailUtilty()
         {
             //reading Email Configuration
+            if (ConfigurationManager.AppSettings["SMTPHOST"] == null)
+                throw new Exception("SMTPHOST not found in configuration. Please contact your administrator");
+            if (ConfigurationManager.AppSettings["SMTPPORT"] == null)
+                throw new Exception("SMTPPORT not found in configuration. Please contact your administrator");
+
+            if (ConfigurationManager.AppSettings["SMTPUSER"] == null)
+                throw new Exception("SMTPUSER not found in configuration. Please contact your administrator");
+
+            if (ConfigurationManager.AppSettings["SMTPPWD"] == null)
+                throw new Exception("SMTPPWD not found in configuration. Please contact your administrator");
+
+            if (ConfigurationManager.AppSettings["ADMINEMAILID"] == null)
+                throw new Exception("ADMINEMAILID not found in configuration. Please contact your administrator");
+            if (ConfigurationManager.AppSettings["SSL"] == null)
+                throw new Exception("SSL not found in configuration. Please contact your administrator");
+
+
             SmtpHost = ConfigurationManager.AppSettings["SMTPHOST"].ToString();
             SmtpPort = ConfigurationManager.AppSettings["SMTPPORT"].ToString();
             SmtpUser = ConfigurationManager.AppSettings["SMTPUSER"].ToString();
@@ -25,6 +42,8 @@ namespace Utility
         }
         public static void SendEmail(string toAddress, string fromAddress, string subject, string message, bool IsHtmlMessage)
         {
+            
+
             MailMessage msg = new MailMessage();
             msg.To.Add(new MailAddress(toAddress));
             msg.From = new MailAddress(fromAddress);
