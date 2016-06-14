@@ -10,8 +10,8 @@ namespace Utility
 {
     public static class EmailUtilty
     {
-
-        public static EmailUtilty()
+        static string SmtpHost, SmtpUser, SmtpPassword;
+        static EmailUtilty()
         {
             //reading Email Configuration
 
@@ -26,7 +26,7 @@ namespace Utility
             msg.IsBodyHtml = IsHtmlMessage;
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com",465);
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials=new NetworkCredential()
+            smtpClient.Credentials = new NetworkCredential();
             smtpClient.Send(msg);
 
 
