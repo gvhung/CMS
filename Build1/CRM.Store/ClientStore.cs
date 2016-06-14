@@ -59,6 +59,11 @@ namespace CRM.Store
             return res.ProjectTo<TClient>();
         }
 
+        public IQueryable<Client> GetClients()
+        {
+            throw new NotImplementedException();
+        }
+
         public Client GetClientByID(int id)
         {
             ClientEntity Clientvalues = _context.Clients.Find(id);
@@ -75,9 +80,14 @@ namespace CRM.Store
             _context.SaveChanges();
         }
 
-        public IQueryable<TClient> GetClients()
+        public IQueryable<TClient> GetClient()
         {
             return _context.Clients.ProjectTo<TClient>();
+        }
+
+        public List<TClient> GetClient(TClient Client)
+        {
+            throw new NotImplementedException();
         }
         
     }
