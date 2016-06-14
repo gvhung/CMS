@@ -59,6 +59,10 @@
       <Project>{c9f2373a-1ba2-4d57-908f-233301f5487d}</Project>
       <Name>CRM.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{546e45a1-c9a0-4cbf-8536-53075718a079}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
