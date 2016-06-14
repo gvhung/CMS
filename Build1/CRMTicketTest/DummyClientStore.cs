@@ -39,5 +39,15 @@ namespace CRMTicketTest
             else
                 tempClient = c;
         }
+
+        public List<Client> GetClient(Client Client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Client> GetAllClients()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
