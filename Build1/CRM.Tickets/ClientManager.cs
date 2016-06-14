@@ -35,9 +35,19 @@ namespace CRM.Tickets
             }
         }
 
+       public void Getclient()
+        {
+
+        }
+
         public IQueryable<TClient> GetClient(SearchCriteria criteria)
         {
             return _clientStore.GetClients(criteria);
+        }
+
+        public List<TClient> GetClient(TClient client)
+        {
+            return _clientStore.GetClient(client);
         }
 
         public Client GetClientByID(int id)
@@ -54,6 +64,11 @@ namespace CRM.Tickets
             }
         }
 
+        public List<TClient> GetAllClients()
+        {
+
+            return _clientStore.GetClients(new SearchCriteria() { Title = "" }).ToList();
+        }
 
     }
 }
