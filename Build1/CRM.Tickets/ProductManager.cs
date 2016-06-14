@@ -38,15 +38,17 @@ namespace CRM.Tickets
 
             return _productStore.GetProducts(criteria);
         }
-        public List<TProduct> GetAllProducts()
-        {
-            SearchCriteria crieteria = new SearchCriteria();
+        //public List<TProduct> GetAllProducts()
+        //{
+        //    SearchCriteria crieteria = new SearchCriteria();
 
-            return _productStore.GetProducts(crieteria).ToList();
-        }
+        //    return _productStore.GetProducts(crieteria).ToList();
+        //}
         public Product GetProductByID(int id)
         {
             return _productStore.GetProductByID(id);
         }
+
+      
     }
 }
