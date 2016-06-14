@@ -29,7 +29,7 @@ namespace CRM.Tickets
             {
                 _clientStore.CreateClient<TUser>(client, user);
                 //send email to client
-                string messgae = "Dear " + client.Name + "<br/> Thank you ";
+                string message = "Dear " + client.Name + "<br/> Thank you ";
                 EmailUtilty.SendEmail(user.Username, "mkbondada@gmail.com", "Company Registration", message, true);
 
             }
