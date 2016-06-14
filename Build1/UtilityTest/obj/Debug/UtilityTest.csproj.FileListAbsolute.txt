@@ -1,0 +1,9 @@
+E:\CRM\Build1\UtilityTest\bin\Debug\UtilityTest.dll.config
+E:\CRM\Build1\UtilityTest\bin\Debug\UtilityTest.dll
+E:\CRM\Build1\UtilityTest\bin\Debug\UtilityTest.pdb
+E:\CRM\Build1\UtilityTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\CRM\Build1\UtilityTest\bin\Debug\Utility.dll
+E:\CRM\Build1\UtilityTest\bin\Debug\Utility.pdb
+E:\CRM\Build1\UtilityTest\obj\Debug\UtilityTest.csprojResolveAssemblyReference.cache
+E:\CRM\Build1\UtilityTest\obj\Debug\UtilityTest.dll
+E:\CRM\Build1\UtilityTest\obj\Debug\UtilityTest.pdb
