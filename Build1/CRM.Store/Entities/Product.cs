@@ -17,6 +17,9 @@ namespace CRM.Store.Entities
         public string Version { get; set; }
         public long ClientId { get; set; }
 
+        public  int CreatedBy { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
         public string Description { get; set; }
         public ClientEntity Client { get; set; }
 
@@ -34,4 +37,17 @@ namespace CRM.Store.Entities
         public ProductEntity Product { get; set; }
 
     }
+    public class ProductVersions
+    {
+       public int ProductId { get; set; }
+        public string version { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
+
+        public DateTime DateRelesed { get; set; }
+
+        public ProductEntity Product { get; set; }
+    }
+
 }
