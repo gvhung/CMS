@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using CRM.Model;
+using System.Collections.Generic;
+
 namespace CRM.Tickets.Interfaces
 {
     public interface IClientStore<TClient> where TClient : CRM.Model.IClient
@@ -9,5 +11,7 @@ namespace CRM.Tickets.Interfaces
         IQueryable<TClient> GetClients(SearchCriteria criteria);
         Client GetClientByID(int id);
         void UpdateClient(TClient c);
+        List<TClient> GetClient(TClient Client);
+       
     }
 }
