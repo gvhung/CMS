@@ -18,13 +18,20 @@ namespace CRM.Web.Controllers
 
         public ActionResult create()
         {
+            ClientStore<Client> clientStore = new ClientStore<Client>();
+            ClientManager<Client> clientManager = new ClientManager<Client>(clientStore);
+            ProductCreateModel m = new ProductCreateModel();
+            m.Clients=clientManager.GetAllClients();
+            m.Clients.Insert(0, new Client() { ClientId = 0, Name = "Select Company" });
+            m.ClientId = "1";
 
-          
-            return View();
+     //    ClientManager< TClient > clientManager = new ClientManager<TClient>();
+
+            return View(m);
         }
 
         [HttpPost]
-
+        
         public ActionResult Create(ProductCreateModel m)
         {
             Product product = new Product();
