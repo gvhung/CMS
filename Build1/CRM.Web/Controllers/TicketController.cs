@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using CRM.Store;
 using CRM.Tickets;
 using PagedList;
-
 using AutoMapper.QueryableExtensions;
 using CRM.Model;
 
