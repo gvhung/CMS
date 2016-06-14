@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Utility;
 
 namespace CRM.Tickets
 {
@@ -17,16 +17,20 @@ namespace CRM.Tickets
             _clientStore = clientStore;
         }
 
+      
         public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
             if (client == null) throw new Exception("Client information is missing");
             if (user == null) throw new Exception("User information is missing");
 
+            
 
             if (client.Validate() && user.Validate())
             {
                 _clientStore.CreateClient<TUser>(client, user);
-               //send email to client
+                //send email to client
+                string messgae = "Dear " + client.Name + "<br/> Thank you ";
+                EmailUtilty.SendEmail(user.Username, "mkbondada@gmail.com", "Company Registration", message, true);
 
             }
         }

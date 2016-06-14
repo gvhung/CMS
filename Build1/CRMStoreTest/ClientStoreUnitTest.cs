@@ -58,5 +58,6 @@ namespace CRMStoreTest
             IQueryable<Client> lst = clientStore.GetClients();
             Assert.AreNotEqual(0, lst.Count());
         }
+       
     }
 }

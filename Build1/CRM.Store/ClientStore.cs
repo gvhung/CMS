@@ -22,6 +22,8 @@ namespace CRM.Store
         {
             _context = new CRMContext(constr);
         }
+
+       
         public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
 

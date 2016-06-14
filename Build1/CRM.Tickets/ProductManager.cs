@@ -28,6 +28,10 @@ namespace CRM.Tickets
 
             }
         }
+        public List<TProduct> GetAllProducts()
+        {
+            return _productStore.GetProducts(new SearchCriteria() { Title = "" }).ToList();
+        }
         public IQueryable<TProduct> GetProducts(SearchCriteria criteria)
         {
 
