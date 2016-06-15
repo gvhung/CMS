@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BranchStore.cs" />
     <Compile Include="ClientStore.cs" />
     <Compile Include="CRMContext.cs" />
     <Compile Include="CRMContextInitilizer.cs" />
