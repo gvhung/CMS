@@ -25,17 +25,25 @@ namespace CRM.Web.Controllers
         public ActionResult Create(ClientCreateModel m)
 
         {
+            try
+            {
 
-            Client client = new Client();
-            client.Name = m.Name;
-            // client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
+                Client client = new Client();
+                client.Name = m.Name;
+                // client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
 
-            CRMUser user = new CRMUser() { Username = m.EmailId, Password = m.Password };
+                CRMUser user = new CRMUser() { Username = m.EmailId, Password = m.Password };
 
-            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
-            clientManager.CreateClient<CRMUser>(client, user);
+                ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+                clientManager.CreateClient<CRMUser>(client, user);
 
-            return RedirectToAction("List");
+                return RedirectToAction("List");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("CC", ex.Message);
+                return View(m);
+            }
 
         }
 

@@ -24,30 +24,37 @@ namespace CRM.Store
         }
 
        
-        public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
+        public long CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
         {
+            try
+            {
+
+                ///converting client to cliententity
+
+                ClientEntity clientEntity = AutoMapper.Mapper.Map<ClientEntity>(client);
+
+                //set DateCreated to System current date so that even wrong date is coming from TClient, it will not insert wrong date
+                clientEntity.DateCreated = DateTime.Now;
+
+                user.Status = 0;
+                user.UserType = 1;  //Admin of client
+                user.DateCreated = DateTime.Now;
 
 
-            ///converting client to cliententity
-
-            ClientEntity clientEntity=AutoMapper.Mapper.Map<ClientEntity>(client);
-
-            //set DateCreated to System current date so that even wrong date is coming from TClient, it will not insert wrong date
-            clientEntity.DateCreated = DateTime.Now;
-
-            user.Status = 0;
-            user.UserType = 1;  //Admin of client
-            user.DateCreated = DateTime.Now;
+                clientEntity.Users = new List<UserProfileEntity>();
+                clientEntity.Users.Add(AutoMapper.Mapper.Map<UserProfileEntity>(user));
 
 
-            clientEntity.Users = new List<UserProfileEntity>();
-            clientEntity.Users.Add(AutoMapper.Mapper.Map<UserProfileEntity>(user));
 
-    
-            
 
-            _context.Clients.Add(clientEntity);
-            _context.SaveChanges();
+                _context.Clients.Add(clientEntity);
+                _context.SaveChanges();
+                return clientEntity.ClientId;
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                throw new Exception("Email Address already exists");
+            }
         }
 
         public IQueryable<TClient> GetClients(SearchCriteria criteria)

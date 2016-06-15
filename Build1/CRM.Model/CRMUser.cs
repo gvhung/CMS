@@ -30,7 +30,7 @@ namespace CRM.Model
         public bool Validate()
         {
             if (Username == "") throw new Exception("Username is empty");
-            if (Password == "") throw new Exception("Password is empty");
+            if (Password ==null ||Password.Trim() == "") throw new Exception("Invalid password");
 
             return true;
         }
