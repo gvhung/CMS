@@ -28,9 +28,7 @@ namespace CRM.Store.Entities
     public class BranchEntity
     {
         [Key]
-        public int BranchId { get; set; }
-        
-        
+        public int BranchId { get; set; }      
         public string BracnhName { get; set; }
         public string BranchCode { get; set; }
         public long TicketStartNumber { get; set; }
