@@ -13,7 +13,8 @@ namespace UtilityTest
         [TestMethod]
         public void SendEmailSuccess()
         {
-            EmailUtilty.SendEmail("williams14u@gmail.com", "mkbondada@gmail.com", "Test","Hi", false);
+            string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>Plese Click below link for Activation<br/><br/> Thanks and Regards<br/>CRM Admin";
+            EmailUtilty.SendEmail("williams14u@gmail.com", "mkbondada@gmail.com", "Welcom to CRM Bug Tracker", Msg , true);
 
         }
 
