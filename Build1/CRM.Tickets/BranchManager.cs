@@ -5,10 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRM.Model;
+using CRM.Tickets.Interfaces;
+
 namespace CRM.Tickets
 {
-   public class BranchManager<TBranch> where TBranch:IBranch
+    public class BranchManager<TBranch> where TBranch : IBranch
     {
-        
+        IBranchStore<TBranch> _branchStore;
+        public BranchManager(IBranchStore<TBranch> branchStore)
+        {
+            _branchStore = branchStore;
+        }
+
+        public void CreateBranch(TBranch branch)
+        {
+            _branchStore.CreateBranch(branch);
+        }
+
+
     }
 }

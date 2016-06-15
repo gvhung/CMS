@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utility;
+using System.Configuration;
 
 namespace CRM.Tickets
 {
@@ -29,8 +30,11 @@ namespace CRM.Tickets
             {
                 _clientStore.CreateClient<TUser>(client, user);
                 //send email to client
-                string message = "Dear " + client.Name + "<br/> Thank you ";
-                EmailUtilty.SendEmail(user.Username, "mkbondada@gmail.com", "Company Registration", message, true);
+                //string message = "Dear " + client.Name + "<br/> Thank you ";
+                string fromAddress = ConfigurationManager.AppSettings["SUPPORTMAILID"];
+                string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>Plese Click below link for Activation<br/><br/> Thanks and Regards<br/>CRM Admin";
+                EmailUtilty.SendEmail(user.Username, fromAddress, "Company Registration", Msg, true);
+                
 
             }
         }

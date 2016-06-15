@@ -9,7 +9,7 @@ namespace CRM.Tickets.Interfaces
 {
    public interface IBranchStore<TBranch> where TBranch:IBranch
     {
-        void Create(TBranch branch);
+        void CreateBranch(TBranch branch);
         IQueryable<TBranch> GetBranches();
     }
 }
