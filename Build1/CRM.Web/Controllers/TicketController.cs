@@ -57,19 +57,14 @@ namespace CRM.Web.Controllers
             ticket.ModuleId = m.ModuleId;
             ticket.ProductId = m.ProductId;
             ticket.Version = m.Version;
-
-
-
-            TicketManager<Ticket> ticketManager = new TicketManager<Ticket>
-                (new TicketStore<Ticket>());
+            
+            TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>());
             ticketManager.CreateTicket(ticket);
             return RedirectToAction("List");
         }
 
         public ActionResult List(string Search, int page = 1)
         {
-
-
             SearchCriteria criteria = new SearchCriteria();
             criteria.Title = Search;
             TicketManager<Ticket> ticketManager = new TicketManager<Ticket>(new TicketStore<Ticket>());

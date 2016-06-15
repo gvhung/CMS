@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CRM.Model;
+using CRM.Tickets;
+using CRM.Store;
 
 namespace CRM.Web.Controllers
 {
@@ -24,7 +26,9 @@ namespace CRM.Web.Controllers
             branch.BranchCode = b.BranchCode;
             branch.TicketStartNumber = b.TicketStartNumber;
             branch.ClientId = b.ClientId;
-                           
+
+            BranchManager<Branch> branchManager = new BranchManager<Branch>(new BranchStore<Branch>());
+            branchManager.CreateBranch(branch);                
             return View();
         }
 

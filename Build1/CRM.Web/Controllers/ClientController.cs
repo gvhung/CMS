@@ -26,11 +26,9 @@ namespace CRM.Web.Controllers
 
         {
 
-             Client client = new Client();
-             client.Name = m.Name;
+            Client client = new Client();
+            client.Name = m.Name;
             // client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
-
-            
 
             CRMUser user = new CRMUser() { Username = m.EmailId, Password = m.Password };
 
@@ -47,14 +45,11 @@ namespace CRM.Web.Controllers
             SearchCriteria criteria = new SearchCriteria();
             criteria.Title = Search;
             ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
-
             IQueryable<Client> lstClients = clientManager.GetClient(criteria);
             IQueryable<ClientListModel> lstClientListModel = lstClients.ProjectTo<ClientListModel>().OrderBy(c => c.Name);
             IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page, 6);
             return View(pagedList);
         }
-
-
 
         public ActionResult Edit(int id)
         {
@@ -69,15 +64,9 @@ namespace CRM.Web.Controllers
         [HttpPost]
         public ActionResult Edit(ClientEditModel m)
         {
-
-
             ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
-
-
             Client c = AutoMapper.Mapper.Map<Client>(m);
             clientManager.UpdateClient(c);
-
-
             return View(m);
         }
 
