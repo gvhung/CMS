@@ -20,6 +20,6 @@ namespace CRM.Web.ViewModel
         public List<Client> Clients { get; set; }
         public string Description { get; set;}
         [Display(Name = "versions")]
-        public string Version { get; set; }
+        public string Versions { get; set; }
     }
 }
