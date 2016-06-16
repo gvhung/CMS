@@ -27,6 +27,9 @@ namespace CRM.Model
         public int UserType { get; set; }
         public int Status { get; set; }
         public string Password { get; set; }
+
+        public Guid UID { get; set; }
+      
         public bool Validate()
         {
             if (Username == "") throw new Exception("Username is empty");
