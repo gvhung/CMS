@@ -12,6 +12,13 @@
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
+
+    @if (ViewBag.UserName!= string.Empty)
+    {
+        <div class="alert alert-success">
+            <strong>@ViewBag.UserName </strong>  has been submitted.
+        </div>
+    }
     @using (Html.BeginForm("List", "Client", FormMethod.Get))
     {
     <div class="row">
@@ -62,6 +69,8 @@
                 @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
             </div>
         </div>
+
+       
     </div>
     }
 </div>

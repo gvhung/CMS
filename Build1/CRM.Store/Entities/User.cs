@@ -11,7 +11,7 @@ namespace CRM.Store.Entities
     public class UserProfileEntity:BaseEntity
     {
         [Key]
-        public long UID { get; set; }
+        public Guid UID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         [Required]
@@ -30,7 +30,7 @@ namespace CRM.Store.Entities
     public class LoginEntity
     {
         [Key]
-        public long UID { get; set; }
+        public Guid UID { get; set; }
         /// <summary>index
         /// Username is email address
         /// </summary>

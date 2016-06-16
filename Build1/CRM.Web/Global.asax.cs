@@ -39,7 +39,9 @@ namespace CRM.Web
                 cnfg.CreateMap<Product, ProductEntity>();
                 cnfg.CreateMap<Product, ProductEditModel>();
 
+                cnfg.CreateMap<Branch, BranchEntity>();
 
+                cnfg.CreateMap<CRMUser, UserProfileEntity>();
 
             }
             );

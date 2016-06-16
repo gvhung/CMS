@@ -16,7 +16,7 @@ namespace CRMTicketTest
             List<Client> _mycontext = new List<Client>();
         }
 
-        public long CreateClient<TUser>(Client client, TUser user) where TUser : IUser
+        public Guid CreateClient<TUser>(Client client, TUser user) where TUser : IUser
         {
             throw new NotImplementedException();
         }

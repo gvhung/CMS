@@ -10,11 +10,11 @@ using AutoMapper.Mappers;
 using AutoMapper.QueryableExtensions;
 namespace CRM.Store
 {
-    public class ClientStore<TClient> : IClientStore<TClient> where TClient:IClient
+    public class ClientStore<TClient> : IClientStore<TClient> where TClient : IClient
     {
         CRMContext _context;
 
-        public ClientStore():this("CRMContext")
+        public ClientStore() : this("CRMContext")
         {
 
         }
@@ -23,8 +23,8 @@ namespace CRM.Store
             _context = new CRMContext(constr);
         }
 
-       
-        public long CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
+
+        public Guid CreateClient<TUser>(TClient client, TUser user) where TUser : IUser
         {
             try
             {
@@ -35,21 +35,15 @@ namespace CRM.Store
 
                 //set DateCreated to System current date so that even wrong date is coming from TClient, it will not insert wrong date
                 clientEntity.DateCreated = DateTime.Now;
-
+                user.UID = Guid.NewGuid();
                 user.Status = 0;
                 user.UserType = 1;  //Admin of client
                 user.DateCreated = DateTime.Now;
-
-
                 clientEntity.Users = new List<UserProfileEntity>();
                 clientEntity.Users.Add(AutoMapper.Mapper.Map<UserProfileEntity>(user));
-
-
-
-
                 _context.Clients.Add(clientEntity);
                 _context.SaveChanges();
-                return clientEntity.ClientId;
+                return clientEntity.Users.First().UID;
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
@@ -61,7 +55,7 @@ namespace CRM.Store
         {
 
             var res = from c in _context.Clients
-                      where c.Name==criteria.Title || String.IsNullOrEmpty(criteria.Title) /*criteria.Title==""*/
+                      where c.Name == criteria.Title || String.IsNullOrEmpty(criteria.Title) /*criteria.Title==""*/
                       select c;
             return res.ProjectTo<TClient>();
         }
@@ -96,6 +90,6 @@ namespace CRM.Store
         {
             throw new NotImplementedException();
         }
-        
+
     }
 }

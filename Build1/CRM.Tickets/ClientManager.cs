@@ -31,14 +31,14 @@ namespace CRM.Tickets
 
                 if (client.Validate() && user.Validate())
                 {
-                    long clientId = _clientStore.CreateClient<TUser>(client, user);
+                    Guid userId = _clientStore.CreateClient<TUser>(client, user);
                     //send email to client
                     //string message = "Dear " + client.Name + "<br/> Thank you ";
                     string fromAddress = ConfigurationManager.AppSettings["SUPPORTMAILID"];
                     string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
                         "Plese Click below link for Activation<br/><br/>" +
-                        "<a href='http://localhost:2340/user/activate?id=" + clientId +
-                        "' >http://localhost:2340/user/activate?id=" + clientId + "</a><br/><br />" +
+                        "<a href='http://localhost:51291/User/Activate?id=" + userId +
+                        "' > http://localhost:51291/User/Activate?id=" + userId + "</a><br/><br />" +
                         "Thanks and Regards<br/>CRM Admin";
                     EmailUtilty.SendEmail(user.Username, fromAddress, "Company Registration", Msg, true);
 

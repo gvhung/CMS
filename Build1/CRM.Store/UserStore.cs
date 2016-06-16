@@ -11,8 +11,8 @@ namespace CRM.Store
     public class UserStore<TUser> : IUserStore<TUser> where TUser : IUser
     {
         CRMContext _context;
-            
-        public UserStore():this ("CRMContext")
+
+        public UserStore() : this("CRMContext")
         {
         }
         public UserStore(string constr)
@@ -40,6 +40,19 @@ namespace CRM.Store
         public IQueryable GetAllUsers()
         {
             throw new NotImplementedException();
+        } 
+
+        public void UserActivate(Guid id)
+        {
+            //UserProfileEntity userEntity = AutoMapper.Mapper.Map<UserProfileEntity>(id);
+            UserProfileEntity c = (from x in _context.Users
+                                   where x.UID == id
+                          select x).First();
+            c.Status = 1;
+            //dataBase.SaveChanges();
+            _context.Entry(c).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
+                        
         }
     }
 }

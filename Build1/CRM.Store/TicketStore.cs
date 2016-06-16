@@ -36,9 +36,7 @@ namespace CRM.Store
             _context.SaveChanges();
             
         }
-
-
-
+        
         public void UpdateTicket(TTicket ticket)
         {
             throw new NotImplementedException();

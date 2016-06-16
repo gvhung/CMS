@@ -19,5 +19,9 @@ namespace CRM.Tickets
             return userStore.GetUser(emailId);
         }
 
+        public void UserActivate(Guid id)
+        {
+             userStore.UserActivate(id);
+        }
     }
 }
