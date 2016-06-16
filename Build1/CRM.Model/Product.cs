@@ -14,6 +14,7 @@ namespace CRM.Model
         public long Id { get; set; }
        
         public string Description { get; set;}
+        public string Versions { get; set; }
        
         public bool Validate()
         {
