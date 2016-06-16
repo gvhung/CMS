@@ -38,6 +38,7 @@ namespace CRM.Web.Controllers
 
            product.Name = m.Name;
             product.Description = m.Description;
+            product.Versions = m.Versions;
             ProductManager<Product> productManager = new ProductManager<Product>(new ProductStore<Product>());
             productManager.CreateProduct(product);
 
