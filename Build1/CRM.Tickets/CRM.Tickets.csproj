@@ -43,9 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranchManager.cs" />
-    <Compile Include="ClientManager.cs" />
+    <Compile Include="CompanytManager.cs" />
     <Compile Include="Interfaces\IBranchStore.cs" />
-    <Compile Include="Interfaces\IClientStore.cs" />
+    <Compile Include="Interfaces\ICompanyStore.cs" />
     <Compile Include="Interfaces\IProductStore.cs" />
     <Compile Include="Interfaces\ITicketStore.cs" />
     <Compile Include="Interfaces\IUserStore.cs" />

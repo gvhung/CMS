@@ -10,10 +10,10 @@ using System.Configuration;
 
 namespace CRM.Tickets
 {
-    public class ClientManager<TClient> where TClient : IClient
+    public class CompanyManager<TClient> where TClient : ICompany
     {
-        IClientStore<TClient> _clientStore;
-        public ClientManager(IClientStore<TClient> clientStore)
+        ICompanyStore<TClient> _clientStore;
+        public CompanyManager(ICompanyStore<TClient> clientStore)
         {
             _clientStore = clientStore;
         }
@@ -66,7 +66,7 @@ namespace CRM.Tickets
             return _clientStore.GetClient(client);
         }
 
-        public Client GetClientByID(int id)
+        public Company GetClientByID(int id)
         {
             return _clientStore.GetClientByID(id);
         }

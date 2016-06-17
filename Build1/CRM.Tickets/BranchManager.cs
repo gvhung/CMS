@@ -22,6 +22,9 @@ namespace CRM.Tickets
             _branchStore.CreateBranch(branch);
         }
 
-
+        public IQueryable<TBranch> GetBranches()
+        {
+            return _branchStore.GetBranches();
+        }
     }
 }

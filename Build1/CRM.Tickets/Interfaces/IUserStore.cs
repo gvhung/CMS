@@ -12,6 +12,6 @@ namespace CRM.Tickets.Interfaces
         void CreateUser(TUser user);
         IQueryable GetAllUsers();
         TUser GetUser(string emailId);
-        void UserActivate(Guid id);
+        void ActivateUser(Guid id);
     }
 }
