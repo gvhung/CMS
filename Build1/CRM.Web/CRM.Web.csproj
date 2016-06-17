@@ -217,7 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PasswordController.cs" />
@@ -231,7 +231,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="ViewModel\BranchCreatModel.cs" />
-    <Compile Include="ViewModel\ClientCreateModel.cs" />
+    <Compile Include="ViewModel\BranchListModel.cs" />
+    <Compile Include="ViewModel\CompanyCreateModel.cs" />
     <Compile Include="ViewModel\ClientEditModel.cs" />
     <Compile Include="ViewModel\ClientListModel.cs" />
     <Compile Include="ViewModel\ForgotPasswordModel.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="ViewModel\TicketCreateModel.cs" />
     <Compile Include="ViewModel\TicketDetailModel.cs" />
     <Compile Include="ViewModel\TicketListModel.cs" />
+    <Compile Include="ViewModel\UserCreateModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -312,14 +314,17 @@
     <Content Include="Views\Password\SuccessMessage.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Ticket\List.cshtml" />
-    <Content Include="Views\Client\Create.cshtml" />
-    <Content Include="Views\Client\List.cshtml" />
+    <Content Include="Views\Company\Register.cshtml" />
+    <Content Include="Views\Company\List.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
-    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Branch\Create.cshtml" />
     <Content Include="Views\User\Activate.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Branch\List.cshtml" />
+    <Content Include="Views\Company\RegisterSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

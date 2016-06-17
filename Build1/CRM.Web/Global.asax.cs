@@ -28,11 +28,11 @@ namespace CRM.Web
                 cnfg.CreateMap<TicketEntity, Ticket>();
                 cnfg.CreateMap<Ticket, TicketListModel>();
 
-                cnfg.CreateMap<ClientEntity, Client>();
-                cnfg.CreateMap<Client, ClientEntity>();
-                cnfg.CreateMap<Client, ClientListModel>();
-                cnfg.CreateMap<ClientEditModel, Client>();
-                cnfg.CreateMap<Client, ClientEditModel>();
+                cnfg.CreateMap<CompanyEntity, Company>();
+                cnfg.CreateMap<Company, CompanyEntity>();
+                cnfg.CreateMap<Company, ClientListModel>();
+                cnfg.CreateMap<ClientEditModel, Company>();
+                cnfg.CreateMap<Company, ClientEditModel>();
 
                 cnfg.CreateMap<ProductEntity, Product>();
                 cnfg.CreateMap<Product, ProductListModel>();
