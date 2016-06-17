@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+@media screen and (min-width: 750px) {
+    .form-label { text-align:right}
+    .margin-bottom-10 {
+        margin-bottom: 10px;
+    }
+
+}
+/*.textAdjust { text-align:right}*/
