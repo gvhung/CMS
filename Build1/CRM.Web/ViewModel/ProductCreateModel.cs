@@ -17,7 +17,7 @@ namespace CRM.Web.ViewModel
         [Display(Name="Product Name")]
         public string Name { get; set; }
 
-        public List<Client> Clients { get; set; }
+        public List<Company> Clients { get; set; }
         public string Description { get; set;}
         [Display(Name = "versions")]
         public string Versions { get; set; }

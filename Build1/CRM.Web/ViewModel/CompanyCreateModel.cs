@@ -6,12 +6,12 @@ using System.Web;
 
 namespace CRM.Web.ViewModel
 {
-    public class ClientCreateModel
+    public class CompanyCreateModel
     {
 
         public int ClientId { get; set; }
 
-        [Display(Name ="Client Name")]
+        [Display(Name ="Company Name")]
         [Required(ErrorMessage = "Please Enter Name")]
         
         public string Name { get; set; }
