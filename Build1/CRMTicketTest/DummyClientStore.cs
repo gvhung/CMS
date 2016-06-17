@@ -8,44 +8,44 @@ using CRM.Model;
 
 namespace CRMTicketTest
 {
-    class DummyClientStore : IClientStore<Client>
+    class DummyClientStore : ICompanyStore<Company>
     {
-        List<Client> _mycontext = new List<Client>();
+        List<Company> _mycontext = new List<Company>();
         public DummyClientStore()
         {
-            List<Client> _mycontext = new List<Client>();
+            List<Company> _mycontext = new List<Company>();
         }
 
-        public Guid CreateClient<TUser>(Client client, TUser user) where TUser : IUser
+        public Guid CreateClient<TUser>(Company client, TUser user) where TUser : IUser
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Client> GetClients(SearchCriteria criteria)
+        public IQueryable<Company> GetClients(SearchCriteria criteria)
         {
             throw new NotImplementedException();
         }
 
-        public Client GetClientByID(int id)
+        public Company GetClientByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateClient(Client c)
+        public void UpdateClient(Company c)
         {
-            Client tempClient = _mycontext.Find(cl => cl.ClientId == c.ClientId);
+            Company tempClient = _mycontext.Find(cl => cl.ClientId == c.ClientId);
             if (tempClient == null)
                 throw new Exception("Client not found");
             else
                 tempClient = c;
         }
 
-        public List<Client> GetClient(Client Client)
+        public List<Company> GetClient(Company Client)
         {
             throw new NotImplementedException();
         }
 
-        public List<Client> GetAllClients()
+        public List<Company> GetAllClients()
         {
             throw new NotImplementedException();
         }

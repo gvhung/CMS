@@ -63,8 +63,8 @@ namespace CRMTicketTest
         [TestMethod]
         public void CreateClientSuccess()
         {
-            ClientManager<Client> clientManager = new ClientManager<Client>(new DummyClientStore());
-            Client c = new Client() { Name = "not able to login"};
+            CompanyManager<Company> clientManager = new CompanyManager<Company>(new DummyClientStore());
+            Company c = new Company() { Name = "not able to login"};
             //clientManager.CreateClient(c);
 
         }
@@ -73,8 +73,8 @@ namespace CRMTicketTest
         [ExpectedException(typeof(Exception))]
         public void CreateClientWithoutNameFail()
         {
-            ClientManager<Client> clientManager = new ClientManager<Client>(new DummyClientStore());
-            Client c = new Client() { };
+            CompanyManager<Company> clientManager = new CompanyManager<Company>(new DummyClientStore());
+            Company c = new Company() { };
             //clientManager.CreateClient(c);
         }
     }
