@@ -32,6 +32,14 @@ namespace CRM.Web.Controllers
             return View();
         }
 
+
+
+        public ActionResult List()
+        {
+           // BranchManager<Branch> branchManager = new BranchManager<Branch>()
+            return View();
+        }
+
     }
 
 }

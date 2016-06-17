@@ -15,11 +15,17 @@ namespace CRM.Web.Controllers
         // GET: User
         public ActionResult Activate(Guid id)
         {
-             
             UserManager<CRMUser> userManager = new UserManager<CRMUser>(new UserStore<CRMUser>());
-            userManager.UserActivate(id);
+            userManager.ActivateUser(id);
             //code for updating status of user from 0 to 1
             return View();
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
     }
 }

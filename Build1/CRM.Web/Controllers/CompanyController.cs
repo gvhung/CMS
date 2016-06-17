@@ -13,31 +13,31 @@ using PagedList;
 
 namespace CRM.Web.Controllers
 {
-    public class ClientController : Controller
+    public class CompanyController : Controller
     {
         // GET: Client
-        public ActionResult Create()
+        public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(ClientCreateModel m)
+        public ActionResult Register(CompanyCreateModel m)
 
         {
             try
             {
 
-                Client client = new Client();
+                Company client = new Company();
                 client.Name = m.Name;
                 // client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
 
                 CRMUser user = new CRMUser() { Username = m.EmailId, Password = m.Password };
 
-                ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+                CompanyManager<Company> clientManager = new CompanyManager<Company>(new CompanyStore<Company>());
                 clientManager.CreateClient<CRMUser>(client, user);
 
-                return RedirectToAction("List");
+                return View("RegisterSuccess");
             }
             catch (Exception ex)
             {
@@ -52,8 +52,8 @@ namespace CRM.Web.Controllers
         {
             SearchCriteria criteria = new SearchCriteria();
             criteria.Title = Search;
-            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
-            IQueryable<Client> lstClients = clientManager.GetClient(criteria);
+            CompanyManager<Company> clientManager = new CompanyManager<Company>(new CompanyStore<Company>());
+            IQueryable<Company> lstClients = clientManager.GetClient(criteria);
             IQueryable<ClientListModel> lstClientListModel = lstClients.ProjectTo<ClientListModel>().OrderBy(c => c.Name);
             IPagedList<ClientListModel> pagedList = lstClientListModel.ToPagedList(page, 6);
             return View(pagedList);
@@ -61,9 +61,9 @@ namespace CRM.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
+            CompanyManager<Company> clientManager = new CompanyManager<Company>(new CompanyStore<Company>());
 
-            Client c = clientManager.GetClientByID(id);
+            Company c = clientManager.GetClientByID(id);
             ClientEditModel ClientModel = (ClientEditModel)AutoMapper.Mapper.Map<ClientEditModel>(c);
 
             return View("Edit", ClientModel);
@@ -72,8 +72,8 @@ namespace CRM.Web.Controllers
         [HttpPost]
         public ActionResult Edit(ClientEditModel m)
         {
-            ClientManager<Client> clientManager = new ClientManager<Client>(new ClientStore<Client>());
-            Client c = AutoMapper.Mapper.Map<Client>(m);
+            CompanyManager<Company> clientManager = new CompanyManager<Company>(new CompanyStore<Company>());
+            Company c = AutoMapper.Mapper.Map<Company>(m);
             clientManager.UpdateClient(c);
             return View(m);
         }

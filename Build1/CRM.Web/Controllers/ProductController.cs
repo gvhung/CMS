@@ -18,11 +18,11 @@ namespace CRM.Web.Controllers
 
         public ActionResult create()
         {
-            ClientStore<Client> clientStore = new ClientStore<Client>();
-            ClientManager<Client> clientManager = new ClientManager<Client>(clientStore);
+            CompanyStore<Company> clientStore = new CompanyStore<Company>();
+            CompanyManager<Company> clientManager = new CompanyManager<Company>(clientStore);
             ProductCreateModel m = new ProductCreateModel();
             m.Clients=clientManager.GetAllClients();
-            m.Clients.Insert(0, new Client() { ClientId = 0, Name = "Select Company" });
+            m.Clients.Insert(0, new Company() { ClientId = 0, Name = "Select Company" });
             m.ClientId = "1";
 
      //    ClientManager< TClient > clientManager = new ClientManager<TClient>();
