@@ -56,10 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranchStore.cs" />
-    <Compile Include="ClientStore.cs" />
+    <Compile Include="CompanytStore.cs" />
     <Compile Include="CRMContext.cs" />
     <Compile Include="CRMContextInitilizer.cs" />
-    <Compile Include="Entities\Clients.cs" />
+    <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\User.cs" />

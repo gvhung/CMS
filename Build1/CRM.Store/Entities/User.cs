@@ -24,7 +24,7 @@ namespace CRM.Store.Entities
         public int Status { get; set; }
        
         public int ClientId { get; set; }
-        public ClientEntity Client { get; set; }
+        public CompanyEntity Client { get; set; }
     }
     [Table("Logins")]
     public class LoginEntity

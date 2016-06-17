@@ -21,7 +21,7 @@ namespace CRM.Store.Entities
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public string Description { get; set; }
-        public ClientEntity Client { get; set; }
+        public CompanyEntity Client { get; set; }
 
         public IEnumerable<Module> Modules { get; set; }
     }

@@ -8,8 +8,8 @@ using System.ComponentModel.DataAnnotations;
 namespace CRM.Store.Entities
 {
 
-    [Table("Clients")]
-    public class ClientEntity:BaseEntity
+    [Table("Company")]
+    public class CompanyEntity:BaseEntity
     {
         [Key]
         public int ClientId { get; set; }
@@ -33,7 +33,7 @@ namespace CRM.Store.Entities
         public string BranchCode { get; set; }
         public long TicketStartNumber { get; set; }
         public int ClientId {get; set;}
-        public ClientEntity Client { get; set; }
+        public CompanyEntity Client { get; set; }
     }
 
 

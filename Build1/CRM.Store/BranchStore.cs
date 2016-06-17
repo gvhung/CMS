@@ -1,4 +1,5 @@
-﻿using CRM.Model.Interfaces;
+﻿using AutoMapper.QueryableExtensions;
+using CRM.Model.Interfaces;
 using CRM.Store.Entities;
 using CRM.Tickets.Interfaces;
 using System;
@@ -36,7 +37,7 @@ namespace CRM.Store
 
         public IQueryable<TBranch> GetBranches()
         {
-            throw new NotImplementedException();
+            return _context.Branches.ProjectTo<TBranch>();
         }
     }
 }

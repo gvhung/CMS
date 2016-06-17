@@ -42,9 +42,9 @@ namespace CRM.Store
             throw new NotImplementedException();
         } 
 
-        public void UserActivate(Guid id)
+        public void ActivateUser(Guid id)
         {
-            //UserProfileEntity userEntity = AutoMapper.Mapper.Map<UserProfileEntity>(id);
+            
             UserProfileEntity c = (from x in _context.Users
                                    where x.UID == id
                           select x).First();
@@ -56,3 +56,4 @@ namespace CRM.Store
         }
     }
 }
+ 
