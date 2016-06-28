@@ -8,6 +8,7 @@ using CRM.Business;
 using CRM.UI.ViewModels;
 using CRM.Model;
 using Utility;
+using System.Net;
 
 namespace CRM.UI.Controllers
 {
@@ -21,8 +22,17 @@ namespace CRM.UI.Controllers
 
         public JsonResult IsEmailIdExists(string emailId)
         {
-            UserBiz userBiz = new UserBiz();
-            return Json(userBiz.IsEmailIdExists(emailId) ? "Email Address already exists" : "Email Address available", JsonRequestBehavior.AllowGet);
+            try
+            {
+                UserBiz userBiz = new UserBiz();
+                return Json(new { Status = userBiz.IsEmailIdExists(emailId) }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message }, JsonRequestBehavior.AllowGet);
+
+            }
         }
 
 
@@ -31,25 +41,35 @@ namespace CRM.UI.Controllers
         {
             try
             {
+                ///creating company
+                
+                UserBiz userBiz = new UserBiz();
+                long companyId = userBiz.CreateCompany(u.CompanyName);
+
+                /// creating user
                 CRMUser user = new CRMUser();
-                user.CompanyName = u.CompanyName;
+
                 //user.FirstName = u.FirstName;
                 //user.LastName = u.LastName;
                 user.Password = u.Password;
                 user.Username = u.EmailId;
                 user.UserType = 1;
-                UserBiz userBiz = new UserBiz();
-                string res = userBiz.Create(user);
+
+
+                user.CompanyId = companyId;
+               string guid= userBiz.CreateUser(user);
+
+
                 //string CurrentURL = Request.Url.AbsoluteUri;
-                string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
+               string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
                 "Plese Click below link for Activation<br/><br/>" +
-                "<a href='http://localhost:53581/User/Activate?id=" + res +
-                 "' > http://localhost:53581/User/Activate?id=" + res + "</a><br/><br />" +
+                "<a href='http://localhost:53581/User/Activate?id=" + guid +
+                 "' > http://localhost:53581/User/Activate?id=" + guid + "</a><br/><br />" +
                  "Thanks and Regards<br/>CRM Admin";
                 //string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
                 //"Plese Click below link for Activation<br/><br/>" + CurrentURL + "/" + res + "<br/>< br /> " +
                 // "Thanks and Regards<br/>CRM Admin";
-                EmailUtilty.SendEmail(user.Username, "ajnasystemshyd@gmail.com", "Company Registration", Msg, true);
+                //EmailUtilty.SendEmail(user.Username, "ajnasystemshyd@gmail.com", "Company Registration", Msg, true);
                 //Temparary.sendMail(user.Username, "ajnasystemshyd@gmail.com", "Company Registration", Msg, true);
 
 
