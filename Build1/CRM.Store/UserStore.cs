@@ -26,34 +26,28 @@ namespace CRM.Store
 
         public TUser GetUser(string emailId)
         {
-
             LoginEntity loginEntity = _context.Logins.FirstOrDefault(l => l.Username.ToUpper() == emailId.ToUpper());
             if (loginEntity == null) return default(TUser);
 
             UserProfileEntity userProfile = _context.Users.FirstOrDefault(u => u.UID == loginEntity.UID);
 
             return AutoMapper.Mapper.Map<TUser>(userProfile);
-
         }
-
 
         public IQueryable GetAllUsers()
         {
             throw new NotImplementedException();
-        } 
+        }
 
         public void ActivateUser(Guid id)
         {
-            
             UserProfileEntity c = (from x in _context.Users
                                    where x.UID == id
-                          select x).First();
+                                   select x).First();
             c.Status = 1;
             //dataBase.SaveChanges();
             _context.Entry(c).State = System.Data.Entity.EntityState.Modified;
             _context.SaveChanges();
-                        
         }
     }
 }
- 
