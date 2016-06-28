@@ -22,11 +22,18 @@ namespace CRM.Business
             }
         }
 
-
-        public string Create(CRMUser user)
+        public long CreateCompany(string companyName)
         {
-            UserDB userDal = new UserDB();
-          return  userDal.Create(user);
+            UserDB userDB = new UserDB();
+            return userDB.CreateCompany(companyName);
+        }
+
+
+
+        public string CreateUser(CRMUser user)
+        {
+            UserDB userDB = new UserDB();
+          return userDB.Create(user);
         }
 
         public void Activate(string id)
