@@ -10,7 +10,6 @@ using CRM.Store;
 using AutoMapper.QueryableExtensions;
 using PagedList;
 
-
 namespace CRM.Web.Controllers
 {
     public class CompanyController : Controller
@@ -23,20 +22,15 @@ namespace CRM.Web.Controllers
 
         [HttpPost]
         public ActionResult Register(CompanyCreateModel m)
-
         {
             try
             {
-
                 Company client = new Company();
                 client.Name = m.Name;
                 // client.TicketStartNumber = Convert.ToInt32(m.TicketStartNumber);
-
                 CRMUser user = new CRMUser() { Username = m.EmailId, Password = m.Password };
-
                 CompanyManager<Company> clientManager = new CompanyManager<Company>(new CompanyStore<Company>());
                 clientManager.CreateClient<CRMUser>(client, user);
-
                 return View("RegisterSuccess");
             }
             catch (Exception ex)
@@ -44,7 +38,6 @@ namespace CRM.Web.Controllers
                 ModelState.AddModelError("CC", ex.Message);
                 return View(m);
             }
-
         }
 
         [HttpGet]
@@ -62,10 +55,8 @@ namespace CRM.Web.Controllers
         public ActionResult Edit(int id)
         {
             CompanyManager<Company> clientManager = new CompanyManager<Company>(new CompanyStore<Company>());
-
             Company c = clientManager.GetClientByID(id);
             ClientEditModel ClientModel = (ClientEditModel)AutoMapper.Mapper.Map<ClientEditModel>(c);
-
             return View("Edit", ClientModel);
         }
 
@@ -77,7 +68,5 @@ namespace CRM.Web.Controllers
             clientManager.UpdateClient(c);
             return View(m);
         }
-
-
     }
 }
