@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using CRM.Business;
 using CRM.UI.ViewModels;
+using CRM.Model;
+using Utility;
 
 namespace CRM.UI.Controllers
 {
@@ -16,18 +18,64 @@ namespace CRM.UI.Controllers
         {
             return View();
         }
-       
+
         public JsonResult IsEmailIdExists(string emailId)
         {
             UserBiz userBiz = new UserBiz();
-            return Json(userBiz.IsEmailIdExists(emailId)?"Email Address already exists":"Email Address available", JsonRequestBehavior.AllowGet);
+            return Json(userBiz.IsEmailIdExists(emailId) ? "Email Address already exists" : "Email Address available", JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ActivateUser(Guid uid)
+
+        [HttpPost]
+        public ActionResult Register(UserRegisterVM u)
+        {
+            try
+            {
+                CRMUser user = new CRMUser();
+                user.CompanyName = u.CompanyName;
+                //user.FirstName = u.FirstName;
+                //user.LastName = u.LastName;
+                user.Password = u.Password;
+                user.Username = u.EmailId;
+                user.UserType = 1;
+                UserBiz userBiz = new UserBiz();
+                string res = userBiz.Create(user);
+                //string CurrentURL = Request.Url.AbsoluteUri;
+                string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
+                "Plese Click below link for Activation<br/><br/>" +
+                "<a href='http://localhost:53581/User/Activate?id=" + res +
+                 "' > http://localhost:53581/User/Activate?id=" + res + "</a><br/><br />" +
+                 "Thanks and Regards<br/>CRM Admin";
+                //string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
+                //"Plese Click below link for Activation<br/><br/>" + CurrentURL + "/" + res + "<br/>< br /> " +
+                // "Thanks and Regards<br/>CRM Admin";
+                EmailUtilty.SendEmail(user.Username, "ajnasystemshyd@gmail.com", "Company Registration", Msg, true);
+                //Temparary.sendMail(user.Username, "ajnasystemshyd@gmail.com", "Company Registration", Msg, true);
+
+
+                return View();
+            }
+            catch(Exception Ex)
+            {
+                ModelState.AddModelError("VE", Ex.Message);
+                return View(u);
+            }
+        }
+
+
+        public ActionResult Create(UserProfileViewModel u)
         {
             return View();
         }
 
+
+        public ActionResult Activate(string Id)
+        {
+            UserBiz userBiz = new UserBiz();
+            userBiz.Activate(Id);
+            return RedirectToAction("Login", "Login");
+        }
+
     }
-        
+
 }
