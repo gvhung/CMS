@@ -50,11 +50,11 @@ namespace CRM.Web.Controllers
         {
             CRM.Model.Ticket ticket = new Model.Ticket();
             ticket.Title = m.Title;
-            ticket.BranchId = 3;
+            //ticket.BranchId = 3;
             ticket.Description = m.Description;
-            ticket.Priority = m.SeverityCode;
-            ticket.TicketType = m.TicketType;
-            ticket.ModuleId = m.ModuleId;
+            //ticket.Priority = m.SeverityCode;
+            //ticket.TicketType = m.TicketType;
+            //ticket.ModuleId = m.ModuleId;
             ticket.ProductId = m.ProductId;
             ticket.Version = m.Version;
             
