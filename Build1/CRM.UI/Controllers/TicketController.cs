@@ -29,9 +29,9 @@ namespace CRM.UI.Controllers
             ticket.Title = T.Title;
             ticket.Version=T.Version;
             ticket.ProductId = T.ProductId;
-            ticket.TicketNo = T.TicketNo;
-            ticket.CompanyId = T.CompanyId;
-            ticket.ComponentId = T.ComponentId;
+           // ticket.TicketNo = T.TicketNo;
+           // ticket.CompanyId = T.CompanyId;
+           // ticket.ComponentId = T.ComponentId;
             TicketBiz ticketbiz = new TicketBiz();
             ticketbiz.AddTicket(ticket);
             return View();

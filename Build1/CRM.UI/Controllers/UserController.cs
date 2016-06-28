@@ -23,12 +23,7 @@ namespace CRM.UI.Controllers
             return Json(userBiz.IsEmailIdExists(emailId)?"Email Address already exists":"Email Address available", JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        public ActionResult Create(UserProfileViewModel u)
+        public ActionResult ActivateUser(Guid uid)
         {
             return View();
         }
