@@ -5,3 +5,10 @@ E:\CRM\Build1\CRM.Dal\obj\Debug\CRM.Dal.dll
 E:\CRM\Build1\CRM.Dal\obj\Debug\CRM.Dal.pdb
 E:\CRM\Build1\CRM.Dal\bin\Debug\CRM.Model.dll
 E:\CRM\Build1\CRM.Dal\bin\Debug\CRM.Model.pdb
+E:\CRM\Build 1\CRM.Dal\bin\Debug\CRM.Dal.dll
+E:\CRM\Build 1\CRM.Dal\bin\Debug\CRM.Dal.pdb
+E:\CRM\Build 1\CRM.Dal\bin\Debug\CRM.Model.dll
+E:\CRM\Build 1\CRM.Dal\bin\Debug\CRM.Model.pdb
+E:\CRM\Build 1\CRM.Dal\obj\Debug\CRM.Dal.csprojResolveAssemblyReference.cache
+E:\CRM\Build 1\CRM.Dal\obj\Debug\CRM.Dal.dll
+E:\CRM\Build 1\CRM.Dal\obj\Debug\CRM.Dal.pdb
