@@ -12,6 +12,28 @@ namespace CRM.Dal
 {
     public class UserDB
     {
+        public long CreateCompany(string compnyName)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spCreateCompany", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@COmpnayName", SqlDbType.VarChar).Value = compnyName;
+                SqlParameter prmCompanyId = cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt);
+                prmCompanyId.Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                return Convert.ToInt64(prmCompanyId.Value);
+
+
+
+            }
+
+
+
+        }
         public bool IsEmailIdExists(string emailId)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
