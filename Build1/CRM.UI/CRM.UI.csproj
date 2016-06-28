@@ -253,6 +253,7 @@
     <Content Include="Views\Ticket\GetAllTickets.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\UserProfile\Create.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,6 +274,10 @@
     <ProjectReference Include="..\CRM.Model\CRM.Model.csproj">
       <Project>{c9f2373a-1ba2-4d57-908f-233301f5487d}</Project>
       <Name>CRM.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{546e45a1-c9a0-4cbf-8536-53075718a079}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
