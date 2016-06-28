@@ -14,6 +14,7 @@
             @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                <label id="EmailMessage"></label>
                 @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,23 +58,30 @@
 
     <script type="text/javascript">
         $(function () {
-            alert($("#CompanyName").val());
+ 
 
-            $("#EmailId").change(function () {
+            $("#EmailId").keyup(function () {
+                $("#EmailMessage").text("");
                 //call service
-                var request = $.ajax({
-                    url: '/user/IsEmailIdExists',
-                    method: "GET",
-                    data: { emailId: $("#EmailId").val() },
-                });
 
-                request.done(function (msg) {
-                    alert(msg);
-                });
+                if ($("#EmailId").val() != "") {
+                    $.ajax({
+                        url: '/user/IsEmailIdExists',
+                        method: "GET",
+                        data: { emailId: $("#EmailId").val() },
+                        success: function (data) {
+                            if (data.Status)
+                                $("#EmailMessage").text("Email Address not available");
+                            else
+                                $("#EmailMessage").text("Email Address  available");
+                        
+                        },
+                        error: function (xhr, status, err) {
+                            alert(xhr.responseText);
+                        }
+                    });
+                }
 
-                request.fail(function (jqXHR, textStatus) {
-                    alert(textStatus);
-                });
             });
         });
 
