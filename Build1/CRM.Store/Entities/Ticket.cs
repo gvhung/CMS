@@ -20,7 +20,6 @@ namespace CRM.Store.Entities
         [Required]
         public string Title { get; set; }
         public string Assignee { get; set; }
-        public int ComponentId { get; set; }
         public int ModuleId { get; set; }
         [Required]
         public int Priority { get; set; }
