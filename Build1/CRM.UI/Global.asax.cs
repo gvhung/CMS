@@ -19,7 +19,12 @@ namespace CRM.UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Mapper.Initialize(cnfg => { cnfg.CreateMap<Ticket, TicketListModel>(); });
+            Mapper.Initialize(cnfg =>
+            {
+                cnfg.CreateMap<Ticket, TicketListModel>();
+                cnfg.CreateMap<Ticket, TicketCreateModel>();
+
+            });
 
 
          }
