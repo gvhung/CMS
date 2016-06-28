@@ -7,8 +7,7 @@ using CRM.Model;
 using CRM.Tickets.Interfaces;
 namespace CRM.Tickets
 {
-    public class TicketManager<TTicket>  where TTicket: ITicket
-
+    public class TicketManager<TTicket> where TTicket : ITicket
     {
         ITicketStore<TTicket> _ticketStore;
         public TicketManager(ITicketStore<TTicket> ticketStore)
@@ -16,16 +15,15 @@ namespace CRM.Tickets
             _ticketStore = ticketStore;
         }
 
-        public void CreateTicket(TTicket  ticket)
+        public void CreateTicket(TTicket ticket)
         {
             ticket.DateCreated = DateTime.Now;
             ticket.DateModified = DateTime.Now;
-            ticket.DateClosed = null;
+            //ticket.DateClosed = null;
             if (ticket.Validate())
-           {
+            {
                 _ticketStore.CreateTicket(ticket);
                 //send email to client
-
             }
         }
 
@@ -41,8 +39,6 @@ namespace CRM.Tickets
 
         public IQueryable<TTicket> GetTickets()
         {
-
-           
             return _ticketStore.GetTickets();
         }
 
