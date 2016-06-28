@@ -17,18 +17,12 @@ namespace CRM.Tickets
         {
             _clientStore = clientStore;
         }
-
-      
-        public void CreateClient<TUser>(TClient client, TUser user) where TUser:IUser
+        public void CreateClient<TUser>(TClient client, TUser user) where TUser : IUser
         {
             try
             {
-
                 if (client == null) throw new Exception("Client information is missing");
                 if (user == null) throw new Exception("User information is missing");
-
-
-
                 if (client.Validate() && user.Validate())
                 {
                     Guid userId = _clientStore.CreateClient<TUser>(client, user);
@@ -41,8 +35,6 @@ namespace CRM.Tickets
                         "' > http://localhost:51291/User/Activate?id=" + userId + "</a><br/><br />" +
                         "Thanks and Regards<br/>CRM Admin";
                     EmailUtilty.SendEmail(user.Username, fromAddress, "Company Registration", Msg, true);
-
-
                 }
             }
             catch (Exception ex)
@@ -51,7 +43,7 @@ namespace CRM.Tickets
             }
         }
 
-       public void Getclient()
+        public void Getclient()
         {
 
         }
@@ -82,7 +74,6 @@ namespace CRM.Tickets
 
         public List<TClient> GetAllClients()
         {
-
             return _clientStore.GetClients(new SearchCriteria() { Title = "" }).ToList();
         }
 
