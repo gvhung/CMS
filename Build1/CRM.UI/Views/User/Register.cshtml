@@ -1,16 +1,11 @@
 ﻿@model CRM.UI.ViewModels.UserRegisterVM
-
 @{
     ViewBag.Title = "Register";
 }
-
 <h2>Register</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <h4>UserRegisterVM</h4>
         <hr />
@@ -22,7 +17,6 @@
                 @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -30,7 +24,6 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -67,17 +60,11 @@
             alert($("#CompanyName").val());
 
             $("#EmailId").change(function () {
-
-                
                 //call service
                 var request = $.ajax({
                     url: '/user/IsEmailIdExists',
                     method: "GET",
                     data: { emailId: $("#EmailId").val() },
-                  
-                    
-
-
                 });
 
                 request.done(function (msg) {
@@ -87,8 +74,6 @@
                 request.fail(function (jqXHR, textStatus) {
                     alert(textStatus);
                 });
-                
-
             });
         });
 
