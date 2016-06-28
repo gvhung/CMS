@@ -8,22 +8,20 @@ namespace CRM.Model
 {
     public interface ITicket
     {
-        long Id { get; set; }
-        long? TicketNo { get; set; }
-        int BranchId { get; set; }
-        int Priority { get; set; }
-        string Title { get; set; }
-        int ProductId { get; set; }
-        int ModuleId { get; set; }
-        int ComponentId { get; set; }
-        string Version { get; set; }
-        string Assignee { get; set; }
-        int CreatedBy { get; set; }
-        int TicketType { get; set; }
-        int TenantId { get; set; }
-        DateTime? DateClosed { get; set; }
-        DateTime DateCreated { get; set; }
-        DateTime DateModified { get; set; }
+         decimal TicketId { get; set; }
+         decimal TicketNo { get; set; }
+         string Title { get; set; }
+         string Description { get; set; }
+         Int64 ProductId { get; set; }
+         Int64 ComponentId { get; set; }
+         string Version { get; set; }
+         int Status { get; set; }
+         int CompanyId { get; set; }
+         DateTime DateCreated { get; set; }
+         DateTime DateModified { get; set; }
+         Int64 CreatedBy { get; set; }
+         DateTime DateFixed { get; set; }
+         DateTime DateClosed { get; set; }
         bool Validate();
     }
 }
