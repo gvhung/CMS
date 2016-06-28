@@ -16,24 +16,22 @@ namespace CRM.UI.Controllers
         // GET: Ticket
         public ActionResult Create()
         {
-            TicketBiz ticketbiz = new TicketBiz();
-            ticketbiz.GetAllTicket();
+            //TicketBiz ticketbiz = new TicketBiz();
+            //ticketbiz.GetAllTicket();
             return View();
         }
-
-
-
+        
         [HttpPost]
         public ActionResult Create(TicketCreateModel T)
         {
             Ticket ticket = new Ticket();
             ticket.Description = T.Description;
             ticket.Title = T.Title;
-            ticket.TicketType = T.TicketType;
             ticket.Version=T.Version;
-            ticket.Priority = T.SeverityCode;
-            ticket.ModuleId = T.ModuleId;
             ticket.ProductId = T.ProductId;
+            ticket.TicketNo = T.TicketNo;
+            ticket.CompanyId = T.CompanyId;
+            ticket.ComponentId = T.ComponentId;
             TicketBiz ticketbiz = new TicketBiz();
             ticketbiz.AddTicket(ticket);
             return View();
@@ -53,6 +51,27 @@ namespace CRM.UI.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult GetTicketById(int id)
+        {
+            TicketBiz ticketbiz = new TicketBiz();
+           Ticket t= ticketbiz.GetTicketById(id);
+            //TicketCreateModel ticketcraetemodel= AutoMapper.Mapper.Map<TicketCreateModel>(t);
+            TicketCreateModel ticketcreatemodel = new TicketCreateModel();
+            ticketcreatemodel.Title = t.Title;
+            ticketcreatemodel.Description = t.Description;
+            //ticketcreatemodel.ModuleId = t.ModuleId;
+            //ticketcreatemodel.SeverityCode = t.Priority;
+            //ticketcreatemodel.TicketType = t.TicketType;
+            ticketcreatemodel.Version = t.Version;
+            return View("Create", ticketcreatemodel);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateTicket()
+        {
+            return View();
+        }
 
     }
 }
