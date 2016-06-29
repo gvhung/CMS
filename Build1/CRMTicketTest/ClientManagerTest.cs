@@ -70,6 +70,7 @@ namespace CRMTicketTest
         }
 
         [TestMethod]
+     
         [ExpectedException(typeof(Exception))]
         public void CreateClientWithoutNameFail()
         {

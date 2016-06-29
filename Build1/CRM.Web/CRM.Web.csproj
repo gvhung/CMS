@@ -354,6 +354,10 @@
       <Project>{b59bc2ce-44cd-40cc-8e6e-628eeee926fa}</Project>
       <Name>CRM.Tickets</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{546e45a1-c9a0-4cbf-8536-53075718a079}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -44,7 +44,7 @@ namespace CRM.UI.Controllers
                 ///creating company
                 
                 UserBiz userBiz = new UserBiz();
-                long companyId = userBiz.CreateCompany(u.CompanyName);
+                
 
                 /// creating user
                 CRMUser user = new CRMUser();
@@ -53,15 +53,16 @@ namespace CRM.UI.Controllers
                 //user.LastName = u.LastName;
                 user.Password = u.Password;
                 user.Username = u.EmailId;
-                user.UserType = 1;
+                user.CompanyName = u.CompanyName;
 
 
-                user.CompanyId = companyId;
-               string guid= userBiz.CreateUser(user);
+                user.CompanyId = 0;
+               string guid= userBiz.RegisterUser (user);
+                
 
 
                 //string CurrentURL = Request.Url.AbsoluteUri;
-               string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
+                string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
                 "Plese Click below link for Activation<br/><br/>" +
                 "<a href='http://localhost:53581/User/Activate?id=" + guid +
                  "' > http://localhost:53581/User/Activate?id=" + guid + "</a><br/><br />" +

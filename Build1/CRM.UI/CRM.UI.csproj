@@ -251,7 +251,7 @@
     <Content Include="Views\Ticket\UpdateTicket.cshtml" />
     <Content Include="Views\Ticket\GetAllTickets.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
-    <Content Include="Views\UserProfile\Create.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,12 @@ namespace CRM.Dal
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spCreateCompany", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@COmpnayName", SqlDbType.VarChar).Value = compnyName;
+                cmd.Parameters.Add("@ClientName", SqlDbType.VarChar).Value = compnyName;
+                cmd.Parameters.Add("@TicketStartNumber", SqlDbType.BigInt).Value = 0;
+                cmd.Parameters.Add("@CreatedBy", SqlDbType.BigInt).Value = 0;
+                cmd.Parameters.Add("@Status", SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@CurrentTicketNumber", SqlDbType.BigInt).Value = 0;
+
                 SqlParameter prmCompanyId = cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt);
                 prmCompanyId.Direction = ParameterDirection.Output;
 
@@ -55,7 +60,7 @@ namespace CRM.Dal
         public void Activate(string id)
         {
 
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMconstr"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
             {
                 string res = Convert.ToString(Guid.NewGuid());
                 con.Open();
@@ -71,24 +76,22 @@ namespace CRM.Dal
 
 
 
-        public string Create(CRMUser user)
+        public string RegisterUser(CRMUser user)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMconstr"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
             {
-                string res = Convert.ToString(Guid.NewGuid());
+         
                 con.Open();
-                SqlCommand cmd = new SqlCommand("spUserCreate", con);
+                SqlCommand cmd = new SqlCommand("spRegisterUser", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Username", user.Username);
-                cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", user.LastName);
-                cmd.Parameters.AddWithValue("@Guid", res);
-                cmd.Parameters.AddWithValue("@UserType", user.UserType);
-                cmd.Parameters.AddWithValue("@CompanyId", user.CompanyId);
-                cmd.Parameters.AddWithValue("Password", user.Password);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@CompanyName", user.CompanyName);
+                SqlParameter prmGuid = cmd.Parameters.Add("@Guid", SqlDbType.UniqueIdentifier);
+                prmGuid.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
-                con.Close();
-                return res;
+
+                return Convert.ToString(prmGuid.Value);
             }
         }
 

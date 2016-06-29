@@ -35,8 +35,8 @@ namespace CRM.Store
 
                 //set DateCreated to System current date so that even wrong date is coming from TClient, it will not insert wrong date
                 clientEntity.DateCreated = DateTime.Now;
-                user.UID = Guid.NewGuid();
-                user.Status = 0;
+                //user.UID = Guid.NewGuid();
+               // user.Status = 0;
                 user.UserType = 1;  //Admin of client
                 user.DateCreated = DateTime.Now;
                 clientEntity.Users = new List<UserProfileEntity>();

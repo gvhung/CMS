@@ -30,10 +30,10 @@ namespace CRM.Business
 
 
 
-        public string CreateUser(CRMUser user)
+        public string RegisterUser(CRMUser user)
         {
             UserDB userDB = new UserDB();
-          return userDB.Create(user);
+          return userDB.RegisterUser (user);
         }
 
         public void Activate(string id)
