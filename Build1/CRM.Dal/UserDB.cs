@@ -74,13 +74,10 @@ namespace CRM.Dal
         }
 
 
-
-
         public string RegisterUser(CRMUser user)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
             {
-         
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spRegisterUser", con);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -90,7 +87,6 @@ namespace CRM.Dal
                 SqlParameter prmGuid = cmd.Parameters.Add("@Guid", SqlDbType.UniqueIdentifier);
                 prmGuid.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
-
                 return Convert.ToString(prmGuid.Value);
             }
         }
