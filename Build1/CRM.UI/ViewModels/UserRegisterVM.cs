@@ -14,7 +14,7 @@ namespace CRM.UI.ViewModels
         public string EmailId { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password)]        
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
