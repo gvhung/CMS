@@ -173,7 +173,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -247,12 +246,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Ticket\Create1.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Ticket\UpdateTicket.cshtml" />
     <Content Include="Views\Ticket\GetAllTickets.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\RegisterSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CRM.UI.ViewModels
 {
-    public class LoginModel
+    public class LoginViewModel
     {
         [Required]
         [Display(Name = "Email")]

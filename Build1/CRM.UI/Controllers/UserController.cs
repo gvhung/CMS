@@ -42,25 +42,16 @@ namespace CRM.UI.Controllers
             try
             {
                 ///creating company
-
                 UserBiz userBiz = new UserBiz();
-
-
                 /// creating user
                 CRMUser user = new CRMUser();
-
                 //user.FirstName = u.FirstName;
                 //user.LastName = u.LastName;
                 user.Password = u.Password;
                 user.Username = u.EmailId;
                 user.CompanyName = u.CompanyName;
-
-
                 user.CompanyId = 0;
                 string guid = userBiz.RegisterUser(user);
-
-
-
                 //string CurrentURL = Request.Url.AbsoluteUri;
                 string Msg = "Dear Customer,<br/><br/> Thank you for Registring with us<br/>" +
                 "Plese Click below link for Activation<br/><br/>" +
@@ -68,8 +59,8 @@ namespace CRM.UI.Controllers
                  "' > http://localhost:53581/User/Activate?id=" + guid + "</a><br/><br />" +
                  "Thanks and Regards<br/>CRM Admin";
                 EmailUtilty.SendEmail(user.Username, "ajnasystemshyd@gmail.com", "Company Registration", Msg, true);
-               
-                return View();
+                ViewBag.Message = "Succefully Registered";
+                return View("RegisterSuccess");
             }
             catch (Exception Ex)
             {
@@ -89,7 +80,33 @@ namespace CRM.UI.Controllers
         {
             UserBiz userBiz = new UserBiz();
             userBiz.Activate(Id);
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Login", "User");
+        }
+
+
+        // GET: Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel lgn)
+        {
+            var UserName = lgn.Email;
+            var Pswd = lgn.Password;
+            Session["User"] = UserName;
+            UserBiz userbiz = new UserBiz();
+            bool Status = userbiz.UseLogin(UserName, Pswd);
+            if (Status == true)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            else
+            {
+                return View();
+            }
         }
 
     }

@@ -27,18 +27,30 @@ namespace CRM.Dal
 
                 SqlParameter prmCompanyId = cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt);
                 prmCompanyId.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                return Convert.ToInt64(prmCompanyId.Value);
+            }
+        }
+
+        public bool UserLogin(string userName, string pswd)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("IsUserExits", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = userName;
+                cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = pswd;
+                SqlParameter prmStatus = cmd.Parameters.Add("@Status", SqlDbType.Bit);
+                prmStatus.Direction = ParameterDirection.Output;
 
                 cmd.ExecuteNonQuery();
 
-                return Convert.ToInt64(prmCompanyId.Value);
-
-
-
+                return Convert.ToBoolean(prmStatus.Value);
             }
-
-
-
         }
+
+
         public bool IsEmailIdExists(string emailId)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
@@ -59,7 +71,6 @@ namespace CRM.Dal
 
         public void Activate(string id)
         {
-
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
             {
                 string res = Convert.ToString(Guid.NewGuid());
@@ -69,7 +80,6 @@ namespace CRM.Dal
                 cmd.Parameters.AddWithValue("@guid", id);
                 cmd.ExecuteNonQuery();
                 con.Close();
-
             }
         }
 

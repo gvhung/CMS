@@ -28,7 +28,12 @@ namespace CRM.Business
             return userDB.CreateCompany(companyName);
         }
 
-
+        public bool UseLogin(string userName, string pswd)
+        {
+            UserDB userdb = new UserDB();
+           bool status= userdb.UserLogin(userName, pswd);
+            return status;
+        }
 
         public string RegisterUser(CRMUser user)
         {
