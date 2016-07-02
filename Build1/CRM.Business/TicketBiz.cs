@@ -27,9 +27,6 @@ namespace CRM.Business
             TicketDB ticketdb = new TicketDB();
             Ticket ticket = ticketdb.GetTicketBy(id);
             return ticket;
-
-
-
         }
     }
 }

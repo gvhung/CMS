@@ -26,7 +26,7 @@ namespace CRM.Model
 
         //public string Username{ get; set;}
         //public int UserType { get; set; }
-        //public int Status { get; set; }
+        public int Status { get; set; }
         //public string Password { get; set; }
 
         //public Guid UID { get; set; }

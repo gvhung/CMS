@@ -28,10 +28,10 @@ namespace CRM.Business
             return userDB.CreateCompany(companyName);
         }
 
-        public bool UseLogin(string userName, string pswd)
+        public bool UseLogin(string userName, string pswd, out long UID)
         {
             UserDB userdb = new UserDB();
-           bool status= userdb.UserLogin(userName, pswd);
+           bool status= userdb.UserLogin(userName, pswd,out UID);
             return status;
         }
 
@@ -46,6 +46,20 @@ namespace CRM.Business
             UserDB userDal = new UserDB();
             userDal.Activate(id);
         }
+
+        public void UpdateUserProfile(CRMUser userProfile)
+        {
+            UserDB userProfiledb = new UserDB();
+            userProfiledb.UpdateUserProfile(userProfile);
+        }
+
+        public CRMUser GetUserProfile(long id)
+        {
+            UserDB getUser = new UserDB();
+            return getUser.GetUserProfile(id );
+           
+        }
+                
     }
         
 }

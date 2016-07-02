@@ -17,6 +17,7 @@ namespace CRM.UI.ViewModels
         public long CreatedBy { get; set; }
         public int UserType { get; set; }
         public long CompanyId { get; set; }
+        public string CompanyName { get; set; }
 
     }
 }
