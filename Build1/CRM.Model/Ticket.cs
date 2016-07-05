@@ -14,6 +14,7 @@ namespace CRM.Model
         public string Description { get; set; }
         public Int64 ProductId { get; set; }
         public Int64 ComponentId { get; set; }
+        public string ComponentName { get; set; }
         public string Version { get; set; }
         public int Status { get; set; }
         public int CompanyId { get; set; }
@@ -22,14 +23,10 @@ namespace CRM.Model
         public Int64 CreatedBy { get; set; }
         public DateTime DateFixed { get; set; }
         public DateTime DateClosed { get; set; }
+        public string CompanyName { get; set; }
+        public string ProductName { get; set; }
+        public string Assignee { get; set; }
 
-        //public string Assignee { get; set; }
-        //public int BranchId { get; set; }
-        //public int ModuleId { get; set; }
-        //public int Priority { get; set; }
-        //public int TenantId { get; set; }
-        //public int TicketType { get; set; }
-        //public string CompanyName { get; set; }
         public bool Validate()
         {
             if (Title == null || Title.Trim() == "") throw new Exception("Title is empty");

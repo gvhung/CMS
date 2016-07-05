@@ -1,5 +1,4 @@
-﻿using CRM.UI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +7,8 @@ using CRM.Model;
 using CRM.Business;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using CRM.UI.ViewModels;
+
 namespace CRM.UI.Controllers
 {
    
@@ -25,27 +26,41 @@ namespace CRM.UI.Controllers
         public ActionResult Create(TicketCreateModel T)
         {
             Ticket ticket = new Ticket();
+            ticket.TicketNo = T.TicketNo;
             ticket.Description = T.Description;
             ticket.Title = T.Title;
             ticket.Version=T.Version;
             ticket.ProductId = T.ProductId;
-
+            ticket.CompanyId = T.CompanyId;
+            ticket.ComponentId = T.ComponentId;
+            ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
             TicketBiz ticketbiz = new TicketBiz();
             ticketbiz.AddTicket(ticket);
             return View();
         }
-
         [HttpGet]
         public ActionResult GetAllTickets()
         {
             List<Ticket> lstTicket = new List<Ticket>();
             TicketBiz ticketbiz = new TicketBiz();
-            lstTicket= ticketbiz.GetAllTicket();
+            lstTicket = ticketbiz.GetAllTicket();
+            ViewBag.tickets = lstTicket;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetAllTickets(FormCollection form)
+        {
+            string clientname = form["SearchClientName"];
+            int StartIndex = Convert.ToInt32(form["StartIndex"]);
+            int EndIndex =   Convert.ToInt32(form["EndIndex"]);
+            List<Ticket> lstTicket = new List<Ticket>();
+            TicketBiz ticketbiz = new TicketBiz();
+            lstTicket= ticketbiz.GetAllTicket(clientname, StartIndex, EndIndex);
+            ViewBag.tickets = lstTicket;
+           // List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
+            //lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
 
-            List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
-            lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
-
-            return View(lstTicketListModel);
+            return View();
 
         }
 

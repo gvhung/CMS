@@ -184,9 +184,9 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\TicketCreateModel.cs" />
-    <Compile Include="ViewModels\TicketListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TicketListModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
     <Compile Include="ViewModels\UserRegisterVM.cs" />
   </ItemGroup>
@@ -247,13 +247,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Ticket\Create1.cshtml" />
     <Content Include="Views\Ticket\UpdateTicket.cshtml" />
-    <Content Include="Views\Ticket\GetAllTickets.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\RegisterSuccess.cshtml" />
     <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\Ticket\GetAllTickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

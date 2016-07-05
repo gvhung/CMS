@@ -84,7 +84,7 @@ namespace CRM.Dal
                 cmd.Parameters.Add("@Lastname", SqlDbType.VarChar).Value = userProfile.LastName;
                 cmd.Parameters.Add("@UserName", SqlDbType.VarChar).Value = userProfile.Username;
                 cmd.Parameters.Add("@CompanyName", SqlDbType.VarChar).Value = userProfile.CompanyName;
-                cmd.Parameters.Add("@DateModifed", SqlDbType.DateTime).Value = DateTime.Now;
+                //cmd.Parameters.Add("@DateModifed", SqlDbType.DateTime).Value = DateTime.Now;
                 //cmd.Parameters.Add("@UserType", SqlDbType.Bit).Value = userProfile.UserType;
                 //cmd.Parameters.Add("@Status", SqlDbType.Int).Value = userProfile.Status;
                 cmd.ExecuteNonQuery();

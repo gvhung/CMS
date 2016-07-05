@@ -5,27 +5,30 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CRM.UI.Models
+namespace CRM.UI.ViewModels
 {
     public class TicketCreateModel
     {
+        public Decimal TicketNo { get; set; }
         [Required(ErrorMessage = "Enter Title")]
         public string Title { get; set; }
         [AllowHtml]
         [Required(ErrorMessage = "Enter Description")]
         public string Description { get; set; }
-        public string FileUpload { get; set; }
-        [Display(Name = "Priority")]
-        public int SeverityCode { get; set; }
-        public string Version { get; set; }
         [Display(Name = "Product")]
-        public int ProductId { get; set; }
-        [Display(Name = "Module")]
-        public int ModuleId { get; set; }
-        public int TicketType { get; set; }
-        public List<Product> Products { get; set; }
-        public List<Module> Modules { get; set; }
-        public List<Priority> Priorities { get; set; }
+        public long ProductId { get; set; }
+        public long ComponentId { get; set; }
+        public string Version { get; set; }
+        public int Status { get; set; }
+        public int CompanyId { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
+        public long CreatedBy { get; set; }
+        public DateTime DateFixed { get; set; }
+        public DateTime DateClosed { get; set; }
+
+
+
     }
 
 

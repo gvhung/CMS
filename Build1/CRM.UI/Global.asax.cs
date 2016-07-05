@@ -7,7 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
 using CRM.Model;
-using CRM.UI.Models;
+using CRM.UI.ViewModels;
 namespace CRM.UI
 {
     public class MvcApplication : System.Web.HttpApplication

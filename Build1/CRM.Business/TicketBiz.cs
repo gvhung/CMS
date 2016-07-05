@@ -16,6 +16,12 @@ namespace CRM.Business
             ticketdb.AddTicket(ticket);
         }
 
+        public List<Ticket> GetAllTicket(string clientname, int StartIndex, int EndIndex)
+        {
+            TicketDB ticketdb = new TicketDB();
+            return ticketdb.GetAllTicket(clientname, StartIndex, EndIndex);
+        }
+
         public List<Ticket> GetAllTicket()
         {
             TicketDB ticketdb = new TicketDB();
