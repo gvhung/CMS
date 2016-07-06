@@ -8,6 +8,7 @@ using CRM.Business;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CRM.UI.ViewModels;
+using PagedList;
 
 namespace CRM.UI.Controllers
 {
@@ -35,33 +36,44 @@ namespace CRM.UI.Controllers
             ticket.ComponentId = T.ComponentId;
             ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
             TicketBiz ticketbiz = new TicketBiz();
-            ticketbiz.AddTicket(ticket);
+           int i= ticketbiz.AddTicket(ticket);
+            if (i > 0)
+            {
+                ViewBag.Message = "Successfully Insereted";
+            }
+            else {
+                ViewBag.ErrorMessage = " Inseret Failed";
+            }
             return View();
         }
-        [HttpGet]
-        public ActionResult GetAllTickets()
+        //[HttpGet]
+        //public ActionResult List()
+        //{
+        //    List<Ticket> lstTicket = new List<Ticket>();
+        //    TicketBiz ticketbiz = new TicketBiz();
+        //    lstTicket = ticketbiz.GetAllTicket();
+        //    ViewBag.tickets = lstTicket;
+        //    return View();
+        //}
+        
+        public ActionResult List(int page=1)
         {
-            List<Ticket> lstTicket = new List<Ticket>();
-            TicketBiz ticketbiz = new TicketBiz();
-            lstTicket = ticketbiz.GetAllTicket();
-            ViewBag.tickets = lstTicket;
+            try
+            {
+                string clientname = ""; int StartIndex = 1, EndIndex = 2;
+                List<Ticket> lstTicket = new List<Ticket>();
+                TicketBiz ticketbiz = new TicketBiz();
+                lstTicket = ticketbiz.GetAllTicket(clientname, StartIndex, EndIndex);
+                ViewBag.tickets = lstTicket.ToPagedList(page,1);
+                // List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
+                //lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
+            }
+            catch (Exception Ex)
+            {
+                ModelState.AddModelError("LI", Ex.Message);
+               
+            }
             return View();
-        }
-        [HttpPost]
-        public ActionResult GetAllTickets(FormCollection form)
-        {
-            string clientname = form["SearchClientName"];
-            int StartIndex = Convert.ToInt32(form["StartIndex"]);
-            int EndIndex =   Convert.ToInt32(form["EndIndex"]);
-            List<Ticket> lstTicket = new List<Ticket>();
-            TicketBiz ticketbiz = new TicketBiz();
-            lstTicket= ticketbiz.GetAllTicket(clientname, StartIndex, EndIndex);
-            ViewBag.tickets = lstTicket;
-           // List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
-            //lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
-
-            return View();
-
         }
 
         [HttpGet]

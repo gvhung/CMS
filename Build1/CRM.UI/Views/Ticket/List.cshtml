@@ -1,53 +1,54 @@
-﻿@model IEnumerable<CRM.UI.ViewModels.TicketListModel>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<CRM.UI.ViewModels.TicketListModel>
 
 @{
     ViewBag.Title = "GetAllTickets";
 }
 @using CRM.Model
-<h2>GetAllTickets</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 @using (Html.BeginForm())
 {
-    List<Ticket> list = ViewBag.tickets;
+
+    PagedList.PagedList<Ticket> list = ViewBag.tickets;
     <div>
-        @Html.TextBox("SearchClientName", "",new { @id = "SearchClientName", @Name = "SearchClientName" })
-   
-        @Html.TextBox("StartIndex", "",new { @id = "StartIndex", @Name = "StartIndex" })
-    
-        @Html.TextBox("EndIndex","", new { @id = "EndIndex", @Name = "EndIndex" })
+       <label>Copmapny Name</label> 
+        @Html.TextBox("SearchClientName", "", new { @id = "SearchClientName", @Name = "SearchClientName" })
+
+        @Html.TextBox("StartIndex", "", new { @id = "StartIndex", @Name = "StartIndex" })
+
+        @Html.TextBox("EndIndex", "", new { @id = "EndIndex", @Name = "EndIndex" })
     </div>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TicketNo)
+                @Html.DisplayNameFor(model => model.First().TicketNo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
+                @Html.DisplayNameFor(model => model.First().CompanyName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductName)
+                @Html.DisplayNameFor(model => model.First().ProductName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ComponentName)
+                @Html.DisplayNameFor(model => model.First().ComponentName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Version)
+                @Html.DisplayNameFor(model => model.First().Version)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.First().Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Assignee)
+                @Html.DisplayNameFor(model => model.First().Assignee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
+                @Html.DisplayNameFor(model => model.First().DateCreated)
             </th>
             <th></th>
         </tr>
-        @if (list != null && list.Count != 0)
+        @if (list != null )
         {
             foreach (var item in list)
             {
@@ -86,7 +87,8 @@
         }
 
     </table>
-    <div>
-       <input type="submit" value="Submit" />
-    </div>
+    @Html.PagedListPager(list, page => Url.Action("List", new { page }))
+    @*<div>
+        <input type="submit" value="Submit" />
+    </div>*@
 }

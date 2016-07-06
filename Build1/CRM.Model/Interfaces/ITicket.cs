@@ -8,8 +8,8 @@ namespace CRM.Model
 {
     public interface ITicket
     {
-         decimal TicketId { get; set; }
-         decimal TicketNo { get; set; }
+         long TicketId { get; set; }
+         long TicketNo { get; set; }
          string Title { get; set; }
          string Description { get; set; }
          Int64 ProductId { get; set; }

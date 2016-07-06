@@ -129,11 +129,12 @@ namespace CRM.UI.Controllers
                 long UID = Convert.ToInt64(id);
                 UserBiz getUser = new UserBiz();
                 CRMUser crmUser = new CRMUser();
-
                 crmUser = getUser.GetUserProfile(UID);
                 myProfile.CompanyName = crmUser.CompanyName;
                 myProfile.Password = crmUser.Password;
                 myProfile.Username = crmUser.Username;
+                myProfile.FirstName = crmUser.FirstName;
+                myProfile.LastName = crmUser.LastName;
 
                 return View(myProfile);
             }
@@ -157,7 +158,11 @@ namespace CRM.UI.Controllers
             //userProfile.UserType = profile.UserType;
             UserBiz userprofilebiz = new UserBiz();
             userprofilebiz.UpdateUserProfile(userProfile);
+            ModelState.AddModelError("UPD", "Successfully Updated");
             return View();
+
+
+
         }
     }
 }

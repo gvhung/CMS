@@ -13,7 +13,7 @@ namespace CRM.Dal
     public class TicketDB
     {
 
-        public void AddTicket(Ticket ticket)
+        public int AddTicket(Ticket ticket)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
             {
@@ -28,9 +28,11 @@ namespace CRM.Dal
                 cmd.Parameters.AddWithValue("@ProductId", ticket.ProductId);
                 cmd.Parameters.AddWithValue("@CompanyId", ticket.CompanyId);
                 cmd.Parameters.AddWithValue("@CreatedBy", ticket.CreatedBy);
-                cmd.ExecuteNonQuery();
+                int i = cmd.ExecuteNonQuery();
                 con.Close();
+                return i;
             }
+           
         }
 
 
@@ -50,7 +52,7 @@ namespace CRM.Dal
             while (dr.Read())
             {
                 ticketModel = new Ticket();
-                ticketModel.TicketNo = Convert.ToInt32(dr["TicketNo"]);
+                ticketModel.TicketNo = Convert.ToInt64(dr["TicketNo"]);
                 ticketModel.CompanyName = Convert.ToString(dr["ClientName"]);
                 ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
                 ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
@@ -63,31 +65,31 @@ namespace CRM.Dal
             return lstTickets;
         }
 
-        public List<Ticket> GetAllTicket()
-        {
-            List<Ticket> lstTickets = new List<Ticket>();
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("spGetAllTickets", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader dr = cmd.ExecuteReader();
-            Ticket ticketModel = null;
-            while (dr.Read())
-            {
-                ticketModel = new Ticket();
-                
-                ticketModel.TicketNo = (dr["TicketNo"]) ==DBNull.Value? 0 : Convert.ToDecimal(dr["TicketNo"]);
-                ticketModel.CompanyName = Convert.ToString(dr["ClientName"]);
-                ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
-                ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
-                ticketModel.Version = Convert.ToString(dr["Version"]);
-                ticketModel.Title = Convert.ToString(dr["Title"]);
-                ticketModel.Assignee = Convert.ToString(dr["Assignee"]);
-                ticketModel.DateCreated = (dr["DateCreated"]) != DBNull.Value ? Convert.ToDateTime(dr["DateCreated"]) : DateTime.MinValue;
-                lstTickets.Add(ticketModel);
-            }
-            return lstTickets;
-        }
+        //public List<Ticket> GetAllTicket()
+        //{
+        //    List<Ticket> lstTickets = new List<Ticket>();
+        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand("spGetAllTickets", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    SqlDataReader dr = cmd.ExecuteReader();
+        //    Ticket ticketModel = null;
+        //    while (dr.Read())
+        //    {
+        //        ticketModel = new Ticket();
+
+        //        ticketModel.TicketNo = (dr["TicketNo"]) ==DBNull.Value? 0 : Convert.ToDecimal(dr["TicketNo"]);
+        //        ticketModel.CompanyName = Convert.ToString(dr["ClientName"]);
+        //        ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
+        //        ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
+        //        ticketModel.Version = Convert.ToString(dr["Version"]);
+        //        ticketModel.Title = Convert.ToString(dr["Title"]);
+        //        ticketModel.Assignee = Convert.ToString(dr["Assignee"]);
+        //        ticketModel.DateCreated = (dr["DateCreated"]) != DBNull.Value ? Convert.ToDateTime(dr["DateCreated"]) : DateTime.MinValue;
+        //        lstTickets.Add(ticketModel);
+        //    }
+        //    return lstTickets;
+        //}
 
 
         public Ticket GetTicketBy(int id)

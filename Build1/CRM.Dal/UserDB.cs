@@ -66,6 +66,9 @@ namespace CRM.Dal
                     crmUser.CompanyName = Convert.ToString(dr["ClientName"]);
                     crmUser.Username = Convert.ToString(dr["UserName"]);
                     crmUser.Password = Convert.ToString(dr["Password"]);
+                    crmUser.FirstName = Convert.ToString(dr["FirstName"]);
+                    crmUser.LastName = Convert.ToString(dr["LastName"]);
+
                 }
                 return crmUser;
             }

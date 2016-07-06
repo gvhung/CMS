@@ -9,7 +9,7 @@ namespace CRM.UI.ViewModels
 {
     public class TicketCreateModel
     {
-        public Decimal TicketNo { get; set; }
+        public long TicketNo { get; set; }
         [Required(ErrorMessage = "Enter Title")]
         public string Title { get; set; }
         [AllowHtml]

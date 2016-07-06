@@ -10,10 +10,12 @@ namespace CRM.Business
 {
     public class TicketBiz
     {
-        public void AddTicket(Ticket ticket)
+        public int AddTicket(Ticket ticket)
         {
             TicketDB ticketdb = new TicketDB();
-            ticketdb.AddTicket(ticket);
+            int i = ticketdb.AddTicket(ticket);
+            return i;
+
         }
 
         public List<Ticket> GetAllTicket(string clientname, int StartIndex, int EndIndex)
@@ -22,11 +24,11 @@ namespace CRM.Business
             return ticketdb.GetAllTicket(clientname, StartIndex, EndIndex);
         }
 
-        public List<Ticket> GetAllTicket()
-        {
-            TicketDB ticketdb = new TicketDB();
-            return ticketdb.GetAllTicket();
-        }
+        //public List<Ticket> GetAllTicket()
+        //{
+        //    TicketDB ticketdb = new TicketDB();
+        //    return ticketdb.GetAllTicket();
+        //}
 
         public Ticket GetTicketById(int id)
         {
