@@ -72,9 +72,18 @@ namespace CRM.UI.Controllers
 
         public ActionResult Activate(string Id)
         {
-            UserBiz userBiz = new UserBiz();
-            userBiz.Activate(Id);
-            return RedirectToAction("Login", "User");
+            try
+            {
+
+                UserBiz userBiz = new UserBiz();
+                userBiz.Activate(Id);
+                return RedirectToAction("Login", "User");
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("IV",ex.Message);
+                return View("Error");
+            }
         }
 
         // GET: Login
@@ -86,16 +95,25 @@ namespace CRM.UI.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel m)
         {
-            long uid;
-            UserBiz userbiz = new UserBiz();
-            bool Status = userbiz.UseLogin(m.Email, m.Password, out uid);
-            if (Status == true)
+            try
             {
-                Session["UID"] = uid;
-                return RedirectToAction("MyProfile");
+                long uid;
+                UserBiz userbiz = new UserBiz();
+                bool Status = userbiz.UseLogin(m.Email, m.Password, out uid);
+                if (Status == true)
+                {
+                    Session["UID"] = uid;
+                    return RedirectToAction("MyProfile");
+                }
+                else
+                {
+                    ModelState.AddModelError("UVE", "Invalid username or pasword");
+                    return View();
+                }
             }
-            else
+            catch(Exception ex)
             {
+                ModelState.AddModelError("UVE", ex.Message);
                 return View();
             }
         }

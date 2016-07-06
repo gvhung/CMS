@@ -211,7 +211,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -254,6 +256,7 @@
     <Content Include="Views\User\RegisterSuccess.cshtml" />
     <Content Include="Views\User\MyProfile.cshtml" />
     <Content Include="Views\Ticket\GetAllTickets.cshtml" />
+    <Content Include="Views\User\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
