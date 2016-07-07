@@ -60,11 +60,11 @@ namespace CRM.UI.Controllers
         {
             try
             {
-                string clientname = ""; int StartIndex = 1, EndIndex = 2;
+                string clientname = ""; int StartIndex = 1, EndIndex = 20;
                 List<Ticket> lstTicket = new List<Ticket>();
                 TicketBiz ticketbiz = new TicketBiz();
                 lstTicket = ticketbiz.GetAllTicket(clientname, StartIndex, EndIndex);
-                ViewBag.tickets = lstTicket.ToPagedList(page,1);
+                ViewBag.tickets = lstTicket.ToPagedList(page,5);
                 // List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
                 //lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
             }
