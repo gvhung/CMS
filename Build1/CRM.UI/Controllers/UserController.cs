@@ -158,7 +158,7 @@ namespace CRM.UI.Controllers
             //userProfile.UserType = profile.UserType;
             UserBiz userprofilebiz = new UserBiz();
             userprofilebiz.UpdateUserProfile(userProfile);
-            ModelState.AddModelError("UPD", "Successfully Updated");
+            ModelState.AddModelError("UPD", "Your Profile is Successfully Updated");
             return View();
 
 

@@ -17,9 +17,11 @@ namespace CRM.UI.ViewModels
         public string Description { get; set; }
         [Display(Name = "Product")]
         public long ProductId { get; set; }
+        [Display(Name = "Component")]
         public long ComponentId { get; set; }
         public string Version { get; set; }
         public int Status { get; set; }
+        [Display(Name ="Company")]
         public int CompanyId { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
