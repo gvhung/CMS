@@ -8,8 +8,8 @@ namespace CRM.Model
 {
     public interface ICompany
     {
-        int CompanyId { get; set; }
-        string Name { get; set; }
+        long CompanyId { get; set; }
+        string CompanyName { get; set; }
         bool Validate();
 
     }

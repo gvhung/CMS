@@ -81,7 +81,7 @@ namespace CRM.UI.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetTicketById(int id)
+        public ActionResult Edit(int id)
         {
             TicketBiz ticketbiz = new TicketBiz();
             Ticket t = ticketbiz.GetTicketById(id);
