@@ -53,7 +53,7 @@ namespace CRM.Dal
             {
                 ticketModel = new Ticket();
                 ticketModel.TicketNo = Convert.ToInt64(dr["TicketNo"]);
-                ticketModel.CompanyName = Convert.ToString(dr["ClientName"]);
+                ticketModel.CompanyName = Convert.ToString(dr["CompanyName"]);
                 ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
                 ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
                 ticketModel.Version = Convert.ToString(dr["Version"]);
@@ -78,7 +78,7 @@ namespace CRM.Dal
             {
                 companyModel = new Company();
 
-                companyModel.CompanyName = Convert.ToString(dr["ClientName"]);
+                companyModel.Name = Convert.ToString(dr["CompanyName"]);
                 companyModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
                 lstCompanies.Add(companyModel);
             }

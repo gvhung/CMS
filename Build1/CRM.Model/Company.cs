@@ -8,7 +8,7 @@ namespace CRM.Model
 {
     public class Company : ICompany
     {
-        public int CompanyId{get;set;}
+        public long CompanyId{get;set;}
 
         public string Name{get;set;}
 

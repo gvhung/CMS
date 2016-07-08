@@ -22,7 +22,7 @@ namespace CRM.UI.ViewModels
         public string Version { get; set; }
         public int Status { get; set; }
         [Display(Name ="Company")]
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public long CreatedBy { get; set; }
