@@ -12,17 +12,20 @@ using PagedList;
 
 namespace CRM.UI.Controllers
 {
-   
+
     public class TicketController : Controller
     {
         // GET: Ticket
         public ActionResult Create()
         {
-            //TicketBiz ticketbiz = new TicketBiz();
-            //ticketbiz.GetAllTicket();
+            TicketBiz ticketbiz = new TicketBiz();
+            ViewBag.lstDropdown = ticketbiz.BindCompanies();
+            ViewBag.lstProducts= ticketbiz.BindProducts();
+            ViewBag.lstComponents = ticketbiz.BindComponent();
+
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Create(TicketCreateModel T)
         {
@@ -30,18 +33,19 @@ namespace CRM.UI.Controllers
             ticket.TicketNo = T.TicketNo;
             ticket.Description = T.Description;
             ticket.Title = T.Title;
-            ticket.Version=T.Version;
+            ticket.Version = T.Version;
             ticket.ProductId = T.ProductId;
             ticket.CompanyId = T.CompanyId;
             ticket.ComponentId = T.ComponentId;
             ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
             TicketBiz ticketbiz = new TicketBiz();
-           int i= ticketbiz.AddTicket(ticket);
+            int i = ticketbiz.AddTicket(ticket);
             if (i > 0)
             {
                 ViewBag.Message = "Successfully Insereted";
             }
-            else {
+            else
+            {
                 ViewBag.ErrorMessage = " Inseret Failed";
             }
             return View();
@@ -55,8 +59,8 @@ namespace CRM.UI.Controllers
         //    ViewBag.tickets = lstTicket;
         //    return View();
         //}
-        
-        public ActionResult List(int page=1)
+
+        public ActionResult List(int page = 1)
         {
             try
             {
@@ -64,14 +68,14 @@ namespace CRM.UI.Controllers
                 List<Ticket> lstTicket = new List<Ticket>();
                 TicketBiz ticketbiz = new TicketBiz();
                 lstTicket = ticketbiz.GetAllTicket(clientname, StartIndex, EndIndex);
-                ViewBag.tickets = lstTicket.ToPagedList(page,5);
+                ViewBag.tickets = lstTicket.ToPagedList(page, 5);
                 // List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
                 //lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
             }
             catch (Exception Ex)
             {
                 ModelState.AddModelError("LI", Ex.Message);
-               
+
             }
             return View();
         }
@@ -80,7 +84,7 @@ namespace CRM.UI.Controllers
         public ActionResult GetTicketById(int id)
         {
             TicketBiz ticketbiz = new TicketBiz();
-           Ticket t= ticketbiz.GetTicketById(id);
+            Ticket t = ticketbiz.GetTicketById(id);
             //TicketCreateModel ticketcraetemodel= AutoMapper.Mapper.Map<TicketCreateModel>(t);
             TicketCreateModel ticketcreatemodel = new TicketCreateModel();
             ticketcreatemodel.Title = t.Title;

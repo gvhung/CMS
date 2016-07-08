@@ -33,7 +33,7 @@ namespace CRMTicketTest
 
         public void UpdateClient(Company c)
         {
-            Company tempClient = _mycontext.Find(cl => cl.ClientId == c.ClientId);
+            Company tempClient = _mycontext.Find(cl => cl.CompanyId == c.CompanyId);
             if (tempClient == null)
                 throw new Exception("Client not found");
             else

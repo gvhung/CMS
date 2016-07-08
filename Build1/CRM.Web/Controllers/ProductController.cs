@@ -22,7 +22,7 @@ namespace CRM.Web.Controllers
             CompanyManager<Company> clientManager = new CompanyManager<Company>(clientStore);
             ProductCreateModel m = new ProductCreateModel();
             m.Clients=clientManager.GetAllClients();
-            m.Clients.Insert(0, new Company() { ClientId = 0, Name = "Select Company" });
+            m.Clients.Insert(0, new Company() { CompanyId = 0, Name = "Select Company" });
             m.ClientId = "1";
 
      //    ClientManager< TClient > clientManager = new ClientManager<TClient>();

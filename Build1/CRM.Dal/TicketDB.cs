@@ -65,31 +65,65 @@ namespace CRM.Dal
             return lstTickets;
         }
 
-        //public List<Ticket> GetAllTicket()
-        //{
-        //    List<Ticket> lstTickets = new List<Ticket>();
-        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
-        //    con.Open();
-        //    SqlCommand cmd = new SqlCommand("spGetAllTickets", con);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    SqlDataReader dr = cmd.ExecuteReader();
-        //    Ticket ticketModel = null;
-        //    while (dr.Read())
-        //    {
-        //        ticketModel = new Ticket();
+        public List<Company> BindCompanies()
+        {
+            List<Company> lstCompanies = new List<Company>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("spBindCompanies", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            Company companyModel = null;
+            while (dr.Read())
+            {
+                companyModel = new Company();
 
-        //        ticketModel.TicketNo = (dr["TicketNo"]) ==DBNull.Value? 0 : Convert.ToDecimal(dr["TicketNo"]);
-        //        ticketModel.CompanyName = Convert.ToString(dr["ClientName"]);
-        //        ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
-        //        ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
-        //        ticketModel.Version = Convert.ToString(dr["Version"]);
-        //        ticketModel.Title = Convert.ToString(dr["Title"]);
-        //        ticketModel.Assignee = Convert.ToString(dr["Assignee"]);
-        //        ticketModel.DateCreated = (dr["DateCreated"]) != DBNull.Value ? Convert.ToDateTime(dr["DateCreated"]) : DateTime.MinValue;
-        //        lstTickets.Add(ticketModel);
-        //    }
-        //    return lstTickets;
-        //}
+                companyModel.CompanyName = Convert.ToString(dr["ClientName"]);
+                companyModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
+                lstCompanies.Add(companyModel);
+            }
+            return lstCompanies;
+        }
+
+        public List<Product> BindProducts()
+        {
+            List<Product> lstProducts = new List<Product>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("spBindproducts", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            Product productModel = null;
+            while (dr.Read())
+            {
+                productModel = new Product();
+
+                productModel.Name = Convert.ToString(dr["ProductName"]);
+                productModel.Id = Convert.ToInt64(dr["ProductId"]);
+                lstProducts.Add(productModel);
+            }
+            return lstProducts;
+        }
+
+        public List<Component> BindComponent()
+        {
+            List<Component> lstComponent = new List<Component>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("spBindComponents", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            Component componentModel = null;
+            while (dr.Read())
+            {
+                componentModel = new Component();
+
+                componentModel.ComponentName = Convert.ToString(dr["ComponentName"]);
+                componentModel.ComponentId = Convert.ToInt64(dr["ComponentId"]);
+                lstComponent.Add(componentModel);
+            }
+            return lstComponent;
+        }
 
 
         public Ticket GetTicketBy(int id)

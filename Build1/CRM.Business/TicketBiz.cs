@@ -24,11 +24,23 @@ namespace CRM.Business
             return ticketdb.GetAllTicket(clientname, StartIndex, EndIndex);
         }
 
-        //public List<Ticket> GetAllTicket()
-        //{
-        //    TicketDB ticketdb = new TicketDB();
-        //    return ticketdb.GetAllTicket();
-        //}
+        public List<Company> BindCompanies()
+        {
+            TicketDB ticketdb = new TicketDB();
+            return ticketdb.BindCompanies();
+        }
+
+        public List<Product> BindProducts()
+        {
+            TicketDB ticketdb = new TicketDB();
+            return ticketdb.BindProducts();
+        }
+
+        public List<Component> BindComponent()
+        {
+            TicketDB ticketdb = new TicketDB();
+            return ticketdb.BindComponent();
+        }
 
         public Ticket GetTicketById(int id)
         {
