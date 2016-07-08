@@ -32,7 +32,7 @@ namespace CRM.Dal
                 con.Close();
                 return i;
             }
-           
+
         }
 
 
@@ -141,12 +141,10 @@ namespace CRM.Dal
                 ticketModel = new Ticket();
                 ticketModel.Title = Convert.ToString(dr["Title"]);
                 ticketModel.Description = Convert.ToString(dr["Description"]);
-                //ticketModel.ModuleId= Convert.ToInt32(dr["ModuleId"]);
-                //ticketModel.TicketType = Convert.ToInt32(dr["TicketType"]);
-                ticketModel.TicketNo = Convert.ToInt32(dr["TicketNo"]);
                 ticketModel.Version = Convert.ToString(dr["Version"]);
-                //ticketModel.Priority = Convert.ToInt32(dr["Priority"]);
-
+                ticketModel.ProductId = Convert.ToInt64(dr["ProductId"]);
+                ticketModel.ComponentId = Convert.ToInt64(dr["ComponentId"]);
+                ticketModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
             }
             return ticketModel;
         }
