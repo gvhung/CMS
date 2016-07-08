@@ -89,10 +89,11 @@ namespace CRM.UI.Controllers
             TicketCreateModel ticketcreatemodel = new TicketCreateModel();
             ticketcreatemodel.Title = t.Title;
             ticketcreatemodel.Description = t.Description;
-            //ticketcreatemodel.ModuleId = t.ModuleId;
-            //ticketcreatemodel.SeverityCode = t.Priority;
-            //ticketcreatemodel.TicketType = t.TicketType;
+            ticketcreatemodel.CompanyId = t.CompanyId;
+            ticketcreatemodel.ComponentId = t.ComponentId;
+            ticketcreatemodel.ProductId = t.ProductId;
             ticketcreatemodel.Version = t.Version;
+
             return View("Create", ticketcreatemodel);
         }
 

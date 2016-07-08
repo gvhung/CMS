@@ -16,12 +16,12 @@ namespace CRM.Model
          Int64 ComponentId { get; set; }
          string Version { get; set; }
          int Status { get; set; }
-         int CompanyId { get; set; }
+         long CompanyId { get; set; }
          DateTime DateCreated { get; set; }
          DateTime DateModified { get; set; }
          Int64 CreatedBy { get; set; }
          DateTime DateFixed { get; set; }
          DateTime DateClosed { get; set; }
-        bool Validate();
+         bool Validate();
     }
 }

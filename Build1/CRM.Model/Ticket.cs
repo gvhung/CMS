@@ -17,7 +17,7 @@ namespace CRM.Model
         public string ComponentName { get; set; }
         public string Version { get; set; }
         public int Status { get; set; }
-        public int CompanyId { get; set; }
+        public long CompanyId { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public Int64 CreatedBy { get; set; }
