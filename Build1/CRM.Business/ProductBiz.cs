@@ -37,5 +37,6 @@ namespace CRM.Business
             ProductDB productDB = new ProductDB();
             return productDB.GetCompanies();
         }
+        
     }
 }
