@@ -8,18 +8,19 @@ namespace CRM.Model
 {
     public class Company : ICompany
     {
+        public int CompanyId{get;set;}
 
-        public long CompanyId { get; set; }
-        public string CompanyName { get; set; }
+        public string Name{get;set;}
+
         public DateTime DateCreated { get; set; }
         public long TicketStartNumber { get; set; }
         public bool Validate()
         {
-            if (CompanyName == null) throw new Exception("Name is Emty");
+            if (Name == null) throw new Exception("Name is Emty");
             //if (TicketStartNumber == null) throw new Exception("Ticket Start Number is Empty");
             return true;
         }
 
-
+        
     }
 }
