@@ -9,6 +9,9 @@ using CRM.UI.ViewModels;
 using CRM.Model;
 using Utility;
 using System.Net;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace CRM.UI.Controllers
 {
@@ -103,10 +106,31 @@ namespace CRM.UI.Controllers
                 if (Status == true)
                 {
                     Session["UID"] = uid;
+                    var ident = new ClaimsIdentity(
+                          new[] { 
+                                  // adding following 2 claim just for supporting default antiforgery provider
+                                  new Claim(ClaimTypes.NameIdentifier, m.Email),
+                                  new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "ASP.NET Identity", "http://www.w3.org/2001/XMLSchema#string"),
+
+                                  new Claim(ClaimTypes.Name,m.Email),
+
+                                  // optionally you could add roles if any
+                                  new Claim(ClaimTypes.Role, "RoleName"),
+                                  new Claim(ClaimTypes.Role, "AnotherRole"),
+
+                          },
+                          DefaultAuthenticationTypes.ApplicationCookie);
+
+                        HttpContext.GetOwinContext().Authentication.SignIn(
+                           new AuthenticationProperties { IsPersistent = false }, ident);
+                        
+                    
+                    
                     return RedirectToAction("MyProfile");
                 }
                 else
                 {
+
                     ModelState.AddModelError("UVE", "Invalid username or pasword");
                     return View();
                 }
