@@ -45,7 +45,7 @@ namespace CRM.Dal
                 prmStatus.Direction = ParameterDirection.Output;
                 prmUid.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
-                UID = Convert.ToInt64(prmUid.Value);
+                UID = Convert.ToInt64(prmUid.Value==DBNull.Value?0:prmUid.Value);
                 return Convert.ToBoolean(prmStatus.Value);
             }
         }
@@ -63,7 +63,7 @@ namespace CRM.Dal
                 if (dr.Read())
                 {
                     crmUser = new CRMUser();
-                    crmUser.CompanyName = Convert.ToString(dr["ClientName"]);
+                    crmUser.CompanyName = Convert.ToString(dr["CompanyName"]);
                     crmUser.Username = Convert.ToString(dr["UserName"]);
                     crmUser.Password = Convert.ToString(dr["Password"]);
                     crmUser.FirstName = Convert.ToString(dr["FirstName"]);
