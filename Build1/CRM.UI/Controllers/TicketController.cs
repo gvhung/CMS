@@ -93,6 +93,17 @@ namespace CRM.UI.Controllers
             ticketcreatemodel.ComponentId = t.ComponentId;
             ticketcreatemodel.ProductId = t.ProductId;
             ticketcreatemodel.Version = t.Version;
+            ticketcreatemodel.ComponentName = t.ComponentName;
+            ticketcreatemodel.CompanyName = t.CompanyName;
+            ticketcreatemodel.ProductName = t.ProductName;
+
+            // TicketBiz ticketbiz = new TicketBiz();
+            ticketcreatemodel.lstModel = ticketbiz.BindCompanies();
+
+            ViewBag.lstDropdown = ticketcreatemodel.lstModel;
+            ViewBag.lstProducts = ticketbiz.BindProducts();
+            ViewBag.lstComponents = ticketbiz.BindComponent();
+
 
             return View("Create", ticketcreatemodel);
         }

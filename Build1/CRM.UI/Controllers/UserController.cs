@@ -82,9 +82,9 @@ namespace CRM.UI.Controllers
                 userBiz.Activate(Id);
                 return RedirectToAction("Login", "User");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                ModelState.AddModelError("IV",ex.Message);
+                ModelState.AddModelError("IV", ex.Message);
                 return View("Error");
             }
         }
@@ -92,6 +92,7 @@ namespace CRM.UI.Controllers
         // GET: Login
         public ActionResult Login()
         {
+
             return View();
         }
 
@@ -100,9 +101,11 @@ namespace CRM.UI.Controllers
         {
             try
             {
+
                 long uid;
                 UserBiz userbiz = new UserBiz();
                 bool Status = userbiz.UseLogin(m.Email, m.Password, out uid);
+
                 if (Status == true)
                 {
                     Session["UID"] = uid;
@@ -121,11 +124,11 @@ namespace CRM.UI.Controllers
                           },
                           DefaultAuthenticationTypes.ApplicationCookie);
 
-                        HttpContext.GetOwinContext().Authentication.SignIn(
-                           new AuthenticationProperties { IsPersistent = false }, ident);
-                        
-                    
-                    
+                    HttpContext.GetOwinContext().Authentication.SignIn(
+                       new AuthenticationProperties { IsPersistent = false }, ident);
+
+
+
                     return RedirectToAction("MyProfile");
                 }
                 else
@@ -135,7 +138,7 @@ namespace CRM.UI.Controllers
                     return View();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError("UVE", ex.Message);
                 return View();

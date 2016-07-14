@@ -34,24 +34,24 @@ namespace CRM.Dal
             }
 
         }
-
-
-
+        
         public List<Ticket> GetAllTicket(string clientname, int StartIndex, int EndIndex)
         {
             List<Ticket> lstTickets = new List<Ticket>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
             con.Open();
+            Ticket ticketModel = null;
             SqlCommand cmd = new SqlCommand("spGetTickets", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ClientName", clientname);
+            cmd.Parameters.AddWithValue("@CompanyName", clientname);
             cmd.Parameters.AddWithValue("@StartIndex", StartIndex);
             cmd.Parameters.AddWithValue("@EndIndex", EndIndex);
             SqlDataReader dr = cmd.ExecuteReader();
-            Ticket ticketModel = null;
+            
             while (dr.Read())
             {
                 ticketModel = new Ticket();
+                ticketModel.TicketId = Convert.ToInt64(dr["TicketId"]);
                 ticketModel.TicketNo = Convert.ToInt64(dr["TicketNo"]);
                 ticketModel.CompanyName = Convert.ToString(dr["CompanyName"]);
                 ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
@@ -145,6 +145,10 @@ namespace CRM.Dal
                 ticketModel.ProductId = Convert.ToInt64(dr["ProductId"]);
                 ticketModel.ComponentId = Convert.ToInt64(dr["ComponentId"]);
                 ticketModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
+                ticketModel.CompanyName = Convert.ToString(dr["CompanyName"]);
+                ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
+                ticketModel.ProductName = Convert.ToString(dr["ProductName"]);
+
             }
             return ticketModel;
         }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CRM.Model;
 
 namespace CRM.UI.ViewModels
 {
@@ -28,8 +29,11 @@ namespace CRM.UI.ViewModels
         public long CreatedBy { get; set; }
         public DateTime DateFixed { get; set; }
         public DateTime DateClosed { get; set; }
+        public string ComponentName { get; set; }
+        public string CompanyName { get; set; }
+        public string ProductName { get; set; }
 
-
+        public List<Company> lstModel { get; set; }
 
     }
 
