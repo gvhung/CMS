@@ -31,7 +31,7 @@ namespace CRM.Dal
             }
         }
 
-        public bool UserLogin(string userName, string pswd, out long UID)
+        public bool Login(string userName, string pswd, out long UID, out long companyId)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
             {
@@ -40,12 +40,15 @@ namespace CRM.Dal
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = userName;
                 cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = pswd;
+                SqlParameter prmCompanyId = cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt);
                 SqlParameter prmUid = cmd.Parameters.Add("@UID", SqlDbType.BigInt);
                 SqlParameter prmStatus = cmd.Parameters.Add("@Status", SqlDbType.Bit);
                 prmStatus.Direction = ParameterDirection.Output;
                 prmUid.Direction = ParameterDirection.Output;
+                prmCompanyId.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
-                UID = Convert.ToInt64(prmUid.Value==DBNull.Value?0:prmUid.Value);
+                UID = Convert.ToInt64(prmUid.Value == DBNull.Value ? 0 : prmUid.Value);
+                companyId = Convert.ToInt64(prmCompanyId.Value == DBNull.Value ? 0 : prmCompanyId.Value);
                 return Convert.ToBoolean(prmStatus.Value);
             }
         }

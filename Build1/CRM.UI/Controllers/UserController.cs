@@ -108,8 +108,9 @@ namespace CRM.UI.Controllers
             {
 
                 long uid;
+                long companyId;
                 UserBiz userbiz = new UserBiz();
-                bool Status = userbiz.UseLogin(m.Email, m.Password, out uid);
+                bool Status = userbiz.Login(m.Email, m.Password, out uid, out companyId );
 
                 if (Status == true)
                 {
@@ -122,6 +123,7 @@ namespace CRM.UI.Controllers
                         Response.Cookies.Add(c);
                     }
                     Session["UID"] = uid;
+                    Session["CompanyId"] = companyId;
                     var ident = new ClaimsIdentity(
                           new[] { 
                                   // adding following 2 claim just for supporting default antiforgery provider
@@ -139,9 +141,6 @@ namespace CRM.UI.Controllers
 
                     HttpContext.GetOwinContext().Authentication.SignIn(
                        new AuthenticationProperties { IsPersistent = false }, ident);
-
-
-
                     return RedirectToAction("MyProfile");
                 }
                 else

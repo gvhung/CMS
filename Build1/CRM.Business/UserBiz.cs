@@ -28,10 +28,10 @@ namespace CRM.Business
             return userDB.CreateCompany(companyName);
         }
 
-        public bool UseLogin(string userName, string pswd, out long UID)
+        public bool Login(string userName, string pswd, out long UID,out long companyId)
         {
             UserDB userdb = new UserDB();
-           bool status= userdb.UserLogin(userName, pswd,out UID);
+           bool status= userdb.Login(userName, pswd,out UID,out companyId);
             return status;
         }
 
