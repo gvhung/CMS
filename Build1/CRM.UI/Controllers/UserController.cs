@@ -92,8 +92,13 @@ namespace CRM.UI.Controllers
         // GET: Login
         public ActionResult Login()
         {
-
-            return View();
+            LoginViewModel m = new LoginViewModel();
+            if (Request.Cookies["userinfo"]!=null)
+            {
+                m.Email = Request.Cookies["userinfo"].Values["username"];
+                m.Password = Request.Cookies["userinfo"].Values["password"];
+            }
+            return View(m);
         }
 
         [HttpPost]
@@ -108,6 +113,14 @@ namespace CRM.UI.Controllers
 
                 if (Status == true)
                 {
+                    if (m.RememberMe)
+                    {
+                        HttpCookie c = new HttpCookie("userinfo");
+                        c.Values.Add("Username", m.Email);
+                        c.Values.Add("password", m.Password);
+                        c.Expires.AddDays(7);
+                        Response.Cookies.Add(c);
+                    }
                     Session["UID"] = uid;
                     var ident = new ClaimsIdentity(
                           new[] { 
@@ -135,13 +148,15 @@ namespace CRM.UI.Controllers
                 {
 
                     ModelState.AddModelError("UVE", "Invalid username or pasword");
-                    return View();
+                    m.Password = "";
+                    return View(m);
                 }
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("UVE", ex.Message);
-                return View();
+                m.Password = "";
+                return View(m);
             }
         }
 
