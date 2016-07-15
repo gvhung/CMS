@@ -39,6 +39,9 @@ namespace CRM.UI.Controllers
             ticket.ComponentId = T.ComponentId;
             ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
             TicketBiz ticketbiz = new TicketBiz();
+            ViewBag.lstDropdown = ticketbiz.BindCompanies();
+            ViewBag.lstProducts = ticketbiz.BindProducts();
+            ViewBag.lstComponents = ticketbiz.BindComponent();
             int i = ticketbiz.AddTicket(ticket);
             if (i > 0)
             {
