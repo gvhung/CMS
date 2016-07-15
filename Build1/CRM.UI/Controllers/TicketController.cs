@@ -12,7 +12,6 @@ using PagedList;
 
 namespace CRM.UI.Controllers
 {
-
     public class TicketController : Controller
     {
         // GET: Ticket
@@ -20,7 +19,7 @@ namespace CRM.UI.Controllers
         {
             TicketBiz ticketbiz = new TicketBiz();
             ViewBag.lstDropdown = ticketbiz.BindCompanies();
-            ViewBag.lstProducts= ticketbiz.BindProducts();
+            ViewBag.lstProducts = ticketbiz.BindProducts();
             ViewBag.lstComponents = ticketbiz.BindComponent();
 
             return View();
@@ -53,15 +52,6 @@ namespace CRM.UI.Controllers
             }
             return View();
         }
-        //[HttpGet]
-        //public ActionResult List()
-        //{
-        //    List<Ticket> lstTicket = new List<Ticket>();
-        //    TicketBiz ticketbiz = new TicketBiz();
-        //    lstTicket = ticketbiz.GetAllTicket();
-        //    ViewBag.tickets = lstTicket;
-        //    return View();
-        //}
 
         public ActionResult List(int page = 1)
         {
@@ -100,13 +90,10 @@ namespace CRM.UI.Controllers
             ticketcreatemodel.CompanyName = t.CompanyName;
             ticketcreatemodel.ProductName = t.ProductName;
 
-            // TicketBiz ticketbiz = new TicketBiz();
             ticketcreatemodel.lstModel = ticketbiz.BindCompanies();
-
             ViewBag.lstDropdown = ticketcreatemodel.lstModel;
             ViewBag.lstProducts = ticketbiz.BindProducts();
             ViewBag.lstComponents = ticketbiz.BindComponent();
-
 
             return View("Create", ticketcreatemodel);
         }
