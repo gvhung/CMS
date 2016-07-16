@@ -8,6 +8,7 @@ using CRM.Business;
 using CRM.Model;
 namespace CRM.UI.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         // GET: Product

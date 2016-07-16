@@ -88,6 +88,13 @@ namespace CRM.UI.Controllers
                 return View("Error");
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOut()
+        {
+           HttpContext.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: Login
         public ActionResult Login()
@@ -109,8 +116,9 @@ namespace CRM.UI.Controllers
 
                 long uid;
                 long companyId;
+                string name;
                 UserBiz userbiz = new UserBiz();
-                bool Status = userbiz.Login(m.Email, m.Password, out uid, out companyId );
+                bool Status = userbiz.Login(m.Email, m.Password, out uid, out companyId, out name );
 
                 if (Status == true)
                 {
@@ -127,15 +135,12 @@ namespace CRM.UI.Controllers
                     var ident = new ClaimsIdentity(
                           new[] { 
                                   // adding following 2 claim just for supporting default antiforgery provider
-                                  new Claim(ClaimTypes.NameIdentifier, m.Email),
+                                  new Claim(ClaimTypes.NameIdentifier, uid.ToString()),
                                   new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "ASP.NET Identity", "http://www.w3.org/2001/XMLSchema#string"),
 
-                                  new Claim(ClaimTypes.Name,m.Email),
+                                  new Claim(ClaimTypes.Name,name),
 
-                                  // optionally you could add roles if any
-                                  new Claim(ClaimTypes.Role, "RoleName"),
-                                  new Claim(ClaimTypes.Role, "AnotherRole"),
-
+                                 
                           },
                           DefaultAuthenticationTypes.ApplicationCookie);
 
