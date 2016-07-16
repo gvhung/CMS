@@ -16,62 +16,102 @@ namespace CRM.Dal
         {
             try
             {
-                using (SqlConnection con=new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
                 {
                     SqlCommand cmd = new SqlCommand("spAddProduct", con);
-                    cmd.Parameters.Add("@ProductName", SqlDbType.VarChar, 100).Value=p.Name;
+                    cmd.Parameters.Add("@ProductName", SqlDbType.VarChar, 100).Value = p.Name;
                     cmd.ExecuteNonQuery();
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
         public List<Product> GetProducts(long startIndex, long endIndex, string prodcutName)
         {
-            List<Product> lstproducts = new List<Product>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("spGetProducts", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.Add("@StartIndex", SqlDbType.BigInt).Value = startIndex;
-            cmd.Parameters.Add("@endIndex", SqlDbType.BigInt).Value = endIndex;
-
-            cmd.Parameters.Add("@ProductName", SqlDbType.VarChar).Value = prodcutName;
-
-
-            SqlDataReader dr = cmd.ExecuteReader();  //ExecuteNonQuery ExecuetScalar 
-            Product product = null;
-            while (dr.Read())
+            try
             {
-                product= new Product();
-                product.Name = dr["ProductName"].ToString();
-                product.Id = Convert.ToInt32(dr["ProductId"]);
-                product.Versions = Convert.ToString(dr["Version"]);
-                product.CompanyName = Convert.ToString(dr["CompanyName"]);
-                lstproducts.Add(product);
+                List<Product> lstproducts = new List<Product>();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spGetProducts", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@StartIndex", SqlDbType.BigInt).Value = startIndex;
+                cmd.Parameters.Add("@endIndex", SqlDbType.BigInt).Value = endIndex;
+                cmd.Parameters.Add("@ProductName", SqlDbType.VarChar).Value = prodcutName;
+                SqlDataReader dr = cmd.ExecuteReader();  //ExecuteNonQuery ExecuetScalar 
+                Product product = null;
+                while (dr.Read())
+                {
+                    product = new Product();
+                    product.Name = dr["ProductName"].ToString();
+                    product.Id = Convert.ToInt32(dr["ProductId"]);
+                    product.Versions = Convert.ToString(dr["Version"]);
+                    product.CompanyName = Convert.ToString(dr["CompanyName"]);
+                    product.VersionId = Convert.ToInt32(dr["VersionId"]);
+                    lstproducts.Add(product);
+                }
+                return (lstproducts);
             }
-            return (lstproducts);
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
         }
 
+        public void UpdateProduct(long productid, string OldVersion, string version)
+        {
+            SqlConnection con = null;
+            try
+            {
 
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spUpdateProduct", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@ProductName", SqlDbType.BigInt).Value = productid;
+                cmd.Parameters.Add("@Oldversion", SqlDbType.VarChar).Value = OldVersion;
+                cmd.Parameters.Add("@Version", SqlDbType.VarChar).Value = version;
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
+        }
         public Product GetProductInfo(int productId)
 
         {
             SqlConnection con = null;
             try
             {
-                
+
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spGetProductInfo", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = productId;
                 SqlDataReader dr = cmd.ExecuteReader();  //ExecuteNonQuery ExecuetScalar 
-                Product p =null;
+                Product p = null;
                 if (dr.Read())
                 {
                     p = new Product();
@@ -99,15 +139,46 @@ namespace CRM.Dal
 
 
         }
+        public void CreateProduct(Product product)
+
+        {
+            SqlConnection con = null;
+            try
+            {
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+                
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spCreateProduct", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductName", product.Name);
+                    cmd.Parameters.AddWithValue("@Version", product.Versions);
+                    cmd.Parameters.AddWithValue("@CompanyId", product.CompanyId);
+                    
+                    cmd.ExecuteNonQuery();
+                
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
+        }
 
 
         public List<Company> GetCompanies()
         {
-            SqlConnection con = null; 
+            SqlConnection con = null;
             try
             {
                 List<Company> lstcompanies = new List<Company>();
-                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spGetCompanies", con);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -123,7 +194,7 @@ namespace CRM.Dal
                     lstcompanies.Add(company);
                 }
                 return (lstcompanies);
-                
+
             }
             catch (Exception ex)
             {
@@ -138,9 +209,40 @@ namespace CRM.Dal
             }
 
 
-            }
-        
         }
+
+
+        public void DeleteProduct(long versionId)
+
+        {
+            SqlConnection con = null;
+            try
+            {
+
+                con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spDeleteProduct", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@versionId", SqlDbType.BigInt).Value = versionId;
+
+                cmd.ExecuteNonQuery();
+          
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+
     }
-
-
+}
