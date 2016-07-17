@@ -9,6 +9,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CRM.UI.ViewModels;
 using PagedList;
+using System.Text;
 
 namespace CRM.UI.Controllers
 {
@@ -38,9 +39,9 @@ namespace CRM.UI.Controllers
             ticket.ComponentId = T.ComponentId;
             ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
             TicketBiz ticketbiz = new TicketBiz();
-            ViewBag.lstDropdown = ticketbiz.BindCompanies();
-            ViewBag.lstProducts = ticketbiz.BindProducts();
-            ViewBag.lstComponents = ticketbiz.BindComponent();
+            //ViewBag.lstDropdown = ticketbiz.BindCompanies();
+            //ViewBag.lstProducts = ticketbiz.BindProducts();
+            //ViewBag.lstComponents = ticketbiz.BindComponent();
             int i = ticketbiz.AddTicket(ticket);
             if (i > 0)
             {
@@ -90,10 +91,10 @@ namespace CRM.UI.Controllers
             ticketcreatemodel.CompanyName = t.CompanyName;
             ticketcreatemodel.ProductName = t.ProductName;
 
-            ticketcreatemodel.lstModel = ticketbiz.BindCompanies();
+            //ticketcreatemodel.lstModel = ticketbiz.BindCompanies();
             ViewBag.lstDropdown = ticketcreatemodel.lstModel;
-            ViewBag.lstProducts = ticketbiz.BindProducts();
-            ViewBag.lstComponents = ticketbiz.BindComponent();
+            //ViewBag.lstProducts = ticketbiz.BindProducts();
+            //ViewBag.lstComponents = ticketbiz.BindComponent();
 
             return View("Create", ticketcreatemodel);
         }
@@ -102,6 +103,46 @@ namespace CRM.UI.Controllers
         public ActionResult UpdateTicket()
         {
             return View();
+        }
+
+
+        public ActionResult BindDropDowns(string flag, long Id)
+        {
+
+            StringBuilder sbOptions = new StringBuilder();
+            if (flag == "Company")
+            {
+               TicketBiz ticketbiz = new TicketBiz();
+                var Allproducts = ticketbiz.BindProducts();
+              var lstproducts=Allproducts.FindAll(p => p.ID == Id);
+                foreach (var item in lstproducts)
+                {
+                    sbOptions.Append("<option value=" + item.ID + ">" + item.Name + "</option>");
+                }
+            }
+            else if (flag == "Product")
+            {
+                TicketBiz ticketbiz = new TicketBiz();
+                var AllComponents = ticketbiz.BindComponent();
+              var lstComponents = AllComponents.FindAll(c => c.ID == Id);
+                foreach (var item in lstComponents)
+                {
+                    sbOptions.Append("<option value=" + item.ID + ">" + item.Name + "</option>");
+                }
+            }
+
+            else if (flag == "Component")
+            {
+                TicketBiz ticketbiz = new TicketBiz();
+                var lstComponents = ticketbiz.BindComponent();
+                lstComponents.FindAll(c => c.ID == Id);
+                foreach (var item in lstComponents)
+                {
+                    sbOptions.Append("<option value=" + item.ID + ">" + item.Name + "</option>");
+                }
+            }
+            return Content(sbOptions.ToString());
+
         }
 
     }

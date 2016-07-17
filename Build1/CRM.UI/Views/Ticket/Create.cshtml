@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 @using (Html.BeginForm())
 {
     var Success = ViewBag.Message;
@@ -45,11 +45,19 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(model => model.CompanyId, (SelectList)ViewBag.lstDropdown, "Select Company", new { @class = "form-control required", @id = "ddlCompanies", @name = "ddlCompanies", @onchange = "BindDropDownOptions(this.id)" })*@
+                @Html.DropDownListFor(model => model.CompanyId, new SelectList(ViewBag.lstDropdown, "ID", "Name"), "Select Company", new { @class = "form-control", @Id = "ddlCompanies", @Name = "ddlCompanies", @onchange = "BindDropDownList(this.id)" })
+                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ProductId,new SelectList(ViewBag.lstProducts,"Id","Name"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.ProductId,new SelectList(ViewBag.lstProducts,"ID","Name"),"Select Product", new { @class = "form-control",@Id="ddlProducts",@Name= "ddlProducts", @onchange="BindDropDownList(this.id)" })
+                @*@Html.DropDownListFor(model => model.ProductId, (SelectList)ViewBag.lstProducts, "Select Product", new { @class = "form-control required", @Id = "ddlProducts", @name = "ddlProducts", @onchange = "BindDropDownOptions(this.id)" })*@
                 @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,7 +65,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ComponentId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ComponentId,new SelectList(ViewBag.lstComponents,"ComponentId","ComponentName"), new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.DropDownListFor(model => model.ComponentId, (SelectList)ViewBag.lstComponents, "Select Component", new { @class = "form-control required", @Id = "ddlComponents", @name = "ddlComponents", @onchange = "BindDropDownOptions(this.id)" })*@
+                @Html.DropDownListFor(model => model.ComponentId, new SelectList(ViewBag.lstComponents, "ID", "Name"),"Select Component", new { @class = "form-control", @Id = "ddlComponents", @Name = "ddlComponents", @onchange = "BindDropDownList(this.id)"})
                 @Html.ValidationMessageFor(model => model.ComponentId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,14 +78,8 @@
                 @Html.ValidationMessageFor(model => model.Version, "", new { @class = "text-danger" })
             </div>
         </div>
-              
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CompanyId, new SelectList(ViewBag.lstDropdown,"CompanyId","Name") , new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" onclick="save();" />
@@ -88,11 +91,42 @@
 <div>
     @Html.ActionLink("Back to List", "List")
 </div>
-<script>
-    function save() {
-        $("#id").val('Title', 'Description', 'ProductId', 'ComponentId', 'Version', 'CompanyId');
+<script type="text/javascript">
+    //function save() {
+    //    $("#id").val('Title', 'Description', 'ProductId', 'ComponentId', 'Version', 'CompanyId');
 
+    //}
+
+    function BindDropDownList(id) {
+        debugger;
+        var actionUrl = '@Url.Action("BindDropDowns", "Ticket")';
+        if (id == "ddlCompanies") {
+            var CompanyID = $("#ddlCompanies").val();
+            $.post(actionUrl, { flag: "Company", Id: CompanyID }, function (response) {
+                $("#ddlProducts").html(response).prepend("<option value=''>Select Product </option>");
+            });
+        }
+        else if (id == "ddlProducts") {
+            var ProductID = $("#ddlProducts").val();
+            if (ddlProducts != "") {
+                var actionUrl = '@Url.Action("BindDropDowns", "Ticket")';
+                $.post(actionUrl, { flag: "Product", Id: ProductID }, function (response) {
+                    $("#ddlComponents").html(response).prepend("<option value=''>Select Component </option>");
+                });
+            }
+            else {
+                $("#ddlProducts").html('').prepend("<option value=''>Select Product </option>");
+                $("#ddlComponents").html('').prepend("<option value=''>Select Component </option>");
+            }
+        }
+        if ($("#ddlCompanies").find("option:selected").text() == "Select Company") {
+            $("#ddlProducts").empty();
+            $("#ddlProducts").append("<option value=''>Select Product </option>");
+            $("#ddlComponents").empty();
+            $("#ddlComponents").append("<option value=''>Select Component</option>");
+        }
     }
+
 </script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

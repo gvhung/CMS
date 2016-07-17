@@ -65,64 +65,64 @@ namespace CRM.Dal
             return lstTickets;
         }
 
-        public List<Company> BindCompanies()
+        public List<SelectListDTO> BindCompanies()
         {
-            List<Company> lstCompanies = new List<Company>();
+            List<SelectListDTO> lstCompanies = new List<SelectListDTO>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("spBindCompanies", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader dr = cmd.ExecuteReader();
-            Company companyModel = null;
+            SelectListDTO companyModel = null;
             while (dr.Read())
             {
-                companyModel = new Company();
+                companyModel = new SelectListDTO();
 
                 companyModel.Name = Convert.ToString(dr["CompanyName"]);
-                companyModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
+                companyModel.ID = Convert.ToInt64(dr["CompanyId"]);
                 lstCompanies.Add(companyModel);
             }
             return lstCompanies;
         }
 
-        public List<Product> BindProducts()
+        public List<SelectListDTO> BindProducts()
         {
-            List<Product> lstProducts = new List<Product>();
+            List<SelectListDTO> lstProducts = new List<SelectListDTO>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("spBindproducts", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader dr = cmd.ExecuteReader();
-            Product productModel = null;
+            SelectListDTO productdto = null;
             while (dr.Read())
             {
-                productModel = new Product();
+                productdto = new SelectListDTO();
 
-                productModel.Name = Convert.ToString(dr["ProductName"]);
-                productModel.Id = Convert.ToInt64(dr["ProductId"]);
-                lstProducts.Add(productModel);
+                productdto.Name = Convert.ToString(dr["ProductName"]);
+                productdto.ID = Convert.ToInt64(dr["ProductId"]);
+                lstProducts.Add(productdto);
             }
             return lstProducts;
         }
 
-        public List<Component> BindComponent()
+        public List<SelectListDTO> BindComponent()
         {
-            List<Component> lstComponent = new List<Component>();
+            List<SelectListDTO> lstComponents = new List<SelectListDTO>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("spBindComponents", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader dr = cmd.ExecuteReader();
-            Component componentModel = null;
+            SelectListDTO componentDto = null;
             while (dr.Read())
             {
-                componentModel = new Component();
+                componentDto = new SelectListDTO();
 
-                componentModel.ComponentName = Convert.ToString(dr["ComponentName"]);
-                componentModel.ComponentId = Convert.ToInt64(dr["ComponentId"]);
-                lstComponent.Add(componentModel);
+                componentDto.Name = Convert.ToString(dr["ComponentName"]);
+                componentDto.ID = Convert.ToInt64(dr["ComponentId"]);
+                lstComponents.Add(componentDto);
             }
-            return lstComponent;
+            return lstComponents;
         }
 
 

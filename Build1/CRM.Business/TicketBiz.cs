@@ -24,22 +24,27 @@ namespace CRM.Business
             return ticketdb.GetAllTicket(clientname, StartIndex, EndIndex);
         }
 
-        public List<Company> BindCompanies()
+        public List<SelectListDTO> BindCompanies()
         {
             TicketDB ticketdb = new TicketDB();
-            return ticketdb.BindCompanies();
+            List<SelectListDTO> lstCompanies = new List<SelectListDTO>();
+            lstCompanies= ticketdb.BindCompanies();
+            return lstCompanies;
         }
 
-        public List<Product> BindProducts()
+        public List<SelectListDTO> BindProducts()
         {
             TicketDB ticketdb = new TicketDB();
-            return ticketdb.BindProducts();
+            List<SelectListDTO> lstProducts = new List<SelectListDTO>();
+            lstProducts = ticketdb.BindProducts();
+            return lstProducts;
         }
 
-        public List<Component> BindComponent()
+        public List<SelectListDTO> BindComponent()
         {
             TicketDB ticketdb = new TicketDB();
-            return ticketdb.BindComponent();
+            List<SelectListDTO> lstComponents = new List<SelectListDTO>();
+            return lstComponents= ticketdb.BindComponent();
         }
 
         public Ticket GetTicketById(int id)
