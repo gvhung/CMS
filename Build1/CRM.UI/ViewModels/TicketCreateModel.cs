@@ -34,8 +34,19 @@ namespace CRM.UI.ViewModels
         public string ProductName { get; set; }
 
         public List<Company> lstModel { get; set; }
+        public List<Product> lstproducts { get; set; }
+        public List<Component> lstComponents { get; set; }
+        public List<ProductVersion> lstVersions { get; set; }
 
+       public TicketCreateModel()
+        {
+            lstComponents = new List<Component>();
+            lstproducts = new List<Product>();
+            lstVersions = new List<ProductVersion>();
+        }
     }
+
+   
 
 
     public class Module

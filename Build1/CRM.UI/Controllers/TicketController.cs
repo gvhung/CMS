@@ -18,12 +18,14 @@ namespace CRM.UI.Controllers
         // GET: Ticket
         public ActionResult Create()
         {
-            TicketBiz ticketbiz = new TicketBiz();
-            ViewBag.lstDropdown = ticketbiz.BindCompanies();
-            ViewBag.lstProducts = ticketbiz.BindProducts();
-            ViewBag.lstComponents = ticketbiz.BindComponent();
+            TicketCreateModel ticketcreateModel = new TicketCreateModel();
+            ProductBiz productbiz = new ProductBiz();
+            // ViewBag.lstDropdown = ticketbiz.BindCompanies();
+            ticketcreateModel.lstproducts = productbiz.GetProducts( Convert.ToInt64( Session["CompanyId"]));
+           // ticketcreateModel.lstproducts.Insert(0, new Product() { Id = 0, Name = "Select Product" });
+            //ViewBag.lstComponents = productbiz.GetComponents();
 
-            return View();
+            return View(ticketcreateModel);
         }
 
         [HttpPost]
@@ -110,37 +112,29 @@ namespace CRM.UI.Controllers
         {
 
             StringBuilder sbOptions = new StringBuilder();
-            if (flag == "Company")
+            
+            if (flag == "Components")
             {
-               TicketBiz ticketbiz = new TicketBiz();
-                var Allproducts = ticketbiz.BindProducts();
-              var lstproducts=Allproducts.FindAll(p => p.ID == Id);
-                foreach (var item in lstproducts)
-                {
-                    sbOptions.Append("<option value=" + item.ID + ">" + item.Name + "</option>");
-                }
-            }
-            else if (flag == "Product")
-            {
-                TicketBiz ticketbiz = new TicketBiz();
-                var AllComponents = ticketbiz.BindComponent();
-              var lstComponents = AllComponents.FindAll(c => c.ID == Id);
+                ProductBiz productbiz = new ProductBiz();
+                var lstComponents = productbiz.GetComponent(Id);
+              //var lstComponents = AllComponents.FindAll(c => c.ID == Id);
                 foreach (var item in lstComponents)
                 {
-                    sbOptions.Append("<option value=" + item.ID + ">" + item.Name + "</option>");
+                    sbOptions.Append("<option value=" + item.ComponentId + ">" + item.ComponentName + "</option>");
                 }
             }
 
-            else if (flag == "Component")
+            else if (flag == "Versions")
             {
-                TicketBiz ticketbiz = new TicketBiz();
-                var lstComponents = ticketbiz.BindComponent();
-                lstComponents.FindAll(c => c.ID == Id);
-                foreach (var item in lstComponents)
+                ProductBiz productbiz = new ProductBiz();
+                var lstVersions = productbiz.GetVersions(Id);
+                //lstComponents.FindAll(c => c.ID == Id);
+                foreach (var item in lstVersions)
                 {
-                    sbOptions.Append("<option value=" + item.ID + ">" + item.Name + "</option>");
+                    sbOptions.Append("<option value=" + item.VersionId + ">" + item.VersionName + "</option>");
                 }
             }
+
             return Content(sbOptions.ToString());
 
         }
