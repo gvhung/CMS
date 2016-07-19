@@ -68,6 +68,68 @@ namespace CRM.Dal
             }
         }
 
+        public List<Product> GetProducts(long companyId)
+        {
+            List<Product> lstProducts = new List<Product>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("spBindproducts", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            Product productdto = null;
+            while (dr.Read())
+            {
+                productdto = new Product();
+
+                productdto.Name = Convert.ToString(dr["ProductName"]);
+                productdto.Id = Convert.ToInt64(dr["ProductId"]);
+                lstProducts.Add(productdto);
+            }
+            return lstProducts;
+        }
+
+        public List<Component> GetComponents(long productId)
+        {
+            List<Component> lstComponents = new List<Component>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("spGetComponents", con);
+            cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = productId;
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader dr = cmd.ExecuteReader();
+            Component componentDto = null;
+            while (dr.Read())
+            {
+                componentDto = new Component();
+
+                componentDto.ComponentName = Convert.ToString(dr["ComponentName"]);
+                componentDto.ComponentId = Convert.ToInt64(dr["ComponentId"]);
+                lstComponents.Add(componentDto);
+            }
+            return lstComponents;
+        }
+
+        public List<ProductVersion> GetVersions(long productId)
+        {
+            List<ProductVersion> lstVersions = new List<ProductVersion>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("spGetVersions", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = productId;
+            SqlDataReader dr = cmd.ExecuteReader();
+            ProductVersion versions = null;
+            while (dr.Read())
+            {
+                versions = new ProductVersion();
+
+                versions.VersionName = Convert.ToString(dr["Version"]);
+                versions.VersionId = Convert.ToInt64(dr["VersionId"]);
+                lstVersions.Add(versions);
+            }
+            return lstVersions;
+        }
+
         public void UpdateProduct(long productid, string OldVersion, string version)
         {
             SqlConnection con = null;
@@ -146,16 +208,16 @@ namespace CRM.Dal
             try
             {
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
-                
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("spCreateProduct", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ProductName", product.Name);
-                    cmd.Parameters.AddWithValue("@Version", product.Versions);
-                    cmd.Parameters.AddWithValue("@CompanyId", product.CompanyId);
-                    
-                    cmd.ExecuteNonQuery();
-                
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spCreateProduct", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ProductName", product.Name);
+                cmd.Parameters.AddWithValue("@Version", product.Versions);
+                cmd.Parameters.AddWithValue("@CompanyId", product.CompanyId);
+
+                cmd.ExecuteNonQuery();
+
 
             }
             catch (Exception ex)
@@ -226,7 +288,7 @@ namespace CRM.Dal
                 cmd.Parameters.Add("@versionId", SqlDbType.BigInt).Value = versionId;
 
                 cmd.ExecuteNonQuery();
-          
+
 
 
             }

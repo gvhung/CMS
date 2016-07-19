@@ -65,6 +65,8 @@ namespace CRM.Dal
             return lstTickets;
         }
 
+       
+
         public List<SelectListDTO> BindCompanies()
         {
             List<SelectListDTO> lstCompanies = new List<SelectListDTO>();
@@ -84,47 +86,6 @@ namespace CRM.Dal
             }
             return lstCompanies;
         }
-
-        public List<SelectListDTO> BindProducts()
-        {
-            List<SelectListDTO> lstProducts = new List<SelectListDTO>();
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("spBindproducts", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader dr = cmd.ExecuteReader();
-            SelectListDTO productdto = null;
-            while (dr.Read())
-            {
-                productdto = new SelectListDTO();
-
-                productdto.Name = Convert.ToString(dr["ProductName"]);
-                productdto.ID = Convert.ToInt64(dr["ProductId"]);
-                lstProducts.Add(productdto);
-            }
-            return lstProducts;
-        }
-
-        public List<SelectListDTO> BindComponent()
-        {
-            List<SelectListDTO> lstComponents = new List<SelectListDTO>();
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("spBindComponents", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader dr = cmd.ExecuteReader();
-            SelectListDTO componentDto = null;
-            while (dr.Read())
-            {
-                componentDto = new SelectListDTO();
-
-                componentDto.Name = Convert.ToString(dr["ComponentName"]);
-                componentDto.ID = Convert.ToInt64(dr["ComponentId"]);
-                lstComponents.Add(componentDto);
-            }
-            return lstComponents;
-        }
-
 
         public Ticket GetTicketBy(int id)
         {
