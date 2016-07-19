@@ -32,6 +32,28 @@ namespace CRM.Business
             return productDb.GetProductInfo(productId);
 
         }
+
+        public List<Product> GetProducts(long companyId)
+        {
+            ProductDB productDB = new ProductDB();
+            List<Product> lstProducts = new List<Product>();
+            lstProducts = productDB.GetProducts(companyId);
+            return lstProducts;
+        }
+        public List<Component> GetComponent(long productId)
+        {
+            ProductDB productDB = new ProductDB();
+            List<Component> lstComponents = new List<Component>();
+            return lstComponents = productDB.GetComponents(productId);
+        }
+
+        public List<ProductVersion> GetVersions(long productId)
+        {
+            ProductDB productDB = new ProductDB();
+            List<ProductVersion> lstversions = new List<ProductVersion>();
+            return lstversions = productDB.GetVersions(productId);
+        }
+
         public void DeleteProduct(long productId)
         {
             if (productId == 0)

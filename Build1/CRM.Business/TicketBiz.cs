@@ -32,26 +32,13 @@ namespace CRM.Business
             return lstCompanies;
         }
 
-        public List<SelectListDTO> BindProducts()
-        {
-            TicketDB ticketdb = new TicketDB();
-            List<SelectListDTO> lstProducts = new List<SelectListDTO>();
-            lstProducts = ticketdb.BindProducts();
-            return lstProducts;
-        }
-
-        public List<SelectListDTO> BindComponent()
-        {
-            TicketDB ticketdb = new TicketDB();
-            List<SelectListDTO> lstComponents = new List<SelectListDTO>();
-            return lstComponents= ticketdb.BindComponent();
-        }
-
         public Ticket GetTicketById(int id)
         {
             TicketDB ticketdb = new TicketDB();
             Ticket ticket = ticketdb.GetTicketBy(id);
             return ticket;
         }
+
+       
     }
 }
