@@ -28,7 +28,7 @@ namespace CRM.Business
         {
             TicketDB ticketdb = new TicketDB();
             List<SelectListDTO> lstCompanies = new List<SelectListDTO>();
-            lstCompanies= ticketdb.BindCompanies();
+            lstCompanies = ticketdb.BindCompanies();
             return lstCompanies;
         }
 
@@ -39,6 +39,25 @@ namespace CRM.Business
             return ticket;
         }
 
-       
+        public List<Seviority> GetSeviorities()
+        {
+            TicketDB ticketdb = new TicketDB();
+            List<Seviority> ticket = ticketdb.GetSeviorities();
+            return ticket;
+        }
+
+        public List<Priority> GetPriorities()
+        {
+            TicketDB ticketdb = new TicketDB();
+            List<Priority> ticket = ticketdb.GetPriorities();
+            return ticket;
+        }
+
+        public List<TicketType> GetTicketTypes()
+        {
+            TicketDB ticketdb = new TicketDB();
+            List<TicketType> ticket = ticketdb.GetTicketTypes();
+            return ticket;
+        }
     }
 }

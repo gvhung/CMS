@@ -20,47 +20,43 @@ namespace CRM.UI.ViewModels
         public long ProductId { get; set; }
         [Display(Name = "Component")]
         public long ComponentId { get; set; }
-        public string Version { get; set; }
+        [Display(Name = "Version")]
+        public long VersionId { get; set; }
         public int Status { get; set; }
-        [Display(Name ="Company")]
+        [Display(Name = "Company")]
         public long CompanyId { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
-        public long CreatedBy { get; set; }
-        public DateTime DateFixed { get; set; }
-        public DateTime DateClosed { get; set; }
         public string ComponentName { get; set; }
         public string CompanyName { get; set; }
         public string ProductName { get; set; }
+        [Display(Name = "Priority")]
+        public int PriorityId { get; set; }
+        [Display(Name = "Seviority")]
+        public int SeviorityId { get; set; }
+        [Display(Name = "Ticket Type")]
+        public int TicketTypeId { get; set; }
 
-        public List<Company> lstModel { get; set; }
-        public List<Product> lstproducts { get; set; }
-        public List<Component> lstComponents { get; set; }
-        public List<ProductVersion> lstVersions { get; set; }
 
-       public TicketCreateModel()
+        public List<Product> Products { get; set; }
+        public List<Component> Components { get; set; }
+        public List<ProductVersion> Versions { get; set; }
+        public List<Priority> Priorities { get; set; }
+        public List<Seviority> Seviorities { get; set; }
+        public List<TicketType> TicketTypes { get; set; }
+        //public List<Ticket> ticket { get; set; }
+
+        public TicketCreateModel()
         {
-            lstComponents = new List<Component>();
-            lstproducts = new List<Product>();
-            lstVersions = new List<ProductVersion>();
+            Components = new List<Component>();
+            Products = new List<Product>();
+            Versions = new List<ProductVersion>();
+            Priorities = new List<Priority>();
+            Seviorities = new List<Seviority>();
+            TicketTypes = new List<TicketType>();
         }
     }
 
-   
 
 
-    public class Module
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
 
-    }
-    public class Priority
-    {
-        public int Code { get; set; }
-        public string Name { get; set; }
 
-    }
-
-   
 }

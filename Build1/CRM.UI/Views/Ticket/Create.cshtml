@@ -22,14 +22,7 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.TicketNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.TicketNo, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TicketNo, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
+        
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -41,22 +34,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.CompanyId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.CompanyId, (SelectList)ViewBag.lstDropdown, "Select Company", new { @class = "form-control required", @id = "ddlCompanies", @name = "ddlCompanies", @onchange = "BindDropDownOptions(this.id)" })
-                @Html.DropDownListFor(model => model.CompanyId, new SelectList(ViewBag.lstDropdown, "ID", "Name"), "Select Company", new { @class = "form-control", @Id = "ddlCompanies", @Name = "ddlCompanies", @onchange = "BindDropDownList(this.id)" })
-                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-        <div class="form-group">
+               <div class="form-group">
             @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ProductId,new SelectList(Model.lstproducts,"Id","Name"),"Select Product", new { @class = "form-control",@Id="ddlProducts",@Name= "ddlProducts", @onchange="BindDropDownList(this.id)" })
+                @Html.DropDownListFor(model => model.ProductId, new SelectList(Model.Products, "Id", "Name"), "Select Product", new { @class = "form-control", @Id = "ProductId", @Name = "ProductId", @onchange = "BindDropDownList(this.id)" })
                 @*@Html.DropDownListFor(model => model.ProductId, (SelectList)ViewBag.lstProducts, "Select Product", new { @class = "form-control required", @Id = "ddlProducts", @name = "ddlProducts", @onchange = "BindDropDownOptions(this.id)" })*@
                 @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
             </div>
@@ -66,20 +51,40 @@
             @Html.LabelFor(model => model.ComponentId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownListFor(model => model.ComponentId, (SelectList)ViewBag.lstComponents, "Select Component", new { @class = "form-control required", @Id = "ddlComponents", @name = "ddlComponents", @onchange = "BindDropDownOptions(this.id)" })*@
-                @Html.DropDownListFor(model => model.ComponentId, new SelectList(Model.lstComponents, "ID", "Name"),"Select Component", new { @class = "form-control", @Id = "ddlComponents", @Name = "ddlComponents"})
+                @Html.DropDownListFor(model => model.ComponentId, new SelectList(Model.Components, "ComponentId", "ComponentName"), "Select Component", new { @class = "form-control", @Id = "ComponentId", @Name = "ComponentId" })
                 @Html.ValidationMessageFor(model => model.ComponentId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Version, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VersionId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Version,new SelectList(Model.lstVersions,"VersionId","VersionName"),"Select Version", new {  @class = "form-control" , @Id = "ddlVersions" } )
-                @Html.ValidationMessageFor(model => model.Version, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.VersionId, new SelectList(Model.Versions, "VersionId", "VersionName"), "Select Version", new { @class = "form-control", @Id = "VersionId" })
+                @Html.ValidationMessageFor(model => model.VersionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PriorityId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PriorityId, new SelectList(Model.Priorities, "Id", "PriorityName"), "Select Priority", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PriorityId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SeviorityId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.SeviorityId, new SelectList(Model.Seviorities, "Id", "SeviorityName"), "Select Seviority", new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.SeviorityId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TicketTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TicketTypeId, new SelectList(Model.TicketTypes, "Id", "Type"), "Select Ticket Type", new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
-       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" onclick="save();" />
@@ -100,18 +105,18 @@
     function BindDropDownList(id) {
         debugger;
         var actionUrl = '@Url.Action("BindDropDowns", "Ticket")';
-       
-         var ProductID = $("#ddlProducts").val();
-         
-         $.post(actionUrl, { flag: "Components", Id: ProductID }, function (response) {
-                    $("#ddlComponents").html(response).prepend("<option value=''>Select Component </option>");
-                });
-         
-         $.post(actionUrl, { flag: "Versions", Id: ProductID }, function (response) {
-             $("#ddlVersions").html(response).prepend("<option value=''>Select Versions </option>");
-         });
-          
-          
+
+        var ProductID = $("#ProductId").val();
+
+        $.post(actionUrl, { flag: "Components", Id: ProductID }, function (response) {
+            $("#ComponentId").html(response).prepend("<option value='0' Selected >Select Component </option>");
+        });
+
+        $.post(actionUrl, { flag: "Versions", Id: ProductID }, function (response) {
+            $("#VersionId").html(response).prepend("<option value='0' Selected >Select Versions </option>");
+        });
+
+
     }
 
 </script>
