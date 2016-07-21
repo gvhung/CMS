@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.CompanyName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Components)
+        </th>
         <th></th>
     </tr>
 
@@ -34,6 +37,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
+        <th>
+            @Html.DisplayNameFor(model => model.Components)
+        </th>
+
+
         <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.ProductId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.VersionId})
