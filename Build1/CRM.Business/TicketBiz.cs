@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CRM.Model;
 using CRM.Dal;
+using static CRM.Model.Ticket;
 
 namespace CRM.Business
 {

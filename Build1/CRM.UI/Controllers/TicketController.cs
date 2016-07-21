@@ -20,9 +20,14 @@ namespace CRM.UI.Controllers
         {
             TicketCreateModel ticketcreateModel = new TicketCreateModel();
             ProductBiz productbiz = new ProductBiz();
+            TicketBiz ticketbiz = new TicketBiz();
             // ViewBag.lstDropdown = ticketbiz.BindCompanies();
-            ticketcreateModel.lstproducts = productbiz.GetProducts( Convert.ToInt64( Session["CompanyId"]));
-           // ticketcreateModel.lstproducts.Insert(0, new Product() { Id = 0, Name = "Select Product" });
+            ticketcreateModel.Products = productbiz.GetProducts( Convert.ToInt64( Session["CompanyId"]));
+            ticketcreateModel.Priorities = ticketbiz.GetPriorities();
+            ticketcreateModel.Seviorities = ticketbiz.GetSeviorities();
+            ticketcreateModel.TicketTypes = ticketbiz.GetTicketTypes();
+            
+            // ticketcreateModel.lstproducts.Insert(0, new Product() { Id = 0, Name = "Select Product" });
             //ViewBag.lstComponents = productbiz.GetComponents();
 
             return View(ticketcreateModel);
@@ -35,12 +40,19 @@ namespace CRM.UI.Controllers
             ticket.TicketNo = T.TicketNo;
             ticket.Description = T.Description;
             ticket.Title = T.Title;
-            ticket.Version = T.Version;
+            ticket.VersionId = T.VersionId;
             ticket.ProductId = T.ProductId;
             ticket.CompanyId = T.CompanyId;
             ticket.ComponentId = T.ComponentId;
+            ticket.CompanyId = Convert.ToInt32(Session["CompanyId"]);
             ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
             TicketBiz ticketbiz = new TicketBiz();
+            TicketCreateModel ticketcreateModel = new TicketCreateModel();
+            ProductBiz productbiz = new ProductBiz();
+            ticketcreateModel.Products = productbiz.GetProducts(Convert.ToInt64(Session["CompanyId"]));
+            ticketcreateModel.Priorities = ticketbiz.GetPriorities();
+            ticketcreateModel.Seviorities = ticketbiz.GetSeviorities();
+            ticketcreateModel.TicketTypes = ticketbiz.GetTicketTypes();
             //ViewBag.lstDropdown = ticketbiz.BindCompanies();
             //ViewBag.lstProducts = ticketbiz.BindProducts();
             //ViewBag.lstComponents = ticketbiz.BindComponent();
@@ -53,7 +65,7 @@ namespace CRM.UI.Controllers
             {
                 ViewBag.ErrorMessage = " Inseret Failed";
             }
-            return View();
+            return View(ticketcreateModel);
         }
 
         public ActionResult List(int page = 1)
@@ -88,13 +100,13 @@ namespace CRM.UI.Controllers
             ticketcreatemodel.CompanyId = t.CompanyId;
             ticketcreatemodel.ComponentId = t.ComponentId;
             ticketcreatemodel.ProductId = t.ProductId;
-            ticketcreatemodel.Version = t.Version;
+            ticketcreatemodel.VersionId = t.VersionId;
             ticketcreatemodel.ComponentName = t.ComponentName;
             ticketcreatemodel.CompanyName = t.CompanyName;
             ticketcreatemodel.ProductName = t.ProductName;
 
             //ticketcreatemodel.lstModel = ticketbiz.BindCompanies();
-            ViewBag.lstDropdown = ticketcreatemodel.lstModel;
+            //ViewBag.lstDropdown = ticketcreatemodel.lstModel;
             //ViewBag.lstProducts = ticketbiz.BindProducts();
             //ViewBag.lstComponents = ticketbiz.BindComponent();
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CRM.Model;
+using static CRM.Model.Ticket;
 
 namespace CRM.UI.ViewModels
 {

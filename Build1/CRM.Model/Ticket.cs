@@ -15,6 +15,7 @@ namespace CRM.Model
         public Int64 ProductId { get; set; }
         public Int64 ComponentId { get; set; }
         public string ComponentName { get; set; }
+        public long VersionId { get; set; }
         public string Version { get; set; }
         public int Status { get; set; }
         public long CompanyId { get; set; }
@@ -26,6 +27,9 @@ namespace CRM.Model
         public string CompanyName { get; set; }
         public string ProductName { get; set; }
         public string Assignee { get; set; }
+        public int TicketTypeId { get; set; }
+        public int SeviorityId { get; set; }
+        public int PriorityId { get; set; }
 
         public bool Validate()
         {
@@ -34,5 +38,23 @@ namespace CRM.Model
             //if (CreatedBy == 0) throw new Exception("Invalid Ticket: Unauthenticated user");
             return true;
         }
+
+
+        public class TicketType
+        {
+            public string Type { get; set; }
+            public int Id { get; set; }
+        }
+        public class Priority
+        {
+            public string PriorityName { get; set; }
+            public int Id { get; set; }
+        }
+        public class Seviority
+        {
+            public string SeviorityName { get; set; }
+            public int Id { get; set; }
+        }
+
     }
 }

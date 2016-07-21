@@ -7,6 +7,7 @@ using CRM.Model;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using static CRM.Model.Ticket;
 
 namespace CRM.Dal
 {
@@ -177,7 +178,7 @@ namespace CRM.Dal
                 ticketModel = new Ticket();
                 ticketModel.Title = Convert.ToString(dr["Title"]);
                 ticketModel.Description = Convert.ToString(dr["Description"]);
-                ticketModel.Version = Convert.ToString(dr["Versionid"]);
+                ticketModel.VersionId = Convert.ToInt32(dr["Versionid"]);
                 ticketModel.ProductId = Convert.ToInt64(dr["ProductId"]);
                 ticketModel.ComponentId = Convert.ToInt64(dr["ComponentId"]);
                 ticketModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
