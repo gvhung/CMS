@@ -130,7 +130,7 @@ namespace CRM.Dal
             return lstVersions;
         }
 
-        public void UpdateProduct(long productid, string OldVersion, string version)
+        public void UpdateProduct(long productid, string OldVersion, string version,string OldComponents,string Components)
         {
             SqlConnection con = null;
             try
@@ -144,6 +144,8 @@ namespace CRM.Dal
                 cmd.Parameters.Add("@ProductName", SqlDbType.BigInt).Value = productid;
                 cmd.Parameters.Add("@Oldversion", SqlDbType.VarChar).Value = OldVersion;
                 cmd.Parameters.Add("@Version", SqlDbType.VarChar).Value = version;
+                cmd.Parameters.Add("@OldComponentName", SqlDbType.VarChar).Value = OldComponents;
+                cmd.Parameters.Add("@ComponentName", SqlDbType.VarChar).Value = Components;
 
                 cmd.ExecuteNonQuery();
             }
@@ -181,6 +183,7 @@ namespace CRM.Dal
                     p.Id = Convert.ToInt64(dr["ProductId"]);
                     p.Versions = dr["Version"].ToString();
                     p.CompanyId = Convert.ToInt64(dr["CompanyId"]);
+
                 }
                 return p;
 
@@ -209,17 +212,48 @@ namespace CRM.Dal
             {
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand("spCreateProduct", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ProductName", product.Name);
-                cmd.Parameters.AddWithValue("@Version", product.Versions);
-                cmd.Parameters.AddWithValue("@CompanyId", product.CompanyId);
+                
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spCreateProduct1", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                  
+                    cmd.Parameters.Add("@ProductName", SqlDbType.VarChar,100).Value=product.Name;
+                    cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt).Value=product.CompanyId;
+                    SqlParameter prmProductId = cmd.Parameters.Add("ProductId", SqlDbType.BigInt);
+                    prmProductId.Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
 
-                cmd.ExecuteNonQuery();
 
 
-            }
+                    string[] str = product.Versions.Split(new char[] { '\n' });
+                    for (int i = 0; i < str.Length; i++)
+                    {
+
+                       cmd = new SqlCommand("spCreateProductVersion", con);
+                       cmd.Parameters.Add("@Version", SqlDbType.VarChar, 100).Value = str[i];
+                       cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = Convert.ToInt64(prmProductId.Value);
+                       SqlParameter prmVersionId= cmd.Parameters.Add("@VersionId", SqlDbType.BigInt);
+                       prmVersionId.Direction = ParameterDirection.Output;
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    str = product.Components.Split(new char[] { '\n' });
+                    for (int i = 0; i < str.Length; i++)
+                    {
+
+                        cmd = new SqlCommand("spCreateComponents", con);
+                        cmd.Parameters.Add("@ComponentName", SqlDbType.VarChar, 100).Value = str[i];
+                        cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = Convert.ToInt64(prmProductId.Value);
+                        SqlParameter prmComponentId = cmd.Parameters.Add("@ComponetId", SqlDbType.BigInt);
+                        prmComponentId.Direction = ParameterDirection.Output;
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.ExecuteNonQuery();
+                    }
+        }
             catch (Exception ex)
             {
                 throw ex;
@@ -304,6 +338,7 @@ namespace CRM.Dal
                     con.Close();
             }
         }
+
 
 
     }
