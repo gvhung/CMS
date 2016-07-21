@@ -29,7 +29,7 @@ namespace CRM.UI.Controllers
                     t.CompanyName = lstProducts[i].CompanyName;
                     t.Version = lstProducts[i].Versions;
                     t.VersionId = lstProducts[i].VersionId;
-
+                    t.Components = lstProducts[i].Components;
                     lst.Add(t);
                 }
 
@@ -51,8 +51,10 @@ namespace CRM.UI.Controllers
                 ProductBiz productBiz = new ProductBiz();
                 Product p = productBiz.GetProductInfo(id);
                 m.ProductName = p.Name; // should get from databse;
-                m.Version = p.Versions; // get from databse;
+                m.Versions = p.Versions; // get from databse;
                 m.OldVersion = p.Versions;
+                m.OldComponents = p.Components;
+                m.Components = p.Components;
 
 
                 return View(m);
@@ -69,12 +71,10 @@ namespace CRM.UI.Controllers
             try
             {
                 
-               
-
                 ProductBiz productBiz = new ProductBiz();
                 u.ProductId = id;
                 
-                productBiz.UpdateProduct(u.ProductId, u.OldVersion, u.Version);
+                productBiz.UpdateProduct(u.ProductId, u.OldVersion, u.Versions,u.OldComponents,u.Components);
 
                 ModelState.AddModelError("SM", "Product saved successfully");
                 return View(u);
@@ -112,8 +112,10 @@ namespace CRM.UI.Controllers
             CreateNewProductVM m = new CreateNewProductVM();           
             ProductBiz productBiz = new ProductBiz();
             Product p = new Product();
+            Component c = new Component();
             m.ProductName = p.Name; 
-            m.Version = p.Versions; 
+            m.Versions = p.Versions;
+            m.Components= p.Components;
            m.Compaines = productBiz.GetCompanies();
             
 
@@ -130,10 +132,15 @@ namespace CRM.UI.Controllers
                 ProductBiz productBiz = new ProductBiz();
                 List<Company> lst = new List<Company>();
                 Product product = new Product();
+            
+
                 product.Name = np.ProductName;
-                product.Versions = np.Version;
+                product.Versions = np.Versions;
                 product.CompanyId = np.CompanyId;
+                product.Components = np.Components;
+              
                 productBiz.CreateProduct(product);
+               
                 np.Compaines= productBiz.GetCompanies();
                 ModelState.AddModelError("PM", "Product created successfully");
                 return View(np);
