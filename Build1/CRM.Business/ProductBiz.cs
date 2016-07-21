@@ -54,6 +54,7 @@ namespace CRM.Business
             return lstversions = productDB.GetVersions(productId);
         }
 
+
         public void DeleteProduct(long productId)
         {
             if (productId == 0)
@@ -66,13 +67,13 @@ namespace CRM.Business
             ProductDB productDB = new ProductDB();
             return productDB.GetCompanies();
         }
-        public void UpdateProduct(long productid, string OldVersion, string version)
+        public void UpdateProduct(long productid, string OldVersion, string version, string OldComponents, string Components)
         {
 
             if (productid == 0)
                 throw new Exception("No Product is found");
             ProductDB productDB = new ProductDB();
-            productDB.UpdateProduct(productid, OldVersion, version);
+            productDB.UpdateProduct(productid, OldVersion, version, OldComponents, Components);
 
         }
 
@@ -80,7 +81,10 @@ namespace CRM.Business
         public void CreateProduct(Product product)
         {
             ProductDB productDB = new ProductDB();
-            productDB.CreateProduct(product);
+           // Component componentDB = new Component();
+            productDB.CreateProduct(product);  
         }
+
+
     }
 }
