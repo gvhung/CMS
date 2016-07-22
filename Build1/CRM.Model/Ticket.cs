@@ -42,6 +42,9 @@ namespace CRM.Model
 
     }
 
+
+       
+   
     public class TicketType
     {
         public string Type { get; set; }
@@ -57,4 +60,6 @@ namespace CRM.Model
         public string SeviorityName { get; set; }
         public int Id { get; set; }
     }
+
+   
 }
