@@ -36,36 +36,47 @@ namespace CRM.UI.Controllers
         [HttpPost]
         public ActionResult Create(TicketCreateModel T)
         {
-            Ticket ticket = new Ticket();
-            ticket.TicketNo = T.TicketNo;
-            ticket.Description = T.Description;
-            ticket.Title = T.Title;
-            ticket.VersionId = T.VersionId;
-            ticket.ProductId = T.ProductId;
-            ticket.CompanyId = T.CompanyId;
-            ticket.ComponentId = T.ComponentId;
-            ticket.CompanyId = Convert.ToInt32(Session["CompanyId"]);
-            ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
-            TicketBiz ticketbiz = new TicketBiz();
-            TicketCreateModel ticketcreateModel = new TicketCreateModel();
-            ProductBiz productbiz = new ProductBiz();
-            ticketcreateModel.Products = productbiz.GetProducts(Convert.ToInt64(Session["CompanyId"]));
-            ticketcreateModel.Priorities = ticketbiz.GetPriorities();
-            ticketcreateModel.Seviorities = ticketbiz.GetSeviorities();
-            ticketcreateModel.TicketTypes = ticketbiz.GetTicketTypes();
-            //ViewBag.lstDropdown = ticketbiz.BindCompanies();
-            //ViewBag.lstProducts = ticketbiz.BindProducts();
-            //ViewBag.lstComponents = ticketbiz.BindComponent();
-            int i = ticketbiz.AddTicket(ticket);
-            if (i > 0)
+            TicketCreateModel ticketcreateModel =  new TicketCreateModel();
+            try
             {
-                ViewBag.Message = "Successfully Insereted";
+                Ticket ticket = new Ticket();
+                ticket.TicketNo = T.TicketNo;
+                ticket.Description = T.Description;
+                ticket.Title = T.Title;
+                ticket.VersionId = T.VersionId;
+                ticket.ProductId = T.ProductId;
+                ticket.CompanyId = T.CompanyId;
+                ticket.ComponentId = T.ComponentId;
+                ticket.CompanyId = Convert.ToInt32(Session["CompanyId"]);
+                ticket.CreatedBy = Convert.ToInt64(Session["UID"]);
+                TicketBiz ticketbiz = new TicketBiz();
+                
+                ProductBiz productbiz = new ProductBiz();
+                ticketcreateModel.Products = productbiz.GetProducts(Convert.ToInt64(Session["CompanyId"]));
+                ticketcreateModel.Priorities = ticketbiz.GetPriorities();
+                ticketcreateModel.Seviorities = ticketbiz.GetSeviorities();
+                ticketcreateModel.TicketTypes = ticketbiz.GetTicketTypes();
+                //ViewBag.lstDropdown = ticketbiz.BindCompanies();
+                //ViewBag.lstProducts = ticketbiz.BindProducts();
+                //ViewBag.lstComponents = ticketbiz.BindComponent();
+                int i = ticketbiz.AddTicket(ticket);
+                if (i > 0)
+                {
+                    ViewBag.Message = "Successfully Insereted";
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = " Inseret Failed";
+                }
+               
             }
-            else
+            catch (Exception ex)
+            
             {
-                ViewBag.ErrorMessage = " Inseret Failed";
+                ViewBag.ErrorMessage=ex.Message;
             }
             return View(ticketcreateModel);
+            
         }
 
         public ActionResult List(int page = 1)
