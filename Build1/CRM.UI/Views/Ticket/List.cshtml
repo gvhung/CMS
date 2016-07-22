@@ -44,6 +44,9 @@
                 @Html.DisplayNameFor(model => model.First().Assignee)
             </th>
             <th>
+                @Html.DisplayNameFor(model=> model.First().CreatedBy)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.First().DateCreated)
             </th>
             <th>Actions</th>
@@ -75,10 +78,13 @@
                         @Html.DisplayFor(modelItem => item.Assignee)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.DateCreated)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.TicketId }) |
+                        @Html.ActionLink("Edit", "Create", new { id=item.TicketId }) |
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>

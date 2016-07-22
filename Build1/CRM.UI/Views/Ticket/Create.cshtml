@@ -3,9 +3,14 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
-
+@if (Model.TicketId > 0)
+{
+    <h3>Ticket Update</h3>
+}
+else
+{
+    <h3> Ticket Create</h3>
+}
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 @using (Html.BeginForm())
 {
@@ -22,11 +27,11 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control",@id="test" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -38,7 +43,7 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-               <div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ProductId, new SelectList(Model.Products, "Id", "Name"), "Select Product", new { @class = "form-control", @Id = "ProductId", @Name = "ProductId", @onchange = "BindDropDownList(this.id)" })
@@ -73,21 +78,28 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SeviorityId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.SeviorityId, new SelectList(Model.Seviorities, "Id", "SeviorityName"), "Select Seviority", new { @class = "form-control"})
+                @Html.DropDownListFor(model => model.SeviorityId, new SelectList(Model.Seviorities, "Id", "SeviorityName"), "Select Seviority", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.SeviorityId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.TicketTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.TicketTypeId, new SelectList(Model.TicketTypes, "Id", "Type"), "Select Ticket Type", new { @class = "form-control"})
+                @Html.DropDownListFor(model => model.TicketTypeId, new SelectList(Model.TicketTypes, "Id", "Type"), "Select Ticket Type", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TicketTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                @if(Model.TicketId > 0)
+                {
+                <input type="submit" value="Update" class="btn btn-default" />
+                }
+                else
+                {
                 <input type="submit" value="Create" class="btn btn-default" onclick="save();" />
+                }
             </div>
         </div>
     </div>
@@ -98,8 +110,8 @@
 </div>
 <script type="text/javascript">
     //function save() {
-    //    $("#id").val('Title', 'Description', 'ProductId', 'ComponentId', 'Version', 'CompanyId');
-
+    //   // $("#id").val('Title', 'Description', 'ProductId', 'ComponentId', 'Version', 'CompanyId');
+    //    $('#test').val(' ');
     //}
 
     function BindDropDownList(id) {

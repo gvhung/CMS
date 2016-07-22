@@ -22,6 +22,7 @@ namespace CRM.Model
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
         public Int64 CreatedBy { get; set; }
+        public string UserName { get; set; }
         public DateTime DateFixed { get; set; }
         public DateTime DateClosed { get; set; }
         public string CompanyName { get; set; }

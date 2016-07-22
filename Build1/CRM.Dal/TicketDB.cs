@@ -8,12 +8,10 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
-
 namespace CRM.Dal
 {
     public class TicketDB
     {
-
         public int AddTicket(Ticket ticket)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString))
@@ -21,27 +19,16 @@ namespace CRM.Dal
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spInsertTicket", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("@TicketNo", ticket.TicketNo);
-                //cmd.Parameters.AddWithValue("@Title", ticket.Title);
-                //cmd.Parameters.AddWithValue("@Description", ticket.Description);
-                //cmd.Parameters.AddWithValue("@ComponentId", ticket.ComponentId);
-                //cmd.Parameters.AddWithValue("@VersionId", ticket.VersionId);
-                //cmd.Parameters.AddWithValue("@ProductId", ticket.ProductId);
-                //cmd.Parameters.AddWithValue("@CompanyId", ticket.CompanyId);
-                //cmd.Parameters.AddWithValue("@CreatedBy", ticket.CreatedBy);
-                //cmd.Parameters.AddWithValue("@SeviorityId", ticket.SeviorityId);
-                //cmd.Parameters.AddWithValue("@PriorityId", ticket.PriorityId);
-                //cmd.Parameters.AddWithValue("@TicketTypeId", ticket.TicketTypeId);
                 cmd.Parameters.Add("@Title", SqlDbType.VarChar, 200).Value = ticket.Title;
-                cmd.Parameters.Add("@Description",SqlDbType.VarChar, 400).Value = ticket.Description;
-                cmd.Parameters.Add("@ComponentId",SqlDbType.BigInt).Value = ticket.ComponentId;
+                cmd.Parameters.Add("@Description", SqlDbType.VarChar, 400).Value = ticket.Description;
+                cmd.Parameters.Add("@ComponentId", SqlDbType.BigInt).Value = ticket.ComponentId;
                 cmd.Parameters.Add("@VersionId", SqlDbType.BigInt).Value = ticket.VersionId;
                 cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = ticket.ProductId;
                 cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt).Value = ticket.CompanyId;
                 cmd.Parameters.Add("@CreatedBy", SqlDbType.BigInt).Value = ticket.CreatedBy;
-                cmd.Parameters.Add("@SeviorityId",SqlDbType.Int).Value = ticket.SeviorityId;
+                cmd.Parameters.Add("@SeviorityId", SqlDbType.Int).Value = ticket.SeviorityId;
                 cmd.Parameters.Add("@PriorityId", SqlDbType.Int).Value = ticket.PriorityId;
-                cmd.Parameters.Add("@TicketTypeId",SqlDbType.Int).Value = ticket.TicketTypeId;
+                cmd.Parameters.Add("@TicketTypeId", SqlDbType.Int).Value = ticket.TicketTypeId;
 
                 int i = cmd.ExecuteNonQuery();
                 con.Close();
@@ -59,7 +46,6 @@ namespace CRM.Dal
             SqlCommand cmd = new SqlCommand("spSeviorities", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader dr = cmd.ExecuteReader();
-
             while (dr.Read())
             {
                 seviority = new Seviority();
@@ -134,6 +120,7 @@ namespace CRM.Dal
                 ticketModel.ComponentName = Convert.ToString(dr["ComponentName"]);
                 ticketModel.Version = Convert.ToString(dr["Version"]);
                 ticketModel.Title = Convert.ToString(dr["Title"]);
+                ticketModel.UserName = Convert.ToString(dr["FirstName"]);
                 ticketModel.Assignee = Convert.ToString(dr["Assignee"]);
                 ticketModel.DateCreated = Convert.ToDateTime(dr["DateCreated"]);
                 lstTickets.Add(ticketModel);
@@ -177,11 +164,15 @@ namespace CRM.Dal
             {
                 ticketModel = new Ticket();
                 ticketModel.Title = Convert.ToString(dr["Title"]);
+                ticketModel.TicketId = Convert.ToInt64(dr["TicketId"]);
                 ticketModel.Description = Convert.ToString(dr["Description"]);
                 ticketModel.VersionId = Convert.ToInt32(dr["Versionid"]);
                 ticketModel.ProductId = Convert.ToInt64(dr["ProductId"]);
                 ticketModel.ComponentId = Convert.ToInt64(dr["ComponentId"]);
                 ticketModel.CompanyId = Convert.ToInt64(dr["CompanyId"]);
+                ticketModel.TicketTypeId = Convert.ToInt32(dr["TicketTypeId"]);
+                ticketModel.PriorityId = Convert.ToInt32(dr["PriorityId"]);
+                ticketModel.SeviorityId = Convert.ToInt32(dr["SeviorityId"]);
 
             }
             return ticketModel;

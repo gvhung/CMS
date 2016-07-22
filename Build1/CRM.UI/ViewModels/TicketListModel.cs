@@ -19,6 +19,7 @@ namespace CRM.UI.ViewModels
         public string Version { get; set; }
         public string Title { get; set; }
         public string Assignee { get; set; }
+        public string CreatedBy { get; set; }
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
     }
