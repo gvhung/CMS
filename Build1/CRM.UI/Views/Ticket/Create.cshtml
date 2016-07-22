@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.ComponentId, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @Html.LabelFor(model => model.ComponentId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownListFor(model => model.ComponentId, (SelectList)ViewBag.lstComponents, "Select Component", new { @class = "form-control required", @Id = "ddlComponents", @name = "ddlComponents", @onchange = "BindDropDownOptions(this.id)" })*@
                 @Html.DropDownListFor(model => model.ComponentId, new SelectList(Model.Components, "ComponentId", "ComponentName"), "Select Component", new { @class = "form-control", @Id = "ComponentId", @Name = "ComponentId" })

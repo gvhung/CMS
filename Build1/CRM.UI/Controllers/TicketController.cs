@@ -94,23 +94,28 @@ namespace CRM.UI.Controllers
             TicketBiz ticketbiz = new TicketBiz();
             Ticket t = ticketbiz.GetTicketById(id);
             //TicketCreateModel ticketcraetemodel= AutoMapper.Mapper.Map<TicketCreateModel>(t);
-            TicketCreateModel ticketcreatemodel = new TicketCreateModel();
-            ticketcreatemodel.Title = t.Title;
-            ticketcreatemodel.Description = t.Description;
-            ticketcreatemodel.CompanyId = t.CompanyId;
-            ticketcreatemodel.ComponentId = t.ComponentId;
-            ticketcreatemodel.ProductId = t.ProductId;
-            ticketcreatemodel.VersionId = t.VersionId;
-            ticketcreatemodel.ComponentName = t.ComponentName;
-            ticketcreatemodel.CompanyName = t.CompanyName;
-            ticketcreatemodel.ProductName = t.ProductName;
+            TicketCreateModel ticketCreateModel = new TicketCreateModel();
+            ProductBiz productbiz = new ProductBiz();
+            ticketCreateModel.Products = productbiz.GetProducts(Convert.ToInt64(Session["CompanyId"]));
+            ticketCreateModel.Priorities = ticketbiz.GetPriorities();
+            ticketCreateModel.Seviorities = ticketbiz.GetSeviorities();
+            ticketCreateModel.TicketTypes = ticketbiz.GetTicketTypes();
+            ticketCreateModel.Title = t.Title;
+            ticketCreateModel.Description = t.Description;
+            ticketCreateModel.CompanyId = t.CompanyId;
+            ticketCreateModel.ComponentId = t.ComponentId;
+            ticketCreateModel.ProductId = t.ProductId;
+            ticketCreateModel.VersionId = t.VersionId;
+            ticketCreateModel.ComponentName = t.ComponentName;
+            ticketCreateModel.CompanyName = t.CompanyName;
+            ticketCreateModel.ProductName = t.ProductName;
 
             //ticketcreatemodel.lstModel = ticketbiz.BindCompanies();
             //ViewBag.lstDropdown = ticketcreatemodel.lstModel;
             //ViewBag.lstProducts = ticketbiz.BindProducts();
             //ViewBag.lstComponents = ticketbiz.BindComponent();
 
-            return View("Create", ticketcreatemodel);
+            return View("Create", ticketCreateModel);
         }
 
         [HttpPost]
