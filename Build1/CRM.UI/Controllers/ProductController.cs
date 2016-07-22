@@ -118,11 +118,11 @@ namespace CRM.UI.Controllers
             m.Components= p.Components;
            m.Compaines = productBiz.GetCompanies();
             
-
-
             return View(m);
            
         }
+
+
         [HttpPost]
         public ActionResult Create(CreateNewProductVM np)
         {
