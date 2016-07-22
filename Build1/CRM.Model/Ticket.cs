@@ -38,23 +38,23 @@ namespace CRM.Model
             //if (CreatedBy == 0) throw new Exception("Invalid Ticket: Unauthenticated user");
             return true;
         }
+              
 
+    }
 
-        public class TicketType
-        {
-            public string Type { get; set; }
-            public int Id { get; set; }
-        }
-        public class Priority
-        {
-            public string PriorityName { get; set; }
-            public int Id { get; set; }
-        }
-        public class Seviority
-        {
-            public string SeviorityName { get; set; }
-            public int Id { get; set; }
-        }
-
+    public class TicketType
+    {
+        public string Type { get; set; }
+        public int Id { get; set; }
+    }
+    public class Priority
+    {
+        public string PriorityName { get; set; }
+        public int Id { get; set; }
+    }
+    public class Seviority
+    {
+        public string SeviorityName { get; set; }
+        public int Id { get; set; }
     }
 }

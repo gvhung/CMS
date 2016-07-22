@@ -7,7 +7,7 @@ using CRM.Model;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
-using static CRM.Model.Ticket;
+
 
 namespace CRM.Dal
 {
