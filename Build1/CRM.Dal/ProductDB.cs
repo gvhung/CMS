@@ -51,6 +51,8 @@ namespace CRM.Dal
                     product.Versions = Convert.ToString(dr["Version"]);
                     product.CompanyName = Convert.ToString(dr["CompanyName"]);
                     product.VersionId = Convert.ToInt32(dr["VersionId"]);
+                    product.Components =Convert.ToString(dr["ComponentName"]);
+                 //   product.ComponentId = Convert.ToInt32(dr["ComponentId"]);
                     lstproducts.Add(product);
                 }
                 return (lstproducts);
@@ -141,7 +143,7 @@ namespace CRM.Dal
                 SqlCommand cmd = new SqlCommand("spUpdateProduct", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@ProductName", SqlDbType.BigInt).Value = productid;
+                cmd.Parameters.Add("@ProductId", SqlDbType.BigInt).Value = productid;
                 cmd.Parameters.Add("@Oldversion", SqlDbType.VarChar).Value = OldVersion;
                 cmd.Parameters.Add("@Version", SqlDbType.VarChar).Value = version;
                 cmd.Parameters.Add("@OldComponentName", SqlDbType.VarChar).Value = OldComponents;
@@ -183,7 +185,7 @@ namespace CRM.Dal
                     p.Id = Convert.ToInt64(dr["ProductId"]);
                     p.Versions = dr["Version"].ToString();
                     p.CompanyId = Convert.ToInt64(dr["CompanyId"]);
-
+                    p.Components = (dr["ComponentName"]).ToString();
                 }
                 return p;
 
