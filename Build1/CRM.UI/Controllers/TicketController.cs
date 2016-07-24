@@ -23,7 +23,6 @@ namespace CRM.UI.Controllers
             try
             {
                 int ticketid = Convert.ToInt32(id);
-
                 if (ticketid > 0)
                     ticketcreateModel = Edit(ticketid);
                 ProductBiz productbiz = new ProductBiz();
@@ -33,11 +32,8 @@ namespace CRM.UI.Controllers
                 ticketcreateModel.Priorities = ticketbiz.GetPriorities();
                 ticketcreateModel.Seviorities = ticketbiz.GetSeviorities();
                 ticketcreateModel.TicketTypes = ticketbiz.GetTicketTypes();
-
                 // ticketcreateModel.lstproducts.Insert(0, new Product() { Id = 0, Name = "Select Product" });
                 //ViewBag.lstComponents = productbiz.GetComponents();
-
-
             }
             catch (Exception ex)
             {
