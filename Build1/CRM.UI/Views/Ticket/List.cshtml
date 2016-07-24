@@ -20,7 +20,7 @@
 
         @Html.TextBox("EndIndex", "", new { @id = "EndIndex", @Name = "EndIndex" })
     </div>
-    <table class="table">
+    <table class="table" border="1">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.First().TicketNo)
@@ -85,8 +85,9 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Create", new { id=item.TicketId }) |
-                        @Html.ActionLink("Details", "Details", new {id=item.TicketId}) |
-                        @Html.ActionLink("Delete", "Create", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Details", "Details", new {/*id=item.TicketId*/}) |
+                        @Html.ActionLink("Delate", "Delete", new { id=item.TicketId })
+                 
                     </td>
                 </tr>
             }

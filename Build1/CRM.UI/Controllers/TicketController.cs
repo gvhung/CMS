@@ -99,7 +99,7 @@ namespace CRM.UI.Controllers
                 List<Ticket> lstTicket = new List<Ticket>();
                 TicketBiz ticketbiz = new TicketBiz();
                 lstTicket = ticketbiz.GetAllTicket(clientname, StartIndex, EndIndex);
-                ViewBag.tickets = lstTicket.ToPagedList(page, 5);
+                ViewBag.tickets = lstTicket.ToPagedList(page, 10);
                 // List<TicketListModel> lstTicketListModel = new List<TicketListModel>();
                 //lstTicket.ForEach(item => lstTicketListModel.Add(Mapper.Map<TicketListModel>(item)));
             }
@@ -143,15 +143,22 @@ namespace CRM.UI.Controllers
             // return View("Create", ticketCreateModel);
         }
 
-        [HttpPost]
         public ActionResult Delete(int id)
         {
             int ticketid = Convert.ToInt32(id);
-            if (ticketid < 0)
+            if (id < 0)
                 return RedirectToAction("List");
             TicketBiz ticketBiz = new TicketBiz();
-            ticketBiz.DeleteTicket();
-            return View();
+            int i = ticketBiz.DeleteTicket(id);
+            if (i > 0)
+            {
+                ViewBag.Message = "Ticket Successfully Deleted";
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Ticket delate Failed";
+            }
+            return RedirectToAction("List");
         }
 
         public ActionResult BindDropDowns(string flag, long Id)

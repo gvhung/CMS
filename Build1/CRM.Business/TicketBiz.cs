@@ -59,10 +59,12 @@ namespace CRM.Business
             return ticket;
         }
 
-        public void DeleteTicket()
+        public int DeleteTicket(int Id)
         {
             TicketDB ticketDb = new TicketDB();
-            // ticketDb
+           int i= ticketDb.DeleteTicket(Id);
+            return i;
+           
         }
     }
 }
