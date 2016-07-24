@@ -18,7 +18,7 @@ namespace CRM.UI.ViewModels
     }
 
     public class ProductEditVM
-    {
+    {  
         public string ProductName { get; set; }
         public string Versions { get; set; }
         public string OldVersion { get; set; }
