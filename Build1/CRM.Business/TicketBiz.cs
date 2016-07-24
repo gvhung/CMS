@@ -15,7 +15,6 @@ namespace CRM.Business
             TicketDB ticketdb = new TicketDB();
             int i = ticketdb.AddTicket(ticket);
             return i;
-
         }
 
         public List<Ticket> GetAllTicket(string clientname, int StartIndex, int EndIndex)
@@ -58,6 +57,12 @@ namespace CRM.Business
             TicketDB ticketdb = new TicketDB();
             List<TicketType> ticket = ticketdb.GetTicketTypes();
             return ticket;
+        }
+
+        public void DeleteTicket()
+        {
+            TicketDB ticketDb = new TicketDB();
+            // ticketDb
         }
     }
 }
