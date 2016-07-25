@@ -43,8 +43,8 @@
 
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VersionId})
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ProductId }, new { id = "edit" }) |
+            <a href="#" id = "delete" >Delete</a> 
         </td>
     </tr>
     
@@ -53,5 +53,52 @@
 <div>
     @Html.ValidationMessage("SM")
 </div>
+<div id="dialog" title="Basic dialog">
+    <p>Do you want to delete?</p>
+</div>
+@section scripts{
+    
+    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+<script>
 
+
+    $(function () {
+        $("#delete").click(function () {
+            
+            $("#dialog").dialog({
+                buttons: [
+                            {
+                                text: "Yes",
+                                icons: {
+                                    primary: "ui-icon-heart"
+                                },
+                                click: function () {
+                                    $(this).dialog("close");
+                                }
+
+                                // Uncommenting the following line would hide the text,
+                                // resulting in the label being used as a tooltip
+                                //showText: false
+                            },
+                             {
+                                 text: "No",
+                                 icons: {
+                                     primary: "ui-icon-heart"
+                                 },
+                                 click: function () {
+                                     $(this).dialog("close");
+                                 }
+
+                                 // Uncommenting the following line would hide the text,
+                                 // resulting in the label being used as a tooltip
+                                 //showText: false
+                             }
+                        ]           
+
+            });
+        });
+    });
+</script>
+
+    }
 
