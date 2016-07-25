@@ -148,11 +148,11 @@ namespace CRM.UI.Controllers
             int i = ticketBiz.DeleteTicket(id);
             if (i > 0)
             {
-                ViewBag.Message = "Ticket Successfully Deleted";
+                TempData["Result"] = "Ticket Successfully Deleted";
             }
             else
             {
-                ViewBag.ErrorMessage = "Ticket delate Failed";
+                TempData["Result"] = "Ticket delate Failed";
             }
             return RedirectToAction("List");
         }

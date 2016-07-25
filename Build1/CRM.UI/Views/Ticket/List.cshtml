@@ -8,12 +8,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+ @*@if (TempData["Result"] != null)
+<div>
+   @Html.Raw(TempData["Result"].ToString());
+</div>*@
+
 @using (Html.BeginForm())
 {
-
+          
     PagedList.PagedList<Ticket> list = ViewBag.tickets;
     <div>
-       <label>Copmapny Name</label> 
+       <label>Company Name</label> 
         @Html.TextBox("SearchClientName", "", new { @id = "SearchClientName", @Name = "SearchClientName" })
 
         @Html.TextBox("StartIndex", "", new { @id = "StartIndex", @Name = "StartIndex" })
@@ -86,7 +91,7 @@
                     <td>
                         @Html.ActionLink("Edit", "Create", new { id=item.TicketId }) |
                         @Html.ActionLink("Details", "Details", new {/*id=item.TicketId*/}) |
-                        @Html.ActionLink("Delate", "Delete", new { id=item.TicketId })
+                        @Html.ActionLink("Delete", "Delete", new { id=item.TicketId })
                  
                     </td>
                 </tr>
