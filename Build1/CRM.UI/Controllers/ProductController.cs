@@ -30,6 +30,7 @@ namespace CRM.UI.Controllers
                     t.Version = lstProducts[i].Versions;
                     t.VersionId = lstProducts[i].VersionId;
                     t.Components = lstProducts[i].Components;
+                    t.ComponentId = lstProducts[i].ComponentId;
                     lst.Add(t);
                 }
 
@@ -87,17 +88,12 @@ namespace CRM.UI.Controllers
         }
         
         
-        public ActionResult Delete(long Id)
+        public ActionResult Delete(long id)
         {
             try
             {
-                
                  ProductBiz productBiz = new ProductBiz();
-                
-                productBiz.DeleteProduct(Id);
-
-                
-               
+                 productBiz.DeleteProduct(id);   
             }
             catch (Exception Ex)
             {
@@ -106,6 +102,8 @@ namespace CRM.UI.Controllers
             }
             return RedirectToAction("List");
         }
+
+
         //Get user
         public ActionResult Create()
         {
