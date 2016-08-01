@@ -65,6 +65,54 @@ namespace CRM.Dal
             }
         }
 
+        public Ticket GetTicketNo()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+                con.Open();
+                Ticket ticketNo = null;
+                SqlCommand cmd = new SqlCommand("spGetTicketNo", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    ticketNo = new Ticket();
+                    ticketNo.TicketNo = Convert.ToInt64(dr["Name"]);
+                    
+                }
+                return ticketNo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Templats GetTemplate()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
+                con.Open();
+                Templats template = null;
+                SqlCommand cmd = new SqlCommand("spGetTemplate", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    template = new Templats();
+                    template.Name = Convert.ToString(dr["Name"]);
+                    template.Template = Convert.ToString(dr["Template"]);
+                }
+                return template;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int DeleteTicket(long Id)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["CRMContext"].ConnectionString);
@@ -137,7 +185,7 @@ namespace CRM.Dal
                 return lstTicketTypes;
             }
         }
-        
+
         public List<Ticket> GetAllTicket(string clientname, int StartIndex, int EndIndex)
         {
             List<Ticket> lstTickets = new List<Ticket>();
@@ -169,7 +217,7 @@ namespace CRM.Dal
                 return lstTickets;
             }
         }
-        
+
         public List<SelectListDTO> BindCompanies()
         {
             List<SelectListDTO> lstCompanies = new List<SelectListDTO>();

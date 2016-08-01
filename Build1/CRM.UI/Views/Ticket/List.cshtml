@@ -15,14 +15,17 @@
 
 @using (Html.BeginForm())
 {
-          
+
+    @*@if (TempData["Result"]!= null)
+    { <h1>@TempData["Result"]</h1>}*@
+
     PagedList.PagedList<Ticket> list = ViewBag.tickets;
     <div>
        <label>Company Name</label> 
         @Html.TextBox("SearchClientName", "", new { @id = "SearchClientName", @Name = "SearchClientName" })
-
+        <label>Start Index</label>
         @Html.TextBox("StartIndex", "", new { @id = "StartIndex", @Name = "StartIndex" })
-
+        <label>End Index</label>
         @Html.TextBox("EndIndex", "", new { @id = "EndIndex", @Name = "EndIndex" })
     </div>
     <table class="table" border="1">

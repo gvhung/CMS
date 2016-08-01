@@ -10,15 +10,22 @@ using AutoMapper.QueryableExtensions;
 using CRM.UI.ViewModels;
 using PagedList;
 using System.Text;
+using System.Net.Mail;
 
 namespace CRM.UI.Controllers
 {
     public class TicketController : Controller
     {
+        private readonly TicketBiz ticketbiz;
+        private readonly ProductBiz productbiz;
+        public TicketController()
+        {
+            ticketbiz = new TicketBiz();
+            productbiz = new ProductBiz();
+        }
         // GET: Ticket
         public ActionResult Create(int? id)
         {
-
             TicketCreateModel ticketcreateModel = new TicketCreateModel();
             try
             {
@@ -26,7 +33,6 @@ namespace CRM.UI.Controllers
                 if (ticketid > 0)
                     ticketcreateModel = Edit(ticketid);
                 ProductBiz productbiz = new ProductBiz();
-                TicketBiz ticketbiz = new TicketBiz();
                 // ViewBag.lstDropdown = ticketbiz.BindCompanies();
                 ticketcreateModel.Products = productbiz.GetProducts(Convert.ToInt64(Session["CompanyId"]));
                 ticketcreateModel.Priorities = ticketbiz.GetPriorities();
@@ -38,9 +44,7 @@ namespace CRM.UI.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("CT", ex.Message);
-
             }
-
             return View(ticketcreateModel);
         }
 
@@ -72,7 +76,41 @@ namespace CRM.UI.Controllers
                 int i = ticketbiz.AddTicket(ticket);
                 if (i > 0)
                 {
-                    ViewBag.Message = "Successfully Insereted";
+                    ViewBag.Message = "Ticket Successfully Insereted";
+                    Templats template = new Templats();
+                    TicketBiz ticketbz = new TicketBiz();
+                    ticketbiz.GetTicketNo();
+                    ticketbiz.getTemplate();
+                    MailMessage email = new MailMessage();
+                    // Sender e-mail address.
+                    email.From = new MailAddress("ramu.chennuri@tecra.com");
+                    // Recipient e-mail address.
+                    email.To.Add("venkat.5160@gmail.com");
+                    email.Subject = "TicketCreated";
+                    email.Body = "Hi";
+                    //  remote SMTP server IP.
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.1and1.com";
+                    smtp.Port = 587;
+                    smtp.Credentials = new System.Net.NetworkCredential("ramu.chennuri@tecra.com", "welcomewelcome");
+
+                    try
+                    {
+                        smtp.Send(email);
+                        email = null;
+                        //ClientScript.RegisterStartupScript(GetType(), "alert", "<script>alert('Mail Sent Successfully...!')</script>");
+                    }
+                    catch (Exception ex)
+                    {
+                        Exception ex2 = ex;
+                        string errorMessage = string.Empty;
+                        while (ex2 != null)
+                        {
+                            errorMessage += ex2.ToString();
+                            ex2 = ex2.InnerException;
+                        }
+                        //ClientScript.RegisterStartupScript(GetType(), "alert", "<script>alert('Failure To Send Mail...')</script>");
+                    }
                 }
                 else
                 {

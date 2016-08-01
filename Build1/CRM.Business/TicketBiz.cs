@@ -10,22 +10,26 @@ namespace CRM.Business
 {
     public class TicketBiz
     {
+        private readonly TicketDB ticketdb;
+        public TicketBiz()
+        {
+            ticketdb = new TicketDB();
+        }
+
+        
         public int AddTicket(Ticket ticket)
         {
-            TicketDB ticketdb = new TicketDB();
             int i = ticketdb.AddTicket(ticket);
             return i;
         }
 
         public List<Ticket> GetAllTicket(string clientname, int StartIndex, int EndIndex)
         {
-            TicketDB ticketdb = new TicketDB();
             return ticketdb.GetAllTicket(clientname, StartIndex, EndIndex);
         }
 
         public List<SelectListDTO> BindCompanies()
         {
-            TicketDB ticketdb = new TicketDB();
             List<SelectListDTO> lstCompanies = new List<SelectListDTO>();
             lstCompanies = ticketdb.BindCompanies();
             return lstCompanies;
@@ -33,38 +37,42 @@ namespace CRM.Business
 
         public Ticket GetTicketById(int id)
         {
-            TicketDB ticketdb = new TicketDB();
             Ticket ticket = ticketdb.GetTicketBy(id);
             return ticket;
         }
 
         public List<Seviority> GetSeviorities()
         {
-            TicketDB ticketdb = new TicketDB();
             List<Seviority> ticket = ticketdb.GetSeviorities();
             return ticket;
         }
 
         public List<Priority> GetPriorities()
         {
-            TicketDB ticketdb = new TicketDB();
             List<Priority> ticket = ticketdb.GetPriorities();
             return ticket;
         }
 
         public List<TicketType> GetTicketTypes()
         {
-            TicketDB ticketdb = new TicketDB();
             List<TicketType> ticket = ticketdb.GetTicketTypes();
             return ticket;
         }
 
         public int DeleteTicket(int Id)
         {
-            TicketDB ticketDb = new TicketDB();
-           int i= ticketDb.DeleteTicket(Id);
+            int i = ticketdb.DeleteTicket(Id);
             return i;
-           
+        }
+
+        public Templats getTemplate()
+        {
+            return ticketdb.GetTemplate();
+        }
+
+        public Ticket GetTicketNo()
+        {
+            return ticketdb.GetTicketNo();
         }
     }
 }
