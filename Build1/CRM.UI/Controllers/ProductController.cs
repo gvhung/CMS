@@ -15,32 +15,37 @@ namespace CRM.UI.Controllers
 
         public ActionResult List()
         {
-            List<ProductListVM> lst = new List<ProductListVM>();
+          //  List<ProductListVM> lst = new List<ProductListVM>();
+            ProductListVM t = new ProductListVM();
             try
-            {
-
+               {
                 ProductBiz productBiz = new ProductBiz();
                 List<Product> lstProducts = productBiz.GetProducts(1, 20, "");
-                for (int i = 0; i < lstProducts.Count; i++)
-                {
-                    ProductListVM t = new ProductListVM();
-                    t.ProductId = lstProducts[i].Id.ToString();
-                    t.ProductName = lstProducts[i].Name;
-                    t.CompanyName = lstProducts[i].CompanyName;
-                    t.Version = lstProducts[i].Versions;
-                    t.VersionId = lstProducts[i].VersionId;
-                    t.Components = lstProducts[i].Components;
-                    t.ComponentId = lstProducts[i].ComponentId;
-                    lst.Add(t);
-                }
+                                                       //for (int i = 0; i < lstProducts.Count; i++)
+                                                           //ProductListVM t = new ProductListVM();
+                                                           //t.ProductId = lstProducts[i].Id.ToString();  
+                                                           // t.ProductName = lstProducts[i].Name;
+                                                           //t.CompanyName = lstProducts[i].CompanyName;
+                                                           //t.Version = lstProducts[i].Versions;
+                                                           //t.VersionId = lstProducts[i].VersionId;
+                                                           //t.Components = lstProducts[i].Components;
+                                                           //t.ComponentId = lstProducts[i].ComponentId;
+                                                              //lst.Add(t);
+                
+
+                
+                t.Products =lstProducts;
+                t.Versions = productBiz.GetVersions(lstProducts[0].Id);
+                t.Components = productBiz.GetComponent(lstProducts[0].Id);
 
 
-                return View(lst);
+
+          return View(t);  /// passing model to view
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("SM", ex.Message);
-                return View(lst);
+                return View(t);
             }
         }
 
