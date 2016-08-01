@@ -6,24 +6,43 @@ using CRM.Model;
 using System.ComponentModel.DataAnnotations;
 namespace CRM.UI.ViewModels
 {
+   // public class ProductListVM
+    //{  
+    //  
+    //    [Required]
+    //    [Display(Name="Product Name")]
+    //    public string ProductName { get; set; }
+    //    [Required]
+    //    [Display(Name="Versions")]
+    //    public string Version { get; set; }
+    //    [Required]
+    //    [Display(Name="Company Name")]
+    //    public string CompanyName { get; set; }
+    //    public string ProductId { get; set; }
+    //    public long VersionId { get; set; }
+    //    [Required]
+    //    [Display(Name="Components")]
+    //    public string Components { get; set; }
+    //    public long ComponentId { get; set; }
+    //}
+
     public class ProductListVM
-    {  
-        [Required]
-        [Display(Name="Product Name")]
-        public string ProductName { get; set; }
-        [Required]
-        [Display(Name="Versions")]
-        public string Version { get; set; }
-        [Required]
-        [Display(Name="Company Name")]
-        public string CompanyName { get; set; }
-        public string ProductId { get; set; }
-        public long VersionId { get; set; }
-        [Required]
-        [Display(Name="Components")]
-        public string Components { get; set; }
-        public long ComponentId { get; set; }
+    {
+        
+        public List<Product> Products { get; set;}
+        public List<Component> Components { get; set;}
+        public List<ProductVersion> Versions { get; set;}
+
+        public ProductListVM()///////create constructor
+        {
+            Products = new List<Product>();
+            Versions = new List<ProductVersion>();
+            Components = new List<Component>();
+        }
+
     }
+      
+
 
     public class ProductEditVM
     {  
