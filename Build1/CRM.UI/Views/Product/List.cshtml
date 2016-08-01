@@ -1,112 +1,159 @@
-﻿@model IEnumerable<CRM.UI.ViewModels.ProductListVM>
+﻿@model CRM.UI.ViewModels.ProductListVM
 
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>Product List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Version)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Components)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Version)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Components)
-        </td>
-
-
-        <td>
-<<<<<<< .mine
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ComponentId})
-||||||| .r416
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VersionId})
-=======
-            @Html.ActionLink("Edit", "Edit", new {  id=item.ProductId }, new { id = "edit" }) |
-            <a href="#" id = "delete" >Delete</a> 
->>>>>>> .r417
-        </td>
-    </tr>
-    
-} 
-</table>
 <div>
-    @Html.ValidationMessage("SM")
+    <label>Product Name</label>
+    @Html.TextBox("SearchClientName", "", new { @id = "SearchClientName", @Name = "SearchClientName" })
+
+    @Html.TextBox("StartIndex", "", new { @id = "StartIndex", @Name = "StartIndex" })
+
+    @Html.TextBox("EndIndex", "", new { @id = "EndIndex", @Name = "EndIndex" })
 </div>
-<div id="dialog" title="Basic dialog">
-    <p>Do you want to delete?</p>
-</div>
-@section scripts{
+
+<table class="table" border="1">
+    <tr>
+        <th>
+            Product Name 
+        </th>
+        
+        <th>
+            Company Name 
+        </th>
+        
+        <th>Actions</th>
+    </tr>
     
-    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
-<script>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem=>item.CompanyName)
+            </td>
 
+            <td>
 
-    $(function () {
-        $("#delete").click(function () {
-            
-            $("#dialog").dialog({
-                buttons: [
-                            {
-                                text: "Yes",
-                                icons: {
-                                    primary: "ui-icon-heart"
-                                },
-                                click: function () {
-                                    $(this).dialog("close");
-                                }
-
-                                // Uncommenting the following line would hide the text,
-                                // resulting in the label being used as a tooltip
-                                //showText: false
-                            },
-                             {
-                                 text: "No",
-                                 icons: {
-                                     primary: "ui-icon-heart"
-                                 },
-                                 click: function () {
-                                     $(this).dialog("close");
-                                 }
-
-                                 // Uncommenting the following line would hide the text,
-                                 // resulting in the label being used as a tooltip
-                                 //showText: false
-                             }
-                        ]           
-
-            });
-        });
-    });
-</script>
+                @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { id = "edit" }) |
+                <a href="#" id="delete">Delete</a>
+            </td>
+        </tr>
 
     }
+    
+</table>
+<p><b>Versions List</b></p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            ProductVersion
+        </th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model.Versions)
+    {
+       <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VersionName)
+             </td>
+            
+    <td>
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })
+        @Html.ActionLink("Edit", "Edit", new { id = item.VersionId }, new { id = "edit" }) |
+        <a href="#" id="delete">Delete</a>
+    </td>
+            
+        </tr>
+
+    }
+   </table>
+
+    <p><b>Components List</b></p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Components
+            </th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var item in Model.Components)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComponentName)
+                </td>
+           
+    <td>
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.ComponentId })
+        @Html.ActionLink("Edit", "Edit", new { id = item.ComponentId }, new { id = "edit" }) |
+        <a href="#" id="delete">Delete</a>
+    </td>
+                </tr>
+    }
+        </table>
+
+
+
+                <div>
+                    @Html.ValidationMessage("SM")
+                </div>
+                <div id="dialog" title="Basic dialog">
+                    <p>Do you want to delete?</p>
+                </div>
+                @section scripts{
+
+                    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+                    <script>
+
+
+                        $(function () {
+                            $("#delete").click(function () {
+
+                                $("#dialog").dialog({
+                                    buttons: [
+                                                {
+                                                    text: "Yes",
+                                                    icons: {
+                                                        primary: "ui-icon-heart"
+                                                    },
+                                                    click: function () {
+                                                        $(this).dialog("close");
+                                                    }
+
+                                                    // Uncommenting the following line would hide the text,
+                                                    // resulting in the label being used as a tooltip
+                                                    //showText: false
+                                                },
+                                                 {
+                                                     text: "No",
+                                                     icons: {
+                                                         primary: "ui-icon-heart"
+                                                     },
+                                                     click: function () {
+                                                         $(this).dialog("close");
+                                                     }
+
+                                                     // Uncommenting the following line would hide the text,
+                                                     // resulting in the label being used as a tooltip
+                                                     //showText: false
+                                                 }
+                                    ]
+
+                                });
+                            });
+                        });
+                    </script>
+                }
 
