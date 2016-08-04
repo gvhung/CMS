@@ -1,5 +1,6 @@
 ﻿@model CRM.UI.ViewModels.ProductListVM
 
+   
 @{
     ViewBag.Title = "List";
 }
@@ -11,14 +12,24 @@
 </p>
 <div>
     <label>Product Name</label>
-    @Html.TextBox("SearchClientName", "", new { @id = "SearchClientName", @Name = "SearchClientName" })
-
-    @Html.TextBox("StartIndex", "", new { @id = "StartIndex", @Name = "StartIndex" })
-
-    @Html.TextBox("EndIndex", "", new { @id = "EndIndex", @Name = "EndIndex" })
+    @Html.TextBox("SearchClientName", "Search Product......", new { @id = "SearchClientName", @Name = "SearchClientName" })
+    <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-search"></span>
+    </button>
 </div>
-
-<table class="table" border="1">
+<style type="text/css">
+    .table {background-color:white;height:24px}
+    .table tr{background-color:wheat}
+    .table tr:hover{background-color:mistyrose;transform:scale(1.1)}
+        .table tr:first-child:hover {background-color:green;transform:none}
+</style>
+<style>
+    th {
+        background-color:green;
+    }
+</style>
+<div class="col-sm-12">
+<table class="table" border="1"">
     <tr>
         <th>
             Product Name 
@@ -43,42 +54,45 @@
 
             <td>
 
-                @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { id = "edit" }) |
-                <a href="#" id="delete">Delete</a>
+                @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })|
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { id = "edit" }) 
+               
             </td>
         </tr>
 
     }
     
 </table>
-<p><b>Versions List</b></p>
-<table class="table" border="1">
-    <tr>
-        <th>
-            ProductVersion
-        </th>
-        <th>Actions</th>
-    </tr>
-    @foreach (var item in Model.Versions)
-    {
-       <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VersionName)
-             </td>
-            
-    <td>
-
-        @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })
-        @Html.ActionLink("Edit", "Edit", new { id = item.VersionId }, new { id = "edit" }) |
-        <a href="#" id="delete">Delete</a>
-    </td>
-            
+    </div>
+<div class="col-sm-6">
+    <p><b>Versions List</b></p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Versions
+            </th>
+            <th>Actions</th>
         </tr>
+        @foreach (var item in Model.Versions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VersionName)
+                </td>
 
-    }
-   </table>
+                <td>
 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })|
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VersionId }, new { id = "edit" }) 
+                    
+                </td>
+
+            </tr>
+
+        }
+    </table>
+</div>
+<div class="col-sm-6">
     <p><b>Components List</b></p>
     <table class="table" border="1">
         <tr>
@@ -88,72 +102,77 @@
             <th>Actions</th>
         </tr>
         @foreach (var item in Model.Components)
-    {
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ComponentName)
                 </td>
-           
-    <td>
 
-        @Html.ActionLink("Delete", "Delete", new { id = item.ComponentId })
-        @Html.ActionLink("Edit", "Edit", new { id = item.ComponentId }, new { id = "edit" }) |
-        <a href="#" id="delete">Delete</a>
-    </td>
-                </tr>
+                <td>
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ComponentId })|
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ComponentId }, new { id = "edit" }) 
+                   
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+    <div>
+        @Html.ValidationMessage("SM")
+    </div>
+    
+    @section scripts{
+
+        <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+        <script>
+
+
+            $(function () {
+                $("#delete").click(function () {
+
+                    $("#dialog").dialog({
+                        buttons: [
+                                    {
+                                        text: "Yes",
+                                        icons: {
+                                            primary: "ui-icon-heart"
+                                        },
+                                        click: function () {
+                                            $(this).dialog("close");
+                                        }
+
+                                        // Uncommenting the following line would hide the text,
+                                        // resulting in the label being used as a tooltip
+                                        //showText: false
+                                    },
+                                     {
+                                         text: "No",
+                                         icons: {
+                                             primary: "ui-icon-heart"
+                                         },
+                                         click: function () {
+                                             $(this).dialog("close");
+                                         }
+
+                                         // Uncommenting the following line would hide the text,
+                                         // resulting in the label being used as a tooltip
+                                         //showText: false
+                                     }
+                        ]
+
+                    });
+                   
+                });
+                $("tr").click(function () {
+                    $(this).css('color', 'blue');
+                    $(this).css({'font-size':'+16px'});
+                });
+
+            });
+        </script>
     }
-        </table>
-
-
-
-                <div>
-                    @Html.ValidationMessage("SM")
-                </div>
-                <div id="dialog" title="Basic dialog">
-                    <p>Do you want to delete?</p>
-                </div>
-                @section scripts{
-
-                    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
-                    <script>
-
-
-                        $(function () {
-                            $("#delete").click(function () {
-
-                                $("#dialog").dialog({
-                                    buttons: [
-                                                {
-                                                    text: "Yes",
-                                                    icons: {
-                                                        primary: "ui-icon-heart"
-                                                    },
-                                                    click: function () {
-                                                        $(this).dialog("close");
-                                                    }
-
-                                                    // Uncommenting the following line would hide the text,
-                                                    // resulting in the label being used as a tooltip
-                                                    //showText: false
-                                                },
-                                                 {
-                                                     text: "No",
-                                                     icons: {
-                                                         primary: "ui-icon-heart"
-                                                     },
-                                                     click: function () {
-                                                         $(this).dialog("close");
-                                                     }
-
-                                                     // Uncommenting the following line would hide the text,
-                                                     // resulting in the label being used as a tooltip
-                                                     //showText: false
-                                                 }
-                                    ]
-
-                                });
-                            });
-                        });
-                    </script>
-                }
+  
 
