@@ -8,20 +8,20 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
- @*@if (TempData["Result"] != null)
-<div>
-   @Html.Raw(TempData["Result"].ToString());
-</div>*@
+@*@if (TempData["Result"] != null)
+    <div>
+       @Html.Raw(TempData["Result"].ToString());
+    </div>*@
 
 @using (Html.BeginForm())
 {
 
     @*@if (TempData["Result"]!= null)
-    { <h1>@TempData["Result"]</h1>}*@
+        { <h1>@TempData["Result"]</h1>}*@
 
-    PagedList.PagedList<Ticket> list = ViewBag.tickets;
+PagedList.PagedList<Ticket> list = ViewBag.tickets;
     <div>
-       <label>Company Name</label> 
+        <label>Company Name</label>
         @Html.TextBox("SearchClientName", "", new { @id = "SearchClientName", @Name = "SearchClientName" })
         <label>Start Index</label>
         @Html.TextBox("StartIndex", "", new { @id = "StartIndex", @Name = "StartIndex" })
@@ -52,56 +52,89 @@
                 @Html.DisplayNameFor(model => model.First().Assignee)
             </th>
             <th>
-                @Html.DisplayNameFor(model=> model.First().CreatedBy)
+                @Html.DisplayNameFor(model => model.First().CreatedBy)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.First().DateCreated)
             </th>
             <th>Actions</th>
         </tr>
-        @if (list != null )
+        @if (list != null)
         {
             foreach (var item in list)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TicketNo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CompanyName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProductName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ComponentName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Version)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Assignee)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateCreated)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Create", new { id=item.TicketId }) |
-                        @Html.ActionLink("Details", "Details", new {/*id=item.TicketId*/}) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.TicketId })
-                 
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComponentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assignee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                <a href="#" class="edit" Ticketid="@item.TicketId">
+                    Edit
+                </a>
+                @*@Html.ActionLink( "Edit", "Create", new { id = item.TicketId }, new { @class = "editDialog" ,TcktId= @item.TicketId})*@ |
+                @Html.ActionLink("Details", "Details", new {/*id=item.TicketId*/}) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TicketId })
+
+            </td>
+        </tr>
             }
         }
 
     </table>
+
+
     @Html.PagedListPager(list, page => Url.Action("List", new { page }))
-    
+
+}
+<div id="mpedit" style="width:500px">
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.edit').click(function () {
+                $.ajax({
+                    method: 'Get',
+                    url: '/Ticket/Edit',
+                    data: 'id=' + $(this).attr('TicketId'),
+                    success: function (responceText) {
+                        $('#mpedit').html(responceText);
+                        $('#mpedit').dialog();
+                    },
+                    fail: function (responceText) { },
+                });
+            })
+
+
+        });
+
+
+    </script>
 }

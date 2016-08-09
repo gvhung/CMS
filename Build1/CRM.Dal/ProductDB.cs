@@ -77,6 +77,7 @@ namespace CRM.Dal
             con.Open();
             SqlCommand cmd = new SqlCommand("spBindproducts", con);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@CompanyId", SqlDbType.BigInt).Value = companyId;
             SqlDataReader dr = cmd.ExecuteReader();
             Product productdto = null;
             while (dr.Read())

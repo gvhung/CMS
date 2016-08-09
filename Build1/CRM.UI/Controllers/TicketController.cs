@@ -30,8 +30,8 @@ namespace CRM.UI.Controllers
             try
             {
                 int ticketid = Convert.ToInt32(id);
-                if (ticketid > 0)
-                    ticketcreateModel = Edit(ticketid);
+                //if (ticketid > 0)
+                    //ticketcreateModel = Edit(ticketid);
                 ProductBiz productbiz = new ProductBiz();
                 // ViewBag.lstDropdown = ticketbiz.BindCompanies();
                 ticketcreateModel.Products = productbiz.GetProducts(Convert.ToInt64(Session["CompanyId"]));
@@ -145,7 +145,7 @@ namespace CRM.UI.Controllers
             return View();
         }
 
-        public TicketCreateModel Edit(int id)
+        public ActionResult Edit(int id)
         {
             TicketBiz ticketbiz = new TicketBiz();
             Ticket t = ticketbiz.GetTicketById(id);
@@ -173,7 +173,8 @@ namespace CRM.UI.Controllers
             ticketCreateModel.Components = productbiz.GetComponent(Id);
             ticketCreateModel.Versions = productbiz.GetVersions(Id);
 
-            return ticketCreateModel;
+            return PartialView(ticketCreateModel);
+            //return ticketCreateModel;
             // return View("Create", ticketCreateModel);
         }
 
