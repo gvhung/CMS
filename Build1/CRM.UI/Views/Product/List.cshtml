@@ -1,178 +1,175 @@
 ﻿@model CRM.UI.ViewModels.ProductListVM
+<body style="background-image:url('C:\Users\PAVAN RAM\Downloads\car1.jpg')"  >
 
-   
-@{
-    ViewBag.Title = "List";
-}
-
-<h2>Product List</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div>
-    <label>Product Name</label>
-    @Html.TextBox("SearchClientName", "Search Product......", new { @id = "SearchClientName", @Name = "SearchClientName" })
-    <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-search"></span>
-    </button>
-</div>
-<style type="text/css">
-    .table {background-color:white;height:24px}
-    .table tr{background-color:wheat}
-    .table tr:hover{background-color:mistyrose;transform:scale(1.1)}
-        .table tr:first-child:hover {background-color:green;transform:none}
-</style>
-<style>
-    th {
-        background-color:green;
+    @{
+        ViewBag.Title = "List";
     }
-</style>
-<div class="col-sm-12">
-<table class="table" border="1"">
-    <tr>
-        <th>
-            Product Name 
-        </th>
-        
-        <th>
-            Company Name 
-        </th>
-        
-        <th>Actions</th>
-    </tr>
-    
-    @foreach (var item in Model.Products)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(ModelItem=>item.CompanyName)
-            </td>
 
-            <td>
+    <h2>Product List</h2>
 
-                @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })|
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { id = "edit" }) 
-               
-            </td>
-        </tr>
-
-    }
-    
-</table>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div>
+        <label>Product Name</label>
+        @Html.TextBox("SearchClientName", "Search Product......", new { @id = "SearchProductName", @Name = "SearchProductName" })
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
     </div>
-<div class="col-sm-6">
-    <p><b>Versions List</b></p>
-    <table class="table" border="1">
-        <tr>
-            <th>
-                Versions
-            </th>
-            <th>Actions</th>
-        </tr>
-        @foreach (var item in Model.Versions)
-        {
+    <style type="text/css">
+        .table {
+            background-color: white;
+            height: 24px;
+        }
+
+            .table tr {
+                background-color: wheat;
+            }
+
+                .table tr:hover {
+                    background-color: mistyrose;
+                    transform: scale(1.1);
+                }
+
+                .table tr:first-child:hover {
+                    background-color: green;
+                    transform: none;
+                }
+    </style>
+    <style>
+        th {
+            background-color: green;
+        }
+    </style>
+    <div class="col-sm-12">
+        <table class="table" border="1">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.VersionName)
-                </td>
+                <th>
+                    Product Id
+                </th>
 
-                <td>
+                <th>
+                    Product Name
+                </th>
 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })|
-                    @Html.ActionLink("Edit", "Edit", new { id = item.VersionId }, new { id = "edit" }) 
-                    
-                </td>
+                <th>
+                    Company Name
+                </th>
 
+                <th>Actions</th>
             </tr>
 
-        }
-    </table>
-</div>
-<div class="col-sm-6">
-    <p><b>Components List</b></p>
-    <table class="table" border="1">
-        <tr>
-            <th>
-                Components
-            </th>
-            <th>Actions</th>
-        </tr>
-        @foreach (var item in Model.Components)
-        {
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(ModelItem => item.CompanyName)
+                    </td>
+
+                    <td>
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })|
+                        <a href="#" class="edit" Productid="@item.Id">Edit</a>
+
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <p><b>Versions List</b></p>
+        <table class="table" border="1">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ComponentName)
-                </td>
-
-                <td>
-
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ComponentId })|
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ComponentId }, new { id = "edit" }) 
-                   
-                </td>
+                <th>
+                    Versions
+                </th>
+                <th>Actions</th>
             </tr>
-        }
-    </table>
-</div>
+            @foreach (var item in Model.Versions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VersionName)
+                    </td>
+
+                    <td>
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.VersionId })|
+                        @Html.ActionLink("Edit", "Edit", new { id = item.VersionId }, new { id = "edit" })
+
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+    </div>
+    <div class="col-sm-6">
+        <p><b>Components List</b></p>
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    Components
+                </th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var item in Model.Components)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ComponentName)
+                    </td>
+
+                    <td>
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ComponentId })|
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ComponentId }, new { id = "edit" })
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 
 
     <div>
         @Html.ValidationMessage("SM")
     </div>
-    
+    <div id="mpedit" width="500px"></div>
+
     @section scripts{
 
         <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
         <script>
+            
+            $(document).ready(function () {
 
-
-            $(function () {
-                $("#delete").click(function () {
-
-                    $("#dialog").dialog({
-                        buttons: [
-                                    {
-                                        text: "Yes",
-                                        icons: {
-                                            primary: "ui-icon-heart"
-                                        },
-                                        click: function () {
-                                            $(this).dialog("close");
-                                        }
-
-                                        // Uncommenting the following line would hide the text,
-                                        // resulting in the label being used as a tooltip
-                                        //showText: false
-                                    },
-                                     {
-                                         text: "No",
-                                         icons: {
-                                             primary: "ui-icon-heart"
-                                         },
-                                         click: function () {
-                                             $(this).dialog("close");
-                                         }
-
-                                         // Uncommenting the following line would hide the text,
-                                         // resulting in the label being used as a tooltip
-                                         //showText: false
-                                     }
-                        ]
-
+            $('.edit').click(function () {
+                
+                    $.ajax({
+                        method:'Get',
+                        url: '/Product/Edit',
+                        data: 'id='+$(this).attr('Productid'),
+                        success: function (responcetext) {
+                            $('#mpedit').html(responcetext);
+                            $('#mpedit').dialog({width:'600px'});
+                        },
+                        fail: function (responcetext) { }
                     });
-                   
                 });
-                $("tr").click(function () {
-                    $(this).css('color', 'blue');
-                    $(this).css({'font-size':'+16px'});
-                });
-
+                  
+                
             });
         </script>
     }
-  
+</body>
 
