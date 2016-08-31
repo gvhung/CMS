@@ -1,0 +1,16 @@
+E:\CRM\200\Build1\CRM.Core.Test\obj\Debug\CRM.Core.Test.csprojResolveAssemblyReference.cache
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.Core.Test.dll.config
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.Core.Test.dll
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.Core.Test.pdb
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.Core.dll
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.DAL.dll
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\EntityFramework.dll
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\EntityFramework.SqlServer.dll
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.Core.pdb
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\CRM.DAL.pdb
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\AutoMapper.xml
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\EntityFramework.xml
+E:\CRM\200\Build1\CRM.Core.Test\bin\Debug\EntityFramework.SqlServer.xml
+E:\CRM\200\Build1\CRM.Core.Test\obj\Debug\CRM.Core.Test.dll
+E:\CRM\200\Build1\CRM.Core.Test\obj\Debug\CRM.Core.Test.pdb

@@ -1,0 +1,10 @@
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\CRM.DAL.dll.config
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\CRM.DAL.dll
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\CRM.DAL.pdb
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\EntityFramework.xml
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\CRM\200\Build1\Sample.DAL\obj\Debug\CRM.DAL.dll
+E:\CRM\200\Build1\Sample.DAL\obj\Debug\CRM.DAL.pdb
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\EntityFramework.dll
+E:\CRM\200\Build1\Sample.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\CRM\200\Build1\Sample.DAL\obj\Debug\CRM.DAL.csprojResolveAssemblyReference.cache

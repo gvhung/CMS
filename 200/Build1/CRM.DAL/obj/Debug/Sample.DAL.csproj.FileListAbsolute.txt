@@ -1,0 +1,12 @@
+D:\Sample\Sample.DAL\obj\Debug\Sample.DAL.csprojResolveAssemblyReference.cache
+D:\Sample\Sample.DAL\bin\Debug\Sample.DAL.dll
+D:\Sample\Sample.DAL\bin\Debug\Sample.DAL.pdb
+D:\Sample\Sample.DAL\bin\Debug\Sample.POCO.dll
+D:\Sample\Sample.DAL\bin\Debug\Sample.POCO.pdb
+D:\Sample\Sample.DAL\obj\Debug\Sample.DAL.dll
+D:\Sample\Sample.DAL\obj\Debug\Sample.DAL.pdb
+D:\Sample\Sample.DAL\bin\Debug\Sample.DAL.dll.config
+D:\Sample\Sample.DAL\bin\Debug\EntityFramework.dll
+D:\Sample\Sample.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Sample\Sample.DAL\bin\Debug\EntityFramework.xml
+D:\Sample\Sample.DAL\bin\Debug\EntityFramework.SqlServer.xml
