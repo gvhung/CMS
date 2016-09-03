@@ -13,6 +13,6 @@ namespace CRM.DAL.Entities
         DateTime? DateModified { get; set; }
         long CreatedBy { get; set; }
         int Status { get; set; }
-
+        
     }
 }

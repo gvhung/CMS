@@ -10,7 +10,7 @@ namespace CRM.DAL
     public abstract class RepositoryBase<T1>:IRepository<T1> where T1: class, IEntity
     {
 
-       public IRepositoryContext Context { get; }
+       protected IRepositoryContext Context { get; }
 
         public RepositoryBase(IRepositoryContext context)
         {
