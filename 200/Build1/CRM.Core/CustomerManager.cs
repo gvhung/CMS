@@ -1,10 +1,12 @@
-﻿using CRM.DAL.Entities;
-using CRM.DAL.Interfaces;
+﻿
 using CRM.Core.Model;
 using CRM.Core.Interfaces;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using CRM.DAL.Interfaces;
+using CRM.DAL.Entities;
+
 namespace CRM.Core
 {
     public class CustomerManager:ICustomerManager
@@ -14,7 +16,10 @@ namespace CRM.Core
         {
             _uow = uow;
         }
-
+        public long Count()
+        {
+           return _uow.CustomerRepository.Count();
+        }
         public void Create(CustomerViewModel customerViewModel)
         {
             //check if customer exists

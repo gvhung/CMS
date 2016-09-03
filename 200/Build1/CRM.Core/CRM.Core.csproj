@@ -44,20 +44,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseManager.cs" />
     <Compile Include="CustomerManager.cs" />
     <Compile Include="Interfaces\ICustomerManager.cs" />
     <Compile Include="Interfaces\IManager.cs" />
+    <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Model\CustomerModels.cs" />
+    <Compile Include="Model\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Sample.DAL\CRM.DAL.csproj">
-      <Project>{ecedff69-1c62-452d-98f1-45948a0ec484}</Project>
-      <Name>CRM.DAL</Name>
-    </ProjectReference>
+    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRM.DAL\CRM.DAL.csproj">
+      <Project>{ecedff69-1c62-452d-98f1-45948a0ec484}</Project>
+      <Name>CRM.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlairBees.Common\FlairBees.Common.csproj">
+      <Project>{b79e8e89-76ed-4ce1-b3ea-6db580b4d505}</Project>
+      <Name>FlairBees.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

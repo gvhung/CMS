@@ -13,6 +13,7 @@ namespace CRM.Core.Interfaces
         void Update(T model);
         void Remove(T model);
         List<T> GetAll();
+        long Count();
         
        // List<T> GetAll(Expression<Func<T, T>> whereCondition);
     }
